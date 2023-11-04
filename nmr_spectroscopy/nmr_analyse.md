@@ -50,11 +50,11 @@ Here's a graphical representation for better understanding:
 
 ### Converting Primary NMR Waves into Signals using Fourier Transform
 
-![Fourier Transform](/home/sam/python_projects/protein_structure_analysis/nmr_spectroscopy/nmr_signal.png)
+![Fourier Transform](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/nmr_spectroscopy/nmr_signal.png)
 
 ### NMR Instrument
 
-![NMR Instrument](/home/sam/python_projects/protein_structure_analysis/nmr_spectroscopy/nmr_magnet.png)
+![NMR Instrument](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/nmr_spectroscopy/nmr_magnet.png)
 
 
 
