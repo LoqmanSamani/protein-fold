@@ -1,5 +1,7 @@
 # Nuclear Magnetic Resonance (NMR)
 
+#### NMR_Spectroscopy is an analytic technique used to identify the molecular structure of a molecule. This is accomplished by analysing the magnetic fields around atoms within a molecule. 
+
 ## Terminology
 
 
