@@ -168,13 +168,19 @@ In physics, engineering and mathematics, the Fourier transform (FT) is an integr
 ------------------------------------------------------------------------------------------------------------------------
 
 
+### Fig.1
+
 --------
 ![fig.1](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft1.png)
 ---------
 
+### Fig.2
+
 ----------
 ![fig.2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft2.png)
 ----------
+
+### Fig.3
 
 ----------
 ![fig.3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft3.png)
@@ -232,13 +238,15 @@ plt.show()
 # Fig.4) Result
 ```
 
+### Fig.4
+
 ----------
 ![fig.4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft4.png)
 ----------
 
 
 
-Reference: **understanding nmr spectroscopy** by ![james keeler](https://books.google.de/books?hl=de&lr=&id=PKQlfaK4COoC&oi=fnd&pg=PR17&dq=understanding+nmr+spectroscopy+james+keeler&ots=ycPrHj4_cO&sig=2CDqwJsAAuNhPAyPNo9tpKIgH50#v=onepage&q=understanding%20nmr%20spectroscopy%20james%20keeler&f=false)
+Reference: **understanding nmr spectroscopy** by james keeler
 
 
 Loghman Samani 
