@@ -246,7 +246,7 @@ plt.show()
 
 
 
-Reference: **understanding nmr spectroscopy** by james keeler
+Reference: ![understanding nmr spectroscopy](https://books.google.de/books?hl=en&lr=&id=PKQlfaK4COoC&oi=fnd&pg=PR17&dq=understanding+nmr+spectroscopy+by+james+keeler&ots=ycPrHp5V8K&sig=zpf_lmOM2uwH_OYzCvYBeMliuLw&redir_esc=y#v=onepage&q=understanding%20nmr%20spectroscopy%20by%20james%20keeler&f=false) by james keeler
 
 
 Loghman Samani 
