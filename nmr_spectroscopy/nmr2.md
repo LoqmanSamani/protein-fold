@@ -13,15 +13,24 @@ we talk about time but how exactly time affects the resonance?  with time gradua
 ### Quantum Behaviour of Atomic Nuclei
 
 If we imagine a nucleus (hydrogen nucleus known as a proton) as a ball and a vector inside of it which represent the direction of the angular momentum and the magnetism. In a magnetic field the lowest energy state is with magnetic dipole of the nucleus aligned with the magnetic field direction. Hydrogen nucleus (proton) has a two possible quantum states in the presence of magnetic field, spin up (low energy state) and spin down (high energy state). In general being quantum mechanics it is possible to have a coherent superposition of this states, in which one nucleus iss both spin up and spin down simultneously.
-That is superposition that applies when we are observing protons precessing in a magnetic resonance experiment.(nmr1)
+That is superposition that applies when we are observing protons precessing in a magnetic resonance experiment.
+
+![nmr1](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr1.png)
 
 When we have lots of nuclei in thermal eqilibrium with a magnetic field. At finite temperature all nuclei are not in the lower energy state a proportion of them are in the high energy state depend on the temperature but none of these two position are superposition state, the ratio of the population of each state is given by Boltzmann Factor (B = e ^(- yß0h/kBT)) when we decrease the temperature the ratio of lower enerpy spins will increase and in the zero (kelvin) al the nuclei will be in the lower energy state.(nmr2)
-
 another way to incease the ratio of lower energy spins is to increase the applied magnetic field (ß0). in this case the thermal energy remains fixed.
+
+![nmr2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr2.png)
 
 lets take our thermal magnetization equilibrium and see what we can do using the nuclear magnetic trick! like i said before the precession is invisible if the magnetization pointed along the vertical axis and we need to reorient the nuclei. once we do that precession will be visible we call this precession Larmor Frequency (ω = γß0) this equation is the most important equation in NMR. it says the precession frequency is proportional to the field at that the constant of proportionality gamma (gyromagnetic ratio or the magnetogyric ratio) depends on the nature of the nucleus. Hydrogen nuclei have the biggest gamma among the most sensitive nuclei to used for NMR. finally note the use of a coil(nmr3) pick up the induced voltage from the precessing spins, this constitude our free induction decay signal in NMR.
 
+![nmr3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr3.png)
+
 summany: the strength of the magnetic field determines the amount of magnetization that we have when the atomic nuclei are in thermal equilibrium. The strength of the magnetic field also determines the precession frequency of the atomic nuclei, the higher the field the higher the precession frequency. wwe need to have a coil which used to produce an ascillating magnetic field in resonance with the nuclei that causes that talk which tips the mechanization out of the equilibrium into the transverse plane (the coil is used not only to transmit to the nuclei but also to receive the signal to pick up that electro-magnetic force that oscillating voltage as the nuclear magnetization processes around in the coil with signal gradually decaying away with time as the spins come back to the thermal equilibrium and we call that signal which decays with time "free induction decay").
+
+![nmr4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr4.png)
+
+
 
 
 
