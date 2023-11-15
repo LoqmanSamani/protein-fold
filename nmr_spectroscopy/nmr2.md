@@ -32,6 +32,19 @@ summany: the strength of the magnetic field determines the amount of magnetizati
 
 
 
+###  Acquiring a Free Induction Decay (FID)
+
+Two principle things which we need for magnetic resonence: 1) ***A homogeneous static magnetic field***, it is provided by the earth magnetic field, which is about 60 micro Tesla and leads to allow more precission frequency for hydrogen nuclei just over of couple of kilohertz (it has to do with the sharpness of the resonance the degree of resolution that is possible with nuclear magnetic resonance) 2) ***An oscillating transverse magnetic field***, which is provided by a machine.
+If we use water as a sample for an experiment (water has two hydrogen and one oxygen, the oxygen atom has actually no magnetizem and also no angular momentum and it means plays no part in the nuclear magnetic resonance phenomenon but the hydrogen(proton) around the oxygen atom have all we need) a sample of water has a gigantic numer of proton in it which are appropriate for the experiment.
+there are actually lots of other molecules which can be use as a sample instead of water (molecules which contain hydrgon atoms in them such aliphatic chains which are in form of lipid molecules in our body. actually any molecules which contains hydrogen and can befound in liquid form is appropriate). first in this experiment we apply a prepolarizing pulse to produce some larger magnetization and then we have to disturb the spins from their thermal equilibrium state and for that we use the transverse oscillating magnetic field, we apply it for a short period of time as a pulse. what we detect is the excitation and the decay of that oscillating signal at the free induction decay over a period of time (in this case 2 seconds) (time domain curve) if we perform a fourier transform on that time domain data we get the spectrum and that spectrum lies in the frequency domain correcponds (in this case) to a definite peak.(nmr5)
+
+
+
+
+
+
+
+
 
 
 
