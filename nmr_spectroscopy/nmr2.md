@@ -41,8 +41,18 @@ there are actually lots of other molecules which can be use as a sample instead 
 ![nmr5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr5.png)
 
 
+###  Field Homogeneity
+
+***Why the homogeneity of the field is important?*** THe width of the peak in the spectrum related to the rate of decay of the signal in the frequency graph(FID), the faster the decay the broader the spectrum, so why the signal decays? initially the spins do have to go back to thermal equilibrium along the magnetic field so it has to be some die away of the signal due to this process, but in fact the rate of decay turns out to be a lot faster than that which would expect from return to thermal equilibrium. The reason of the fast decay is related to field homogeneity. Explanation: supposed we have a field that is perfectly homogeneous and the atomic nuclei are in different positions in that magnetic field and they will have exactly the same larmor precession frequency so the magnetization vectors associated with those atomic nuclei will precess at exactly the same rate, now imagine the magnetic field is inhomogeneous, that means it varies from place to place across the sample so atomic nuclei in different positions have different larmor precession frequencies, that means when we do the free induction decay experiment the magnetization vectors start together in phase but of the different precession frequencies the vectors gradually spread out so the total magnetization which is a sum of the different vectors is smaller as a result of them spreading out.
 
 
+### Methods to prevent quick decay (improve homogeneity)
+
+***Shimming*** : By putting a small amount of current in the magnetic coils (this method will be applied by the nmr-machine) we can correct for imperfections in the Earth's magnetic field.
+
+***Spin Echo*** : oscillating transverse magnetic field has the effect of causing the nuclear magnetization to move from its equilibrium position pointing along the magnetic field to being precessing at some particular angle and the most favour angle maximum signal is that which have that magnetization lying in the transverse plane how do we get just the right amount of turning?  we have to apply the oscillating magnetic field for just the right amount of time, and that time produces that is known as a 90-degree pulse.(nmr6) for doing this we turn the magnetization vectors, which have different precession frequencies(some are faster and some slower), they will spread out with time but at some point we turn them over, so they eventually come back into step with each other.
+
+![nmr6]()
 
 
 
