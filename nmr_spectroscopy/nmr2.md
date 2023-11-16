@@ -50,11 +50,16 @@ there are actually lots of other molecules which can be use as a sample instead 
 
 ***Shimming*** : By putting a small amount of current in the magnetic coils (this method will be applied by the nmr-machine) we can correct for imperfections in the Earth's magnetic field.
 
-***Spin Echo*** : oscillating transverse magnetic field has the effect of causing the nuclear magnetization to move from its equilibrium position pointing along the magnetic field to being precessing at some particular angle and the most favour angle maximum signal is that which have that magnetization lying in the transverse plane how do we get just the right amount of turning?  we have to apply the oscillating magnetic field for just the right amount of time, and that time produces that is known as a 90-degree pulse.(nmr6) for doing this we turn the magnetization vectors, which have different precession frequencies(some are faster and some slower), they will spread out with time but at some point we turn them over, so they eventually come back into step with each other.
+***Spin Echo*** : oscillating transverse magnetic field has the effect of causing the nuclear magnetization to move from its equilibrium position pointing along the magnetic field to being precessing at some particular angle and the most favour angle maximum signal is that which have that magnetization lying in the transverse plane how do we get just the right amount of turning?  we have to apply the oscillating magnetic field for just the right amount of time, and that time produces that is known as a 90-degree pulse.(nmr6) for doing this we turn the magnetization vectors, which have different precession frequencies(some are faster and some slower), they will spread out with time but at some point we turn them over (180 degree), so they eventually come back into step with each other.
 
 ![nmr6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr6.png)
 
 
+### Magnetic Resonance Imaging (MRI)
+
+For understanding the idea behind MRI and to be able to interpret the result of an MRI imagine we have a simple sample of water (this sample contains two tube of water which are placed parallel to each other). we said before that the precession frequency of nuclear spins depends on the strength of the magnetic field. imagine if we could make the magnetic field higher on the top tube and lower on the bottom tube, that would mean that the top tube would have a higher frequency and the bottom tube would have the lower frequency and if we look at the spectrum of that we should see two signals at two different frequencies corresponding to the two tubes of water, now imagine if we could make that magnetic field very linearly along the axis where the two tubes are separated, in that case we would have a very simple relationship between frequency and position in fact the frequency axis would also be a position axis, now the question is how could we do that? for doing it we use the ability of magnetic-coils inside the MRI machine, they could actually produce a variation of the magnetic field in all three orthogonal directions (along x, y and z axis), in this case we only need to have a variation of field along the z axis, so we are going to be able to separate those two tubes of water, so the idea is to use these gradient coils to produce the variation of magnetic field along the z axis in combination with a spin echo experiment(nmr7).
+
+![nmr7]()
 
 
 
