@@ -1,7 +1,19 @@
-Marion D. An introduction to biological NMR spectroscopy. Mol Cell Proteomics. 2013 Nov;12(11):3006-25. doi: 10.1074/mcp.O113.030239. Epub 2013 Jul 6. PMID: 23831612; PMCID: PMC3820920.
-
-
+1) Marion D. An introduction to biological NMR spectroscopy. Mol Cell Proteomics. 2013 Nov;12(11):3006-25. doi: 10.1074/mcp.O113.030239. Epub 2013 Jul 6. PMID: 23831612; PMCID: PMC3820920.
 link to the article:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3820920/
+
+
+2) Curry S. Structural Biology: A Century-long Journey into an Unseen World. Interdiscip Sci Rev. 2015 Jul 3;40(3):308-328. doi: 10.1179/0308018815Z.000000000120. Epub 2015 Dec 7. PMID: 26740732; PMCID: PMC4697198.
+
+
+3) Campbell, Iain D. ‘The Evolution of Protein NMR’. 1 Jan. 2013 : 245 – 264.
+
+
+4) Foundations of Structural Biology
+   By Leonard J. Banaszak
+
+5) Understanding NMR Spectroscopy
+    by James Keeler
+
 
 
 
