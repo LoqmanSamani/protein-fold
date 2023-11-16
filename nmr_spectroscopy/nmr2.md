@@ -82,11 +82,11 @@ when we look at one dimensional imaging (fig.10) what we see is the signal (S(k)
 
 Here we extend the idea of reciprocal space or k-space into two or more three dimensions, for doing that we need more than one gradient coil, which were represented in the one dimensional k-space, that means the gradient can be represented as a vector (G = ∇ß) depending on the direction of the gradient applied  by each individual coil and the Larmor precession equation in this case will be represented as (ω = γß + γG . r, here we have a dot product between gradient vector(γG ) and the position vector(r))(fig. nmr11).
 
-![nmr11]()
+![nmr11](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr11.png)
 
 In this case if we look at the pulse sequence, that we would use, the normal time course of events starting with a 90-degree pulse and seeing how thing evolve with time when we are using two- or three-dimensional gradient(fig. nmr12). Here we rewrite the k-space as a vector relating to the vector of magnetic field gradient and the signal we acquired in a perticular time is a fourier relationship between the signal in k-space and the spin density, which in this case is a perticular positions in two or three dimensions.
 
-![nmr12]()
+![nmr12](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr12.png)
 
 Let's look at how we might perform an experiment with a real pulse sequence that enables us to acquire a two-dimensional image.
 We start like before with a 90-degree pulse. and now we are going to acquire the signal in reciprocal space in k-space (two-dimension of space), in this case instead of single line of acquisition we are going to have multiple lines represented by a matrix of points (fig nmr13). each of the points in the matrix needs to acquire the signal that will enable us to get a full two-dimensional representation of the signal in the two-dimensions of k-space.
@@ -95,10 +95,11 @@ with applying two gradients (one along x-axis another along y-axis) at the same 
 to fill out all lines of the matrix we must repeat the process for all lines (for each line we use a different areas of pulse along y-axis), this process is known as "phase encoding gradient".
 after acquiring the signals they should be transformed using a cartesian fourier transformation.
 
-![nmr13]()
+![nmr13](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr13.png)
 
 
 ### Acquired Signal and Corresponding Magnetic Resonance Image
-![nmr15]()
+
+![nmr14](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr14.png)
 
 
