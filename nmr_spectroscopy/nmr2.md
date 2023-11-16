@@ -69,7 +69,13 @@ in an MRI we have a magnetic field which varies with position, this system produ
 
 ![nmr8](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr8.jpg)
 
+In the picture (fig. nmr9) we can see that after the 90-degree pulse of the oscillating transverse magnetic field, the magnetization vectors of all atomic nuclei are tipped into the transverse plane, subsequently with time they will precess all of the same rimel frequency and we will have the free induction decay which will have a reducing episode with time because of relaxation. suppose we have a magnetic field gradient that we switch on at some period of time after the 90-degree pulse, because of this magnetic field the nuclear magnetization vectors all start off together in phase all in step with each other and because of the presence of the magnetic field gradient they start to acquire different phases depending on where they are and those different phases cause a helical variation and phase along the vertical axis because the magnetic field gradient is a field that is proportional to position and as time goes on the helix whines tighter and the pitch of the helix gets shorter. we can describe the change in wave lengths mathematically (K = γGt and  K = 2 pi / γ). If we obtain a signal at some perticular point in time, the signal would come about from the sum of the contributions of all the atomic nuclei, so the signal would have involved a summation which represented by this integral  ( S(k) = ∫ p(z) * exp(ikz) dz ), in this formula we summ up the contribution of each individual spin at different positions. they may not be equal number of atomic nuclei difference position and that would be the reason that we carry out in the imaging experiment to try to find out the distribution of an atomic nuclei in space.
 
+![nmr9]()
+
+when we look at one dimensional imaging (fig.10) what we see is the signal (S(k)) we acquired in time also corresponds to a signal in k space because k is proportional to time and when we fourier transform ( S(k) = ∫ p(z) * exp(ikz) dz , here the transformation converts the acquired signal into density in real space) that to get the frequency domain we obtain the image.
+
+![nmr10]()
 
 
 
