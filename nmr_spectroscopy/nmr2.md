@@ -59,7 +59,9 @@ there are actually lots of other molecules which can be use as a sample instead 
 
 For understanding the idea behind MRI and to be able to interpret the result of an MRI imagine we have a simple sample of water (this sample contains two tube of water which are placed parallel to each other). we said before that the precession frequency of nuclear spins depends on the strength of the magnetic field. imagine if we could make the magnetic field higher on the top tube and lower on the bottom tube, that would mean that the top tube would have a higher frequency and the bottom tube would have the lower frequency and if we look at the spectrum of that we should see two signals at two different frequencies corresponding to the two tubes of water, now imagine if we could make that magnetic field very linearly along the axis where the two tubes are separated, in that case we would have a very simple relationship between frequency and position in fact the frequency axis would also be a position axis, now the question is how could we do that? for doing it we use the ability of magnetic-coils inside the MRI machine, they could actually produce a variation of the magnetic field in all three orthogonal directions (along x, y and z axis), in this case we only need to have a variation of field along the z axis, so we are going to be able to separate those two tubes of water, so the idea is to use these gradient coils to produce the variation of magnetic field along the z axis in combination with a spin echo experiment(nmr7).
 
-![nmr7]()
+![nmr7](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr7.png)
+
+
 
 
 
