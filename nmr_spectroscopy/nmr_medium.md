@@ -2,6 +2,7 @@
 
 
 <img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="1000">
+
 *Picture of an NMR spectrometer*
 
 
