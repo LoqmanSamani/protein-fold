@@ -30,7 +30,7 @@ NMR can also be employed to monitor the dynamic movements of proteins, which are
 
 -  2002, Nobel Prize in Chemistry for Kurt Wüthrich. The three-dimensional structures of biological macromolecules in solution.
 
-- 
+
 
 ### 2D and multi-dimensional NMR
 

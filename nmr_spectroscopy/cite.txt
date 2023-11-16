@@ -14,6 +14,10 @@ link to the article:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3820920/
 5) Understanding NMR Spectroscopy
     by James Keeler
 
+6)  Three-dimensional triple-resonance NMR spectroscopy of isotopically enriched proteins
+    Kay, Lewis E. ; Ikura, Mitsuhiko ; Tschudin, Rolf ; Bax, Ad
+
+
 
 
 
