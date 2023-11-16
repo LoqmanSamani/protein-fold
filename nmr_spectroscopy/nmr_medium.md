@@ -1,7 +1,7 @@
 ## Introduction into Nuclear Magnetic Resonance (NMR)  
 
 
-<img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="400">
+<img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="800">
 *Picture of an NMR spectrometer*
 
 
