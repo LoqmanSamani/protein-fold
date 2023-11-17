@@ -1,9 +1,12 @@
 ## Introduction into Nuclear Magnetic Resonance (NMR)  
 
+------------------------------------------------------
 
 <img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="1000">
 
 *Figure 1: Picture of an NMR spectrometer*
+
+-------------------------------------------------------------------------------------------------------------------------
 
 
 ### Introduction
@@ -15,6 +18,8 @@ With the progress of these techniques, ***structural biology*** developed into a
 This article deals with the advantages of NMR spectroscopy and its central role in the elucidation of the ***three-dimensional structures of proteins***. NMR spectroscopy has proven to be a powerful tool that captivates biologists working in structural biology, providing unparalleled insights into the dynamics, interactions and structures of biological macromolecules at the atomic level. Beyond pure structural elucidation, NMR spectroscopy is proving invaluable in the study of molecular interactions by revealing crucial details about binding interfaces, kinetics and thermodynamics.
 
 In particular, NMR plays a central role in the study of ***intrinsically disordered proteins (IDPs)***, a category that cannot be crystallized. The versatility of NMR spans various biological fields and demonstrates its capabilities in unraveling the mysteries of protein dynamics that are crucial for understanding their biological functions.
+
+------------------------------------------------------------------------------------------------------------------------
 
 
 ### Advances in NMR Spectroscopy
@@ -60,8 +65,7 @@ Today, NMR stands as a unique and versatile technique, offering a plethora of mu
 - ***2002*** Nobel Prize in Chemistry awarded to Kurt Wüthrich for advancements in understanding the three-dimensional structures of biological macromolecules in solution.
 
 
-
-
+------------------------------------------------------------------------------------------------------------------------
 
 ### Basic Principles of NMR Spectroscopy
 
@@ -139,14 +143,18 @@ Then:
 In the presence of an external magnetic field, nuclei exhibit distinct orientations. When subjected to a magnetic field along the Z-axis (as illustrated in Figure 2), nuclei can either rotate parallel to the applied magnetic field (lower energy and more stable, I = +1/2) or in the opposite direction (higher energy and less stable, I = -1/2). This phenomenon forms the basis of NMR spectroscopy, where the impact of the external magnetic field on these nuclear orientations is thoroughly examined.
 In the realm of NMR, nuclei in the presence of a magnetic field exist in two states: a ground state and an excited state. When sufficient energy is supplied, nuclei in the ground state can transition to the excited state, resulting in absorption observed in the spectroscopy.
 
+
 ![fig_2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium2.png)
 
+*Figure 2*
 
 To illustrate this concept, consider an Ethane molecule (refer to Figure 3). The carbon atoms in Ethane are equivalent in their arrangement, as are the hydrogen atoms. However, only the protons (hydrogen atoms) can contribute to an NMR signal. This is attributed to the fact that carbon-12, present in Ethane, has a Spin Quantum Number (I = 0), rendering it unable to produce an NMR signal. In contrast, hydrogen atoms possess a Spin Quantum Number (I) of -1/2 or +1/2, and only nuclei with I = 1/2 (either negative or positive) can generate an NMR signal. Consequently, as all protons in Ethane are equivalent, they collectively yield a single peak in NMR spectroscopy when subjected to an external magnetic field.
 
 In the absence of an external magnetic field, nuclei have no discernible spin (spin is zero). However, when a magnetic field is applied, nuclei can adopt two spin states. The lower energy state is considered the ground state, while the higher energy state is designated the excited state. When electromagnetic radiation is supplied as energy, it promotes nuclei from the ground state to the excited state, resulting in observable signals in NMR spectroscopy.
 
 ![fig_3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium3.png)
+
+*Figure 3*
 
 #### Chemical Shift & Shielding Effect
 
@@ -159,7 +167,7 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 
 ![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
-
+*Figure 4*
 #### Magnetic Anisotropy
 
 In Figure 5, we examine a propane molecule, revealing distinct NMR signals for its three different protons (I, II, and III). Notably, protons I and III exhibit identical signals at 0.9 ppm, while proton II manifests a different signal at 1.3 ppm. Transitioning to another molecule, ethyl bromide (Figure 5), we again observe two distinctive signals for its proton types (I and II) in a proton NMR spectrum. However, the locations of these signals differ, with proton I at 1.7 ppm and proton II at 3.5 ppm.
@@ -171,6 +179,8 @@ The high electronegativity of bromide induces a higher chemical shift for the se
 To summarize, the divergent electronegativities in molecular environments result in distinct chemical shifts, offering a nuanced understanding of magnetic anisotropy and its impact on proton NMR signals in molecules like propane and ethyl bromide.
 
 ![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+
+*Figure 5*
 
 
 #### Sample Preparation in NMR Spectroscopy
@@ -206,7 +216,7 @@ The resulting frequency-domain spectrum provides crucial insights. Peaks in the 
 
 ![fig](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft4.png)
 
-
+*Figure 6*
 
 #### Precession, Relaxation, and Resonance
 
@@ -227,26 +237,18 @@ Regarding the element of time in this process, the gradual reorientation of nucl
 
 
 
+--------------------------------------------------------------------------------------------------
+
+NMR Spectroscopy in Protein Structure Determination:
+
+    Describe how NMR is applied to study biological macromolecules, particularly proteins.
+    Highlight the advantages of NMR in providing detailed structural information in solution.
+    Discuss the challenges associated with studying large and complex proteins using NMR.
 
 
+### NMR Spectroscopy in Protein Structure Determination
 
 
-
-
-
-
-
-### first order NMR spectra
-
-it is the spectra where the chemical shift(Δv) is too greater than coupling constant(j) (Δv >> j), this type of spectra will be observed under the low resolution spectra condition(figure 5, a), and if we increase the resolution (high resolution spectra), the peak in the figure 5 a will be devided into two peak(it can be observed into two peak) (figure 5 b), the distance between this two spreaded peak is known as coupling constant(j) 
-
-### chemical and magnetic equivalence
-
-
-
-### rules of nmr
-1) all magnetically equivalent nuclei will give one nmr signal
-2) 
 
 
 
