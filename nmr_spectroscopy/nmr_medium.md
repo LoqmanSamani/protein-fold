@@ -145,11 +145,12 @@ Then:
 In the presence of an external magnetic field, nuclei exhibit distinct orientations. When subjected to a magnetic field along the Z-axis (as illustrated in Figure 2), nuclei can either rotate parallel to the applied magnetic field (lower energy and more stable, I = +1/2) or in the opposite direction (higher energy and less stable, I = -1/2). This phenomenon forms the basis of NMR spectroscopy, where the impact of the external magnetic field on these nuclear orientations is thoroughly examined.
 In the realm of NMR, nuclei in the presence of a magnetic field exist in two states: a ground state and an excited state. When sufficient energy is supplied, nuclei in the ground state can transition to the excited state, resulting in absorption observed in the spectroscopy.
 
-![fig_2]()
+![fig_2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium2.png)
+
 
 To illustrate this concept, consider an Ethane molecule (refer to Figure 3). The carbon atoms in Ethane are equivalent in their arrangement, as are the hydrogen atoms. However, only the protons (hydrogen atoms) can contribute to an NMR signal. This is attributed to the fact that carbon-12, present in Ethane, has a Spin Quantum Number (I = 0), rendering it unable to produce an NMR signal. In contrast, hydrogen atoms possess a Spin Quantum Number (I) of -1/2 or +1/2, and only nuclei with I = 1/2 (either negative or positive) can generate an NMR signal. Consequently, as all protons in Ethane are equivalent, they collectively yield a single peak in NMR spectroscopy when subjected to an external magnetic field.
 
-![fig_3]()
+![fig_3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium3.png)
 
 In the absence of an external magnetic field, nuclei have no discernible spin (spin is zero). However, when a magnetic field is applied, nuclei can adopt two spin states. The lower energy state is considered the ground state, while the higher energy state is designated the excited state. When electromagnetic radiation is supplied as energy, it promotes nuclei from the ground state to the excited state, resulting in observable signals in NMR spectroscopy.
 
@@ -163,7 +164,7 @@ Imagine applying a magnetic field (ß0) in a specific direction. The surrounding
 In NMR spectroscopy, the focus is not on measuring the shielding effect directly. Instead, it involves comparing this shielding effect with a standard, often ***TMS (tetramethylsilane)*** as depicted in Figure 4. The disparity between the standard (TMS) and the observed peak in the sample constitutes the ***chemical shift***. In NMR spectra, the shielding effect demonstrates an inverse relationship with the chemical shift – a higher shielding effect correlates with a lower chemical shift (figure 4).
 
 
-![fig_4]()
+![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
 
 
