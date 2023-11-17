@@ -61,12 +61,6 @@ Today, NMR stands as a unique and versatile technique, offering a plethora of mu
 
 
 
-Basic Principles of NMR Spectroscopy:
-
-    Explain the fundamental principles of nuclear magnetic resonance.
-    Discuss the interaction of magnetic nuclei with external magnetic fields.
-    Introduce concepts like chemical shift, spin-spin coupling, and relaxation times.
-
 
 
 ### Basic Principles of NMR Spectroscopy
@@ -150,10 +144,9 @@ In the realm of NMR, nuclei in the presence of a magnetic field exist in two sta
 
 To illustrate this concept, consider an Ethane molecule (refer to Figure 3). The carbon atoms in Ethane are equivalent in their arrangement, as are the hydrogen atoms. However, only the protons (hydrogen atoms) can contribute to an NMR signal. This is attributed to the fact that carbon-12, present in Ethane, has a Spin Quantum Number (I = 0), rendering it unable to produce an NMR signal. In contrast, hydrogen atoms possess a Spin Quantum Number (I) of -1/2 or +1/2, and only nuclei with I = 1/2 (either negative or positive) can generate an NMR signal. Consequently, as all protons in Ethane are equivalent, they collectively yield a single peak in NMR spectroscopy when subjected to an external magnetic field.
 
-![fig_3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium3.png)
-
 In the absence of an external magnetic field, nuclei have no discernible spin (spin is zero). However, when a magnetic field is applied, nuclei can adopt two spin states. The lower energy state is considered the ground state, while the higher energy state is designated the excited state. When electromagnetic radiation is supplied as energy, it promotes nuclei from the ground state to the excited state, resulting in observable signals in NMR spectroscopy.
 
+![fig_3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium3.png)
 
 #### Chemical Shift & Shielding Effect
 
@@ -167,6 +160,26 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 ![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
 
+#### Magnetic anisotropy
+In  (figure 5, a) we see a propane molecule, there are two differnt possible nmr signal (proton nmr) for three different proton (I and III have the same signal(0.9 ppm) and II another signal(1.3 ppm)) in this molecule. if we do the same for another molecule, Ethyl bromide (figure 5, b) for this molecule using a proton nmr spectra, there will be two different signals for two types of proton in the molecule (proton I and proton II) and the location of this signals in the nmr spectra will be (for proton I it will be 1.7 and for proton II it is 3.5 ppm), although the proton II in propane and proton II in ethyl bromide have the same number of proton but their signals are different (proton II in propane = 1.3, proton II in ethyl bromide = 3.5 ppm), the reason for this different lies in the differnce in electronegativity, in ethyl bromide the III carbon is connected to a highly electronegative bromide atom, but in the propane the third carbon is connected with a hydrogen. this high electronegativity of bromide results in a higher chemical shift for second proton in ethyl bromide. in summary we can say that the differnce in electronegativity results in differnce in chemical shift.
+
+
+![fig_5]()
+
+
+#### Precession, Relaxation, and Resonance
+
+Delving into the realm of magnetic resonance involves a profound exploration of atomic nuclei and their intriguing behavior within a magnetic field. To comprehend this, we must grasp two fundamental principles governing atomic nuclei.
+
+Firstly, akin to tiny compass needles in a magnetic field, atomic nuclei possess inherent magnetism, aligning themselves with the field. This alignment forms the basis of the first principle.
+
+The second principle delves into nuclear magnetism, emphasizing that nuclei possess angular momentum, resulting in a phenomenon known as "precession." Regardless of their orientation, nuclei exhibit a relatively consistent precession frequency. However, detecting this precession is most challenging when nuclei are either in a natural low-energy position or in an excited state. The precession becomes highly visible when nuclei exist in any intermediate orientation between the excited (pointing up) and natural (pointing down) states.
+
+To initiate the appearance of a nucleus's precession frequency, a magnetic force must be applied at the same frequency as the precession. This synchronized movement of torque, precisely matching the nucleus's precession frequency, is termed "resonance." Resonance becomes a central concept in nuclear magnetic resonance, as it reorients atomic nuclei from their natural equilibrium states within a magnetic field.
+
+In essence, nuclear magnetic resonance involves the application of a torque orthogonal to the magnetic field's torque on the spins. This torque must vary with time or oscillate at an exact frequency matching the natural precession frequency of nuclear spins. This synchronized application of torque, facilitated by a magnetic field, constitutes the phenomenon of nuclear magnetic resonance.
+
+Regarding the element of time in this process, the gradual reorientation of nuclei occurs over time, impacting the visibility of precession. As time elapses, the precession's prominence diminishes, eventually leading to a return to some form of equilibrium.
 
 
 

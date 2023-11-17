@@ -77,7 +77,7 @@ Atoms with I equal -1/2 or I equal +1/2 can be excited, and so they can release 
 - A molecule like ethane has two types of atoms (hydrogen and carbon).
 - Carbon atoms cannot give signals.
 - Hydrogen can give an NMR signal.
-- 
+
 
 ### Molecule: (a), (b), (c)
 
