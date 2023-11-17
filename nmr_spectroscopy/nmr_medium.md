@@ -160,11 +160,52 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 ![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
 
-#### Magnetic anisotropy
-In  (figure 5, a) we see a propane molecule, there are two differnt possible nmr signal (proton nmr) for three different proton (I and III have the same signal(0.9 ppm) and II another signal(1.3 ppm)) in this molecule. if we do the same for another molecule, Ethyl bromide (figure 5, b) for this molecule using a proton nmr spectra, there will be two different signals for two types of proton in the molecule (proton I and proton II) and the location of this signals in the nmr spectra will be (for proton I it will be 1.7 and for proton II it is 3.5 ppm), although the proton II in propane and proton II in ethyl bromide have the same number of proton but their signals are different (proton II in propane = 1.3, proton II in ethyl bromide = 3.5 ppm), the reason for this different lies in the differnce in electronegativity, in ethyl bromide the III carbon is connected to a highly electronegative bromide atom, but in the propane the third carbon is connected with a hydrogen. this high electronegativity of bromide results in a higher chemical shift for second proton in ethyl bromide. in summary we can say that the differnce in electronegativity results in differnce in chemical shift.
+#### Magnetic Anisotropy
 
+In Figure 5, we examine a propane molecule, revealing distinct NMR signals for its three different protons (I, II, and III). Notably, protons I and III exhibit identical signals at 0.9 ppm, while proton II manifests a different signal at 1.3 ppm. Transitioning to another molecule, ethyl bromide (Figure 5), we again observe two distinctive signals for its proton types (I and II) in a proton NMR spectrum. However, the locations of these signals differ, with proton I at 1.7 ppm and proton II at 3.5 ppm.
+
+An intriguing observation arises when comparing proton II in propane to proton II in ethyl bromide, where despite having an equivalent number of protons, their NMR signals diverge (1.3 ppm in propane and 3.5 ppm in ethyl bromide). This disparity can be attributed to the variance in electronegativity. Specifically, in ethyl bromide, carbon II is connected to a highly electronegative bromide atom, whereas in propane, carbon III is bonded to a hydrogen atom.
+
+The high electronegativity of bromide induces a higher chemical shift for the second proton in ethyl bromide compared to its counterpart in propane. In essence, the magnetic anisotropy, influenced by electronegativity differences, manifests as varying chemical shifts in NMR spectra.
+
+To summarize, the divergent electronegativities in molecular environments result in distinct chemical shifts, offering a nuanced understanding of magnetic anisotropy and its impact on proton NMR signals in molecules like propane and ethyl bromide.
 
 ![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+
+
+#### Sample Preparation in NMR Spectroscopy
+
+Sample preparation stands as a pivotal step in NMR spectroscopy, determining the success and accuracy of the experiment. It involves dissolving the test substance, the target for detection, in a suitable solvent to create a solution that can be analyzed within the spectrometer to obtain component spectra. The selection of an appropriate solvent is a critical aspect of this process.
+
+Several key properties define an ideal solvent for NMR experiments:
+
+- ***Purity***: The solvent should be available in a pure form to ensure that it does not introduce any impurities that could impact the spectra.
+
+- ***Availability***: It should be readily accessible to facilitate ease of experimentation.
+
+- ***Stability***: The chosen solvent should be stable under the experimental conditions, ensuring consistent and reliable results.
+
+- ***Solvent Capacity***: A good solvent should effectively dissolve the sample substance to create a homogenous solution for analysis.
+
+- ***Non-Interference***: The solvent should not interfere with the study. Given that NMR spectroscopy primarily targets nuclei with a spin quantum number (I) of 1/2, the solvent should ideally lack nuclei with I = 1/2 to prevent interference.
+
+One suitable choice for non-polar samples is ***carbon tetrachloride***, which lacks nuclei with I = 1/2. Additionally, modified solvents like ***deuterated water (D₂O)*** and ***deuterated chloroform*** are commonly used. These solvents have modified hydrogen atoms, featuring one proton and one neutron in their nuclei, ensuring they do not interfere with the study.
+
+Moreover, certain solvents contain nuclei with I = 1/2 but have NMR signals in a different range than the sample, preventing signal overlap and interference.
+
+In conclusion, the careful consideration of solvent properties is crucial for successful NMR spectroscopy, guaranteeing accurate and unobstructed analysis of the target substance.
+
+
+#### Fourier Transform in NMR Spectroscopy
+
+The ***![Fourier Transform (FT)](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/nmr_spectroscopy/fourier_transform.md)*** step in NMR (Nuclear Magnetic Resonance) is a pivotal mathematical process integral to the extraction of valuable information from raw NMR signals. In an NMR experiment, a sample is subjected to a strong magnetic field and radiofrequency pulses, prompting nuclear spins to absorb energy. As these spins relax back to their equilibrium states, they emit signals known as ***Free Induction Decay (FID)***, initially collected in the time domain.
+
+The FID, a complex exponential signal with both amplitude and phase information, is represented as a series of data points sampled over time. To unveil the underlying frequencies of nuclear spins within the sample, the Fourier Transform is applied to convert this ***time-domain data*** into the ***frequency domain***(figure 6). This mathematical operation decomposes the complex FID into a spectrum, where each peak corresponds to a specific frequency of nuclear precession within the sample.
+
+The resulting frequency-domain spectrum provides crucial insights. Peaks in the spectrum are associated with different atomic nuclei in the sample, and their positions reveal information about chemical shifts, indicating the chemical environment of the nuclei. Additionally, the splitting patterns in the spectrum convey details about nuclear couplings and the presence of neighboring nuclei.
+
+![fig](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft4.png)
+
 
 
 #### Precession, Relaxation, and Resonance
