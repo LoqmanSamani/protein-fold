@@ -164,7 +164,7 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 In  (figure 5, a) we see a propane molecule, there are two differnt possible nmr signal (proton nmr) for three different proton (I and III have the same signal(0.9 ppm) and II another signal(1.3 ppm)) in this molecule. if we do the same for another molecule, Ethyl bromide (figure 5, b) for this molecule using a proton nmr spectra, there will be two different signals for two types of proton in the molecule (proton I and proton II) and the location of this signals in the nmr spectra will be (for proton I it will be 1.7 and for proton II it is 3.5 ppm), although the proton II in propane and proton II in ethyl bromide have the same number of proton but their signals are different (proton II in propane = 1.3, proton II in ethyl bromide = 3.5 ppm), the reason for this different lies in the differnce in electronegativity, in ethyl bromide the III carbon is connected to a highly electronegative bromide atom, but in the propane the third carbon is connected with a hydrogen. this high electronegativity of bromide results in a higher chemical shift for second proton in ethyl bromide. in summary we can say that the differnce in electronegativity results in differnce in chemical shift.
 
 
-![fig_5]()
+![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
 
 
 #### Precession, Relaxation, and Resonance
