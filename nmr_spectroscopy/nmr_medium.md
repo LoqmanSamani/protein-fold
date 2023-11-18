@@ -443,7 +443,7 @@ Beyond static structures, NMR captures the dynamic nature of proteins. It provid
 Numerous  studies have highlighted the importance of NMR spectroscopy for biology and medicine. Examples include determining the structure of complex proteins that play a role in disease and revealing insights that serve as the basis for drug development. Notable contributions include the elucidation of the structure of membrane proteins, which pose a challenge to traditional methods of structural biology.
 
  
-Conclusion
+### Conclusion
 
 In conclusion, Nuclear Magnetic Resonance (NMR) spectroscopy stands as a cornerstone in structural biology, providing unparalleled insights into the three-dimensional structures, dynamics, and interactions of biological macromolecules. Over its 80-year evolution, NMR has experienced transformative milestones, from the foundational principles of chemical shift and spin-spin interactions to the advent of multidimensional experiments and the elucidation of complex protein structures.
 
