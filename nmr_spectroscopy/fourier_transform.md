@@ -7,7 +7,7 @@ In physics, engineering and mathematics, the Fourier transform (FT) is an integr
 ### Mathematical formulation of the fourier transform
 
 
-------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
 
 
     Fig.1) The fourier transform is a mathematical process which turns a time-domain signal (FID) into a frequency-domain signal (spectrum).
