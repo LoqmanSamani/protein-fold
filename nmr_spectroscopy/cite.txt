@@ -21,5 +21,8 @@ link to the article:  https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3820920/
 7) Wüthrich K. The way to NMR structures of proteins. Nat Struct Biol. 2001 Nov;8(11):923-5. doi: 10.1038/nsb1101-923. PMID: 11685234.
 
 
+8) Fuloria NK, Fuloria S (2013) Structural Elucidation of Small Organic Molecules by 1D, 2D and Multi Dimensional-Solution NMR Spectroscopy. J Anal Bioanal Tech S11:001. doi: 10.4172/2155-9872.S11-001
+
+
 
 

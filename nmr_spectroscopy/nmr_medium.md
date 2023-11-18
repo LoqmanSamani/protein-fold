@@ -9,7 +9,10 @@
 
 *Figure 1: Picture of an NMR spectrometer*
 
--------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 
 ### Introduction
@@ -22,7 +25,9 @@ This article deals with the advantages of NMR spectroscopy and its central role 
 
 In particular, NMR plays a central role in the study of ***intrinsically disordered proteins (IDPs)***, a category that cannot be crystallized. The versatility of NMR spans various biological fields and demonstrates its capabilities in unraveling the mysteries of protein dynamics that are crucial for understanding their biological functions.
 
-------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 ### Advances in NMR Spectroscopy
@@ -68,7 +73,10 @@ Today, NMR stands as a unique and versatile technique, offering a plethora of mu
 - ***2002*** Nobel Prize in Chemistry awarded to Kurt Wüthrich for advancements in understanding the three-dimensional structures of biological macromolecules in solution.
 
 
-------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 
 ### Basic Principles of NMR Spectroscopy
 
@@ -244,16 +252,36 @@ In conclusion, the careful consideration of solvent properties is crucial for su
 
 The ***![Fourier Transform (FT)](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/nmr_spectroscopy/fourier_transform.md)*** step in NMR (Nuclear Magnetic Resonance) is a pivotal mathematical process integral to the extraction of valuable information from raw NMR signals. In an NMR experiment, a sample is subjected to a strong magnetic field and radiofrequency pulses, prompting nuclear spins to absorb energy. As these spins relax back to their equilibrium states, they emit signals known as ***Free Induction Decay (FID)***, initially collected in the time domain.
 
-The FID, a complex exponential signal with both amplitude and phase information, is represented as a series of data points sampled over time. To unveil the underlying frequencies of nuclear spins within the sample, the Fourier Transform is applied to convert this ***time-domain data*** into the ***frequency domain***(figure 6). This mathematical operation decomposes the complex FID into a spectrum, where each peak corresponds to a specific frequency of nuclear precession within the sample.
+The FID, a complex exponential signal with both amplitude and phase information, is represented as a series of data points sampled over time. To unveil the underlying frequencies of nuclear spins within the sample, the Fourier Transform is applied to convert this ***time-domain data*** into the ***frequency domain***(figure 7). This mathematical operation decomposes the complex FID into a spectrum, where each peak corresponds to a specific frequency of nuclear precession within the sample.
 
 The resulting frequency-domain spectrum provides crucial insights. Peaks in the spectrum are associated with different atomic nuclei in the sample, and their positions reveal information about chemical shifts, indicating the chemical environment of the nuclei. Additionally, the splitting patterns in the spectrum convey details about nuclear couplings and the presence of neighboring nuclei.
 
 ![fig](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft4.png)
 
-*Figure 6*
+*Figure 7*
 
 
---------------------------------------------------------------------------------------------------
+
+
+
+### Two-dimensional nuclear magnetic resonance spectroscopy (2D NMR)
+
+2D NMR constitutes a collection of techniques within nuclear magnetic resonance spectroscopy (NMR) that presents data plotted in a space defined by two frequency axes, as opposed to the single axis in one-dimensional NMR. Prominent methods within 2D NMR include ***correlation spectroscopy (COSY)***, ***J-spectroscopy***, ***exchange spectroscopy (EXSY)***, and ***nuclear Overhauser effect spectroscopy (NOESY)***. These multidimensional spectra offer enhanced insights into molecular structures, particularly for complex compounds challenging to analyze using one-dimensional NMR.
+
+The standard framework for a 2D NMR experiment involves a sequence of radio frequency (RF) pulses interspersed with delay periods. These pulses' timing, frequencies, and intensities distinguish various NMR experiments. Typically, a 2D experiment encompasses four stages: the preparation period, creating a magnetization coherence through RF pulses; the evolution period, where nuclear spins precess freely without pulses; the mixing period, manipulating coherence into a state yielding an observable signal; and the detection period, where the free induction decay signal is observed, akin to one-dimensional FT-NMR.
+
+The two dimensions in a 2D NMR experiment correspond to frequency axes representing a chemical shift. Each axis relates to one of the two time variables: the evolution period's duration, ***evolution time***, and the time elapsed during the detection period ,***detection time***. These time series are converted into frequency series through a ***two-dimensional Fourier transform***. A single 2D experiment is generated as a series of one-dimensional experiments, each with a distinct evolution time. The entire detection period is recorded in each experiment.
+
+The outcome is a plot illustrating intensity values for each pair of frequency variables. Peak intensities are often represented using [***contour lines***](https://en.wikipedia.org/wiki/Contour_line) or distinct colors, providing a comprehensive representation of the molecular structure in 2D NMR spectra.
+
+
+
+![fig_8]()
+
+*Figure 8 : COSY spectrum of Ethyl-2-butenoate*
+
+
+
 
 
 
