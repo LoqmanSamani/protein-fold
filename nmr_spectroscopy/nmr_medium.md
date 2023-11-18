@@ -189,9 +189,20 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 ![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
 *Figure 4*
+
+#### J-coupling
+
+***J-coupling or scalar coupling*** in NMR spectroscopy provides crucial structural information in one-dimensional spectra. This phenomenon results from the interaction of spin states through chemical bonds, causing the splitting of NMR signals. For protons, adjacent nuclei pointing towards or against the magnetic field lead to two signals per proton, revealing connectivity patterns.
+Coupling to n equivalent (spin ½) nuclei generates an n+1 multiplet with intensity ratios following ***Pascal's triangle***. Additional spins cause further splittings, such as a doublet of doublets (dd) from coupling to two different spin ½ nuclei. Coupling between chemically equivalent or distant nuclei typically has no observable effect. Long-range couplings in cyclic and aromatic compounds produce complex splitting patterns.
+
+In the proton spectrum of ethanol (figure 5), the CH3 group forms a triplet split by neighboring CH2 protons, while the CH2 is a quartet split by neighboring CH3 protons. Coupling with spin-1/2 nuclei like phosphorus-31 or fluorine-19 follows similar principles, providing insight into chemical environments and the number of neighboring NMR-active nuclei.
+Coupling, combined with chemical shift and integration, reveals details about both chemical environment and neighboring nuclei. In complex spectra or non-hydrogen nuclei, coupling becomes essential for distinguishing between different nuclei.
+
+![fig_5]()
+
 #### Magnetic Anisotropy
 
-In Figure 5, we examine a propane molecule, revealing distinct NMR signals for its three different protons (I, II, and III). Notably, protons I and III exhibit identical signals at 0.9 ppm, while proton II manifests a different signal at 1.3 ppm. Transitioning to another molecule, ethyl bromide (Figure 5), we again observe two distinctive signals for its proton types (I and II) in a proton NMR spectrum. However, the locations of these signals differ, with proton I at 1.7 ppm and proton II at 3.5 ppm.
+In Figure 6, we examine a propane molecule, revealing distinct NMR signals for its three different protons (I, II, and III). Notably, protons I and III exhibit identical signals at 0.9 ppm, while proton II manifests a different signal at 1.3 ppm. Transitioning to another molecule, ethyl bromide (Figure 6), we again observe two distinctive signals for its proton types (I and II) in a proton NMR spectrum. However, the locations of these signals differ, with proton I at 1.7 ppm and proton II at 3.5 ppm.
 
 An intriguing observation arises when comparing proton II in propane to proton II in ethyl bromide, where despite having an equivalent number of protons, their NMR signals diverge (1.3 ppm in propane and 3.5 ppm in ethyl bromide). This disparity can be attributed to the variance in electronegativity. Specifically, in ethyl bromide, carbon II is connected to a highly electronegative bromide atom, whereas in propane, carbon III is bonded to a hydrogen atom.
 
@@ -199,9 +210,9 @@ The high electronegativity of bromide induces a higher chemical shift for the se
 
 To summarize, the divergent electronegativities in molecular environments result in distinct chemical shifts, offering a nuanced understanding of magnetic anisotropy and its impact on proton NMR signals in molecules like propane and ethyl bromide.
 
-![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
 
-*Figure 5*
+*Figure 6*
 
 
 #### Sample Preparation in NMR Spectroscopy
@@ -244,6 +255,28 @@ The resulting frequency-domain spectrum provides crucial insights. Peaks in the 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### NMR Spectroscopy in Protein Structure Determination
 
 Nuclear Magnetic Resonance (NMR) spectroscopy has experienced significant advancements, particularly in the area of ***protein structure*** determination, marking an efficient technique in structural biology. The main goal of NMR studies of proteins is to obtain  ***high-resolution three-dimensional*** structures, similar to those  that can be achieved through X-ray crystallography. Despite having a limitation for proteins larger than 35 kDa, a boundary that has been surpassed in specific cases, NMR spectroscopy remains unparalleled for obtaining detailed structural insights into ***intrinsically unstructured proteins***, which are challenging for other methods.
@@ -258,20 +291,6 @@ Beyond structural determination, NMR spectroscopy is a powerful tool for investi
 
 
 
-
-
-
-
-
-
-
-This is some text.
-<br>
-This text is on a new line.
-
-<p>
-This paragraph is separated by multiple line breaks.
-</p>
 
 
 

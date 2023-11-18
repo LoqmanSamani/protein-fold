@@ -153,7 +153,7 @@ when we look at one dimensional imaging (figure 10) what we see is the signal (S
 
 ### k-space in multiple dimensions
 
-Here we extend the idea of reciprocal space or k-space into two or more three dimensions, for doing that we need more than one gradient coil, which were represented in the one dimensional k-space, that means the gradient can be represented as a vector (G = ∇ß) depending on the direction of the gradient applied  by each individual coil and the Larmor precession equation in this case will be represented as (ω = γß + γG . r, here we have a dot product between gradient vector(γG ) and the position vector(r))(figure 11).
+Here we extend the idea of reciprocal space or k-space into two or more dimensions, for doing that we need more than one gradient coil, which were represented in the one dimensional k-space, that means the gradient can be represented as a vector (G = ∇ß) depending on the direction of the gradient applied  by each individual coil and the Larmor precession equation in this case will be represented as (ω = γß + γG . r, here we have a dot product between gradient vector(γG ) and the position vector(r))(figure 11).
 
 --------------------------------------------------------------------------------------------------------
 
