@@ -1,4 +1,4 @@
-## Introduction into Nuclear Magnetic Resonance (NMR)  
+## Introduction to nuclear magnetic resonance (NMR)
 
 
 
@@ -376,7 +376,11 @@ plt.show()
 *Figure 7: Fourier Transform Implementation in Python*
 
 
+### One-dimensional nuclear magnetic resonance spectroscopy (1D NMR)
 
+In a one-dimensional NMR experiment, a sample is subjected to a strong external magnetic field(ß0), causing the nuclear spins of certain isotopes, commonly hydrogen (protons), to align either parallel or antiparallel to this field. ***Radiofrequency pulses*** are then applied, perturbing this alignment and prompting the spins to precess around the magnetic field. As these spins return to their equilibrium state, they emit signals, known as ***Free Induction Decay (FID)***, which are detected and translated into a spectrum.
+The resulting one-dimensional NMR spectrum is a plot of signal intensity against the resonance frequency, known as the chemical shift. Each peak in the spectrum corresponds to a distinct set of protons in the molecule, providing information about their chemical environment. The chemical shift, measured in parts per million (ppm), reveals the magnetic environment of the protons and aids in identifying functional groups and molecular structures.
+Additionally, the splitting patterns observed in the spectrum arise from spin-spin coupling, also known as J-coupling, elucidating the connectivity between neighboring protons. J-coupling patterns convey valuable information about the number of adjacent protons and their relative positions in the molecule.
 
 
 ### Two-dimensional nuclear magnetic resonance spectroscopy (2D NMR)
@@ -412,13 +416,83 @@ A fundamental approach in protein structure determination involves ***Nuclear Ov
 Beyond structural determination, NMR spectroscopy is a powerful tool for investigating the dynamics and conformational flexibility of various protein regions. This capability adds another layer of understanding to the functional aspects of proteins, offering insights into their behavior under different conditions.
 
 
+  
+
+### Applications of NMR in biology
+
+Nuclear magnetic resonance (NMR) spectroscopy has proven to be a revolutionary tool in the field of biology, providing insights into the intricate world of protein structures. Its applications go far beyond the limits of traditional structural biology methods, providing a dynamic and detailed perspective on the behavior and conformation of biomolecules.
+
+***Investigation of protein structures***
+
+One of the most important applications of NMR in biology is to decipher the three-dimensional structures of proteins. In contrast to other techniques such as X-ray crystallography, NMR spectroscopy enables the investigation of proteins in their native environment in the solution phase. This is particularly important when studying proteins that are partially or completely unstructured and provides a comprehensive insight into their dynamic nature.
+
+***Multidimensional NMR***
+
+Innovation in protein NMR spectroscopy is highlighted by the development of multidimensional experiments. These include 2D, 3D and even 4D experiments designed to overcome the challenges posed by the complexity of protein structures. By isotopically labeling proteins with 13C and 15N, multidimensional NMR experiments enable the measurement of distances between atoms within a molecule and provide high-resolution structural information.
+
+***Conformation-activity relationships (CAR)***
+
+NMR spectroscopy plays a central role in the elucidation of conformation-activity relationships (CAR), particularly in drug discovery. It serves as a key technique for comparing the structures of proteins before and after interaction with drug candidates and provides insight into the structural changes underlying biochemical activities.
+
+***Dynamics and flexibility***
+
+Beyond static structures, NMR captures the dynamic nature of proteins. It provides information about the conformational flexibility and dynamics of different protein regions. This insight into the movements of proteins is crucial for understanding their biological functions, ligand binding and allosteric regulation.
+
+***Groundbreaking studies***
+
+Numerous  studies have highlighted the importance of NMR spectroscopy for biology and medicine. Examples include determining the structure of complex proteins that play a role in disease and revealing insights that serve as the basis for drug development. Notable contributions include the elucidation of the structure of membrane proteins, which pose a challenge to traditional methods of structural biology.
+
+ 
+Conclusion
+
+In conclusion, Nuclear Magnetic Resonance (NMR) spectroscopy stands as a cornerstone in structural biology, providing unparalleled insights into the three-dimensional structures, dynamics, and interactions of biological macromolecules. Over its 80-year evolution, NMR has experienced transformative milestones, from the foundational principles of chemical shift and spin-spin interactions to the advent of multidimensional experiments and the elucidation of complex protein structures.
+
+The key advantages of NMR spectroscopy lie in its ability to study proteins in solution, making it particularly valuable for intrinsically disordered proteins that defy crystallization. The technique's versatility spans from the elucidation of structural details to the exploration of molecular interactions, dynamics, and conformational changes crucial for understanding biological functions.
+
+The journey of NMR spectroscopy has been marked by key milestones, including Nobel Prizes awarded for its foundational discoveries. The introduction of superconducting magnets, Fourier-transformed NMR, and two-dimensional techniques has significantly enhanced sensitivity and resolution, expanding the scope of NMR applications.
+
+Basic principles, such as precession, relaxation, and resonance, underlie the functionality of NMR, while concepts like chemical shift, J-coupling, and magnetic anisotropy contribute to the richness of information obtained. Sample preparation, with careful consideration of solvent properties, and the crucial Fourier Transform step are integral aspects of successful NMR experiments.
+
+In the realm of protein structure determination, NMR spectroscopy has emerged as a powerful tool, excelling in capturing dynamics and conformational changes. From high-resolution structures to the investigation of conformation-activity relationships, NMR plays a central role in drug development and functional studies.
+
+In conclusion, the evolution of NMR spectroscopy has shaped it into an indispensable technique in the toolkit of structural biologists, providing a holistic approach to unraveling the mysteries of biological macromolecules.
+
+
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
 
 
 
+### References
+
+- Understanding NMR Spectroscopy by James Keeler.     
+ 
+
+- Marion D. An introduction to biological NMR spectroscopy. Mol Cell Proteomics. 2013 Nov;12(11):3006-25. doi: 10.1074/mcp.O113.030239. Epub 2013 Jul 6. PMID: 23831612; PMCID: PMC3820920.
+   
+
+- Curry S. Structural Biology: A Century-long Journey into an Unseen World. Interdiscip Sci Rev. 2015 Jul 3;40(3):308-328. doi: 10.1179/0308018815Z.000000000120. Epub 2015 Dec 7. PMID: 26740732; PMCID: PMC4697198.
+     
+
+- Campbell, Iain D. ‘The Evolution of Protein NMR’. 1 Jan. 2013 : 245 – 264.
+     
+
+- Foundations of Structural Biology By Leonard J. Banaszak.
+
+
+- Three-dimensional triple-resonance NMR spectroscopy of isotopically enriched proteins Kay, Lewis E. ; Ikura, Mitsuhiko ; Tschudin, Rolf ; Bax, Ad.
+   
+
+- Wüthrich K. The way to NMR structures of proteins. Nat Struct Biol. 2001 Nov;8(11):923-5. doi: 10.1038/nsb1101-923. PMID: 11685234.
+
+
+- Fuloria NK, Fuloria S (2013) Structural Elucidation of Small Organic Molecules by 1D, 2D and Multi Dimensional-Solution NMR Spectroscopy. J Anal Bioanal Tech S11:001. doi: 10.4172/2155-9872.S11-001.
 
 
 
+------------------------------
 
+***Loghman Samani***  
 
-
-
+***November 18, 2023***
