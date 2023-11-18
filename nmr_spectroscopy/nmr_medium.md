@@ -276,7 +276,7 @@ The outcome is a plot illustrating intensity values for each pair of frequency v
 
 
 
-![fig_8]()
+![fig_8](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_8.png)
 
 *Figure 8 : COSY spectrum of Ethyl-2-butenoate*
 
