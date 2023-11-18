@@ -198,7 +198,9 @@ Coupling to n equivalent (spin ½) nuclei generates an n+1 multiplet with intens
 In the proton spectrum of ethanol (figure 5), the CH3 group forms a triplet split by neighboring CH2 protons, while the CH2 is a quartet split by neighboring CH3 protons. Coupling with spin-1/2 nuclei like phosphorus-31 or fluorine-19 follows similar principles, providing insight into chemical environments and the number of neighboring NMR-active nuclei.
 Coupling, combined with chemical shift and integration, reveals details about both chemical environment and neighboring nuclei. In complex spectra or non-hydrogen nuclei, coupling becomes essential for distinguishing between different nuclei.
 
-![fig_5]()
+![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+
+*Figure 5*
 
 #### Magnetic Anisotropy
 
