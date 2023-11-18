@@ -169,13 +169,13 @@ Then:
 
 #### How NMR Works: Understanding Spin States and Energy Transitions
 
-In the presence of an external magnetic field, nuclei exhibit distinct orientations. When subjected to a magnetic field along the Z-axis (as illustrated in Figure 2), nuclei can either rotate parallel to the applied magnetic field (lower energy and more stable, I = +1/2) or in the opposite direction (higher energy and less stable, I = -1/2). This phenomenon forms the basis of NMR spectroscopy, where the impact of the external magnetic field on these nuclear orientations is thoroughly examined.
+In the presence of an external magnetic field, nuclei exhibit distinct orientations. When subjected to a magnetic field along the Z-axis (Figure 2), nuclei can either rotate parallel to the applied magnetic field (lower energy and more stable, I = +1/2) or in the opposite direction (higher energy and less stable, I = -1/2). This phenomenon forms the basis of NMR spectroscopy, where the impact of the external magnetic field on these nuclear orientations is thoroughly examined.
 In the realm of NMR, nuclei in the presence of a magnetic field exist in two states: a ground state and an excited state. When sufficient energy is supplied, nuclei in the ground state can transition to the excited state, resulting in absorption observed in the spectroscopy.
 
 
 ![fig_2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_2.png)
 
-*Figure 2*
+*Figure 2: Nuclei, when subjected to an external magnetic field (ß0), display distinct orientations. Nuclei with a spin quantum number (I) of +1/2 align parallel to the applied magnetic field, while those with I = -1/2 align in the opposite direction, forming the opposite orientation.*
 
 To illustrate this concept, consider an Ethane molecule (refer to Figure 3). The carbon atoms in Ethane are equivalent in their arrangement, as are the hydrogen atoms. However, only the protons (hydrogen atoms) can contribute to an NMR signal. This is attributed to the fact that carbon-12, present in Ethane, has a Spin Quantum Number (I = 0), rendering it unable to produce an NMR signal. In contrast, hydrogen atoms possess a Spin Quantum Number (I) of -1/2 or +1/2, and only nuclei with I = 1/2 (either negative or positive) can generate an NMR signal. Consequently, as all protons in Ethane are equivalent, they collectively yield a single peak in NMR spectroscopy when subjected to an external magnetic field.
 
