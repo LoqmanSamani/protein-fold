@@ -184,11 +184,12 @@ In the absence of an external magnetic field, nuclei have no discernible spin (s
 
 ![fig_3](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium3.png)
 
-*Figure 3*
+<sub>**Figure 3:** The structural formula of Ethane. </sub> 
+
 
 #### Chemical Shift & Shielding Effect
 
-Revisiting our illustrative molecule, Ethane (refer to Figure 3), let's scrutinize the behavior of the hydrogen atom at position 6 under the influence of an external magnetic field. This hydrogen nucleus, with a spin quantum number (I) equal to half, is capable of generating an NMR signal. However, its proximity to surrounding electrons introduces a phenomenon known as the ***shielding effect***.
+Revisiting our illustrative molecule, Ethane (Figure 3), let's scrutinize the behavior of the hydrogen atom at position 6 under the influence of an external magnetic field. This hydrogen nucleus, with a spin quantum number (I) equal to half, is capable of generating an NMR signal. However, its proximity to surrounding electrons introduces a phenomenon known as the ***shielding effect***.
 
 Imagine applying a magnetic field (ß0) in a specific direction. The surrounding electrons, being negatively charged, respond by generating a magnetic field in the opposite direction, denoted as ***sigma * ẞ0 (δß0)***. The combined effect of these opposing magnetic fields results in an effective magnetic field ***ß(eff) = ß0 (1 - δ)***. In essence, the external magnetic field is not entirely transferred to the protons due to the shielding effect exerted by the surrounding electrons.
 
@@ -197,7 +198,8 @@ In NMR spectroscopy, the focus is not on measuring the shielding effect directly
 
 ![fig_4](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium4.png)
 
-*Figure 4*
+<sub>**Figure 4:** Chemical shift of a sample relative to tetramethylsilane (TMS) as the standard, expressed in parts per million (ppm). The chemical shift values provide insight into specific regions in the spectrum associated with different functional groups or types of chemical environments. Peaks to the left (up-field) indicate lower chemical shift values, while peaks to the right (down-field) indicate higher values.</sub> 
+
 
 #### J-coupling
 
@@ -209,7 +211,7 @@ Coupling, combined with chemical shift and integration, reveals details about bo
 
 ![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_5.png)
 
-*Figure 5*
+<sub>**Figure 5:** Variation in chemical shift for hydrogen atoms in ethanol attributed to neighboring chemical groups.</sub>
 
 #### Magnetic Anisotropy
 
@@ -223,7 +225,7 @@ To summarize, the divergent electronegativities in molecular environments result
 
 ![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_6.png)
 
-*Figure 6*
+<sub>**Figure 6** The observed differences in chemical shift values between protons in propane and ethyl bromide highlight the impact of magnetic anisotropy. </sub>
 
 
 #### Sample Preparation in NMR Spectroscopy
@@ -374,7 +376,7 @@ plt.show()
 
 ![fig](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/ft4.png)
 
-*Figure 7: Fourier Transform Implementation in Python*
+<sub>**Figure 7:** Fourier Transform Implementation in Python</sub>
 
 
 ### One-dimensional nuclear magnetic resonance spectroscopy (1D NMR)
@@ -398,7 +400,7 @@ The outcome is a plot illustrating intensity values for each pair of frequency v
 
 ![fig_8](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_8.png)
 
-*Figure 8 : COSY spectrum of Ethyl-2-butenoate*
+<sub>**Figure 8:** COSY spectrum of Ethyl-2-butenoate</sub>
 
 
 
