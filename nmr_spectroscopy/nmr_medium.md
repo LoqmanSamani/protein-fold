@@ -1,6 +1,9 @@
 ## Introduction into Nuclear Magnetic Resonance (NMR)  
 
-------------------------------------------------------
+
+
+
+
 
 <img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="1000">
 
@@ -68,6 +71,24 @@ Today, NMR stands as a unique and versatile technique, offering a plethora of mu
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Basic Principles of NMR Spectroscopy
+
+
+
+
+#### Precession, Relaxation, and Resonance
+
+Delving into the realm of magnetic resonance involves a profound exploration of atomic nuclei and their intriguing behavior within a magnetic field. To comprehend this, we must grasp two fundamental principles governing atomic nuclei.
+
+Firstly, akin to tiny compass needles in a magnetic field, atomic nuclei possess inherent magnetism, aligning themselves with the field. This alignment forms the basis of the first principle.
+
+The second principle delves into nuclear magnetism, emphasizing that nuclei possess angular momentum, resulting in a phenomenon known as ***precession***. Regardless of their orientation, nuclei exhibit a relatively consistent precession frequency. However, detecting this precession is most challenging when nuclei are either in a natural low-energy position or in an excited state. The precession becomes highly visible when nuclei exist in any intermediate orientation between the excited  and natural states.
+
+To initiate the appearance of a nucleus's precession frequency, a magnetic force must be applied at the same frequency as the precession. This synchronized movement of torque, precisely matching the nucleus's precession frequency, is termed ***resonance***. Resonance becomes a central concept in nuclear magnetic resonance, as it reorients atomic nuclei from their natural equilibrium states within a magnetic field.
+
+In essence, nuclear magnetic resonance involves the application of a torque orthogonal to the magnetic field's torque on the spins. This torque must vary with time or oscillate at an exact frequency matching the natural precession frequency of nuclear spins. This synchronized application of torque, facilitated by a magnetic field, constitutes the phenomenon of nuclear magnetic resonance.
+
+Regarding the element of time in this process, the gradual reorientation of nuclei occurs over time, impacting the visibility of precession. As time elapses, the precession's prominence diminishes, eventually leading to a return to some form of equilibrium.
+
 
 
 #### The Chemistry Behind Magnetic Resonance
@@ -218,39 +239,39 @@ The resulting frequency-domain spectrum provides crucial insights. Peaks in the 
 
 *Figure 6*
 
-#### Precession, Relaxation, and Resonance
-
-Delving into the realm of magnetic resonance involves a profound exploration of atomic nuclei and their intriguing behavior within a magnetic field. To comprehend this, we must grasp two fundamental principles governing atomic nuclei.
-
-Firstly, akin to tiny compass needles in a magnetic field, atomic nuclei possess inherent magnetism, aligning themselves with the field. This alignment forms the basis of the first principle.
-
-The second principle delves into nuclear magnetism, emphasizing that nuclei possess angular momentum, resulting in a phenomenon known as "precession." Regardless of their orientation, nuclei exhibit a relatively consistent precession frequency. However, detecting this precession is most challenging when nuclei are either in a natural low-energy position or in an excited state. The precession becomes highly visible when nuclei exist in any intermediate orientation between the excited (pointing up) and natural (pointing down) states.
-
-To initiate the appearance of a nucleus's precession frequency, a magnetic force must be applied at the same frequency as the precession. This synchronized movement of torque, precisely matching the nucleus's precession frequency, is termed "resonance." Resonance becomes a central concept in nuclear magnetic resonance, as it reorients atomic nuclei from their natural equilibrium states within a magnetic field.
-
-In essence, nuclear magnetic resonance involves the application of a torque orthogonal to the magnetic field's torque on the spins. This torque must vary with time or oscillate at an exact frequency matching the natural precession frequency of nuclear spins. This synchronized application of torque, facilitated by a magnetic field, constitutes the phenomenon of nuclear magnetic resonance.
-
-Regarding the element of time in this process, the gradual reorientation of nuclei occurs over time, impacting the visibility of precession. As time elapses, the precession's prominence diminishes, eventually leading to a return to some form of equilibrium.
-
-
-
-
-
 
 --------------------------------------------------------------------------------------------------
 
-NMR Spectroscopy in Protein Structure Determination:
-
-    Describe how NMR is applied to study biological macromolecules, particularly proteins.
-    Highlight the advantages of NMR in providing detailed structural information in solution.
-    Discuss the challenges associated with studying large and complex proteins using NMR.
 
 
 ### NMR Spectroscopy in Protein Structure Determination
 
+Nuclear Magnetic Resonance (NMR) spectroscopy has experienced significant advancements, particularly in the area of ***protein structure*** determination, marking an efficient technique in structural biology. The main goal of NMR studies of proteins is to obtain  ***high-resolution three-dimensional*** structures, similar to those  that can be achieved through X-ray crystallography. Despite having a limitation for proteins larger than 35 kDa, a boundary that has been surpassed in specific cases, NMR spectroscopy remains unparalleled for obtaining detailed structural insights into ***intrinsically unstructured proteins***, which are challenging for other methods.
+
+In contrast to X-ray crystallography, NMR spectroscopy excels in capturing the dynamics and structural changes in proteins, making it a valuable tool for studying ***Conformation Activity Relationships (CAR)***. It plays an important role in comparing protein structures before and after interactions, such as with drug candidates, providing important information for ***drug development***.
+
+The greater complexity resulting from the larger number of atoms in protein molecules compared to small organic compounds poses a challenge for spectral analysis. Basic ***1D spectra*** become convoluted due to ***overlapping signals***, making direct analysis impractical. To address this issue, ***multidimensional (2D, 3D, or 4D)*** experiments have been developed. ***Isotopic labeling***, particularly with ***13C and 15N***, becomes essential as it enhances the spectral resolution. The naturally occurring 12C isotope is not NMR-active, and the nuclear quadrupole moment of 14N impedes high-resolution information retrieval.
+
+A fundamental approach in protein structure determination involves ***Nuclear Overhauser Effect (NOE)*** experiments. These experiments measure distances between atoms within a molecule, which provide important spatial information. Subsequently, the distances obtained are employed to solve a ***distance geometry problem***, yielding a high-fidelity 3D structure of the protein. The application of isotopic labeling significantly enhances the effectiveness of NOE experiments.
+
+Beyond structural determination, NMR spectroscopy is a powerful tool for investigating the dynamics and conformational flexibility of various protein regions. This capability adds another layer of understanding to the functional aspects of proteins, offering insights into their behavior under different conditions.
 
 
 
+
+
+
+
+
+
+
+This is some text.
+<br>
+This text is on a new line.
+
+<p>
+This paragraph is separated by multiple line breaks.
+</p>
 
 
 
