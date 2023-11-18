@@ -165,7 +165,7 @@ In the presence of an external magnetic field, nuclei exhibit distinct orientati
 In the realm of NMR, nuclei in the presence of a magnetic field exist in two states: a ground state and an excited state. When sufficient energy is supplied, nuclei in the ground state can transition to the excited state, resulting in absorption observed in the spectroscopy.
 
 
-![fig_2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium2.png)
+![fig_2](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_2.png)
 
 *Figure 2*
 
@@ -198,7 +198,7 @@ Coupling to n equivalent (spin ½) nuclei generates an n+1 multiplet with intens
 In the proton spectrum of ethanol (figure 5), the CH3 group forms a triplet split by neighboring CH2 protons, while the CH2 is a quartet split by neighboring CH3 protons. Coupling with spin-1/2 nuclei like phosphorus-31 or fluorine-19 follows similar principles, providing insight into chemical environments and the number of neighboring NMR-active nuclei.
 Coupling, combined with chemical shift and integration, reveals details about both chemical environment and neighboring nuclei. In complex spectra or non-hydrogen nuclei, coupling becomes essential for distinguishing between different nuclei.
 
-![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+![fig_5](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_5.png)
 
 *Figure 5*
 
@@ -212,7 +212,7 @@ The high electronegativity of bromide induces a higher chemical shift for the se
 
 To summarize, the divergent electronegativities in molecular environments result in distinct chemical shifts, offering a nuanced understanding of magnetic anisotropy and its impact on proton NMR signals in molecules like propane and ethyl bromide.
 
-![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium6.png)
+![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium_6.png)
 
 *Figure 6*
 
