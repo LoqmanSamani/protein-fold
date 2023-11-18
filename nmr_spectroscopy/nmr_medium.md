@@ -3,12 +3,9 @@
 
 
 
-
-
 <img src="https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr-spectroscopy.jpg" width="1000">
 
-*Figure 1: Picture of an NMR spectrometer*
-
+<sub>**Figure 1:** Picture of an NMR spectrometer</sub>
 
 
 
@@ -24,8 +21,6 @@ With the progress of these techniques, ***structural biology*** developed into a
 This article deals with the advantages of NMR spectroscopy and its central role in the elucidation of the ***three-dimensional structures of proteins***. NMR spectroscopy has proven to be a powerful tool that captivates biologists working in structural biology, providing unparalleled insights into the dynamics, interactions and structures of biological macromolecules at the atomic level. Beyond pure structural elucidation, NMR spectroscopy is proving invaluable in the study of molecular interactions by revealing crucial details about binding interfaces, kinetics and thermodynamics.
 
 In particular, NMR plays a central role in the study of ***intrinsically disordered proteins (IDPs)***, a category that cannot be crystallized. The versatility of NMR spans various biological fields and demonstrates its capabilities in unraveling the mysteries of protein dynamics that are crucial for understanding their biological functions.
-
-
 
 
 
@@ -76,10 +71,7 @@ Today, NMR stands as a unique and versatile technique, offering a plethora of mu
 
 
 
-
-
 ### Basic Principles of NMR Spectroscopy
-
 
 
 
@@ -404,8 +396,6 @@ The outcome is a plot illustrating intensity values for each pair of frequency v
 
 
 
-
-
 ### NMR Spectroscopy in Protein Structure Determination
 
 Nuclear Magnetic Resonance (NMR) spectroscopy has experienced significant advancements, particularly in the area of ***protein structure*** determination, marking an efficient technique in structural biology. The main goal of NMR studies of proteins is to obtain  ***high-resolution three-dimensional*** structures, similar to those  that can be achieved through X-ray crystallography. Despite having a limitation for proteins larger than 35 kDa, a boundary that has been surpassed in specific cases, NMR spectroscopy remains unparalleled for obtaining detailed structural insights into ***intrinsically unstructured proteins***, which are challenging for other methods.
@@ -418,8 +408,7 @@ A fundamental approach in protein structure determination involves ***Nuclear Ov
 
 Beyond structural determination, NMR spectroscopy is a powerful tool for investigating the dynamics and conformational flexibility of various protein regions. This capability adds another layer of understanding to the functional aspects of proteins, offering insights into their behavior under different conditions.
 
-
-  
+ 
 
 ### Applications of NMR in biology
 
@@ -499,3 +488,6 @@ In conclusion, the evolution of NMR spectroscopy has shaped it into an indispens
 ***Loghman Samani***  
 
 ***November 18, 2023***
+
+
+
