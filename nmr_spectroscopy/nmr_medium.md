@@ -212,7 +212,7 @@ The high electronegativity of bromide induces a higher chemical shift for the se
 
 To summarize, the divergent electronegativities in molecular environments result in distinct chemical shifts, offering a nuanced understanding of magnetic anisotropy and its impact on proton NMR signals in molecules like propane and ethyl bromide.
 
-![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium5.png)
+![fig_6](https://github.com/LoqmanSamani/protein_structure_analysis/blob/systembiology/images/nmr_medium6.png)
 
 *Figure 6*
 
