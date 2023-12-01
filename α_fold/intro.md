@@ -249,10 +249,10 @@ the current version of AlphaFold does not predict it. In many other
 cases, in which the sequence is unstructured in isolation, the problem
 arguably falls outside the scope of single-chain structure prediction.
 
-![]()
-![]()
-![]()
-![]()
+![fold3.png]()
+![fold4.png]()
+![fold5.png]()
+![fold6.png]()
 
 
 
