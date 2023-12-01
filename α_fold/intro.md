@@ -121,6 +121,6 @@ leads to poorly defined distance restraints within
 the IDRs and between the IDRs and the folded
 domains.
 
-![fold1.png]()
-![fols2.png]()
+![fold1.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold1.png)
+![fols2.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold2.png)
 
