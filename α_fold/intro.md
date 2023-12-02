@@ -431,10 +431,12 @@ prediction as converting an ‘image’ of evolutionary couplings22–24 to an
 predictions into a heuristic system that produces the final 3D coordinate
 prediction.
 
-![]()
-![]()
-![]()
-![]()
+![fold7.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold7.png)
+![fold8.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold8.png)
+![fold9.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold9.png)
+![fold10.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold7.png)
+
+
 
 
 
