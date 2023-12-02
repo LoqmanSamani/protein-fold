@@ -166,7 +166,7 @@ alongside structure prediction, including protein design20,21, function
 annotation22–24, disorder prediction25, and domain identification and
 classification26–28.
 
-0. In particular, the latest version of
+In particular, the latest version of
 AlphaFold was entered in CASP14 under the team name ‘AlphaFold2’.
 This system used a completely different model from our CASP13 entry31,
 and demonstrated a considerable improvement over previous methods
@@ -253,6 +253,193 @@ arguably falls outside the scope of single-chain structure prediction.
 ![fold4.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold4.png)
 ![fold5.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold5.png)
 ![fold6.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold6.png)
+
+
+3. [Highly accurate protein structure prediction with AlphaFold](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Jumper%2C+J.+et+al.+Highly+accurate+protein+structure+prediction+with+AlphaFold.+Nature+https%3A%2F%2Fdoi.org%2F10.1038%2Fs41586-021-03819-2+%282021%29&btnG=)
+
+Proteins are essential to life, and understanding their structure can facilitate a
+mechanistic understanding of their function. Through an enormous experimental
+effort1–4, the structures of around 100,000 unique proteins have been determined5, but
+this represents a small fraction of the billions of known protein sequences6,7.
+the structure prediction component of the ‘protein folding problem’8—has
+been an important open research problem for more than 50 years9.
+
+Here we provide the first computational method
+that can regularly predict protein structures with atomic accuracy even in cases in which
+no similar structure is known. We validated an entirely redesigned version of our neural
+network-based model, AlphaFold, in the challenging 14th Critical Assessment of protein
+Structure Prediction (CASP14)15, demonstrating accuracy competitive with
+experimental structures in a majority of cases and greatly outperforming other
+methods. Underpinning the latest version of AlphaFold is a novel machine learning
+approach that incorporates physical and biological knowledge about protein structure,
+leveraging multi-sequence alignments, into the design of the deep learning algorithm.
+
+The development of computational methods to predict
+three-dimensional (3D) protein structures from the protein sequence
+has proceeded along two complementary paths that focus on either the
+physical interactions or the evolutionary history. The physical interac-
+tion programme heavily integrates our understanding of molecular
+driving forces into either thermodynamic or kinetic simulation of pro-
+tein physics16 or statistical approximations thereof17. Although theoreti-
+cally very appealing, this approach has proved highly challenging for
+even moderate-sized proteins due to the computational intractability
+of molecular simulation, the context dependence of protein stability
+and the difficulty of producing sufficiently accurate models of protein
+physics. The evolutionary programme has provided an alternative in
+recent years, in which the constraints on protein structure are derived
+from bioinformatics analysis of the evolutionary history of proteins,
+homology to solved structures18,19 and pairwise evolutionary correla-
+tions20–24. This bioinformatics approach has benefited greatly from
+the steady growth of experimental protein structures deposited in
+the Protein Data Bank (PDB)5,
+
+In this study, we develop the first, to our knowledge, computational
+approach capable of predicting protein structures to near experimental
+accuracy in a majority of cases.
+
+The CASP assessment is
+carried out biennially using recently solved structures that have not
+been deposited in the PDB or publicly disclosed so that it is a blind test
+for the participating methods, and has long served as the gold-standard
+assessment for the accuracy of structure prediction25,26.
+AlphaFold structures had a median backbone
+accuracy of 0.96 Å r.m.s.d.95 (Cα root-mean-square deviation at 95%
+residue coverage) (95% confidence interval = 0.85–1.16 Å) whereas
+the next best performing method had a median backbone accuracy
+of 2.8 Å r.m.s.d.95 (95% confidence interval = 2.7–4.0 Å) (measured on
+CASP domains;
+
+As a comparison point for this accuracy,
+the width of a carbon atom is approximately 1.4 Å.
+
+. The all-atom accuracy of Alpha-
+Fold was 1.5 Å r.m.s.d.95 (95% confidence interval = 1.2–1.6 Å) compared
+with the 3.5 Å r.m.s.d.95 (95% confidence interval = 3.1–4.2 Å) of the best
+alternative method. Our methods are scalable to very long proteins with
+accurate domains and domain-packing (see Fig. 1d for the prediction
+of a 2,180-residue protein with no structural homologues). F
+
+We demonstrate in Fig. 2a that the high accuracy that AlphaFold dem-
+onstrated in CASP14 extends to a large sample of recently released PDB
+structures; in this dataset, all structures were deposited in the PDB after
+our training data cut-off and are analysed as full chains.
+
+The network comprises two main stages. First, the trunk of the net-
+work processes the inputs through repeated layers of a novel neural
+network block that we term Evoformer to produce an Nseq × Nres array
+(Nseq, number of sequences; Nres, number of residues) that represents
+a processed MSA and an Nres × Nres array that represents residue pairs.
+The MSA representation is initialized with the raw MSA (although
+see Supplementary Methods 1.2.7 for details of handling very deep
+MSAs). The Evoformer blocks contain a number of attention-based
+and non-attention-based components. We show evidence in ‘Interpret-
+ing the neural network’ that a concrete structural hypothesis arises
+early within the Evoformer blocks and is continuously refined. The key
+innovations in the Evoformer block are new mechanisms to exchange
+information within the MSA and pair representations that enable direct
+reasoning about the spatial and evolutionary relationships.
+The trunk of the network is followed by the structure module that
+introduces an explicit 3D structure in the form of a rotation and transla-
+tion for each residue of the protein (global rigid body frames). These
+representations are initialized in a trivial state with all rotations set to
+the identity and all positions set to the origin, but rapidly develop and
+refine a highly accurate protein structure with precise atomic details.
+Key innovations in this section of the network include breaking the
+chain structure to allow simultaneous local refinement of all parts of
+the structure, a novel equivariant transformer to allow the network to
+implicitly reason about the unrepresented side-chain atoms and a loss
+term that places substantial weight on the orientational correctness
+of the residues. Both within the structure module and throughout
+the whole network, we reinforce the notion of iterative refinement
+by repeatedly applying the final loss to outputs and then feeding the
+outputs recursively into the same modules. The iterative refinement
+using the whole network (which we term ‘recycling’ and is related to
+approaches in computer vision28,29) contributes markedly to accuracy
+with minor extra training time (see Supplementary Methods 1.8 for
+details).
+
+Predictions of side-chain χ angles as well as the final, per-residue
+accuracy of the structure (pLDDT) are computed with small per-residue
+networks on the final activations at the end of the network. The estimate
+of the TM-score (pTM) is obtained from a pairwise error prediction that
+is computed as a linear projection from the final pair representation. The
+final loss (which we term the frame-aligned point error (FAPE) (Fig. 3f))
+compares the predicted atom positions to the true positions under
+many different alignments. For each alignment, defined by aligning
+the predicted frame (Rk, tk) to the corresponding true frame, we com-
+pute the distance of all predicted atom positions xi from the true atom
+positions. The resulting Nframes × Natoms distances are penalized with a
+clamped L1 loss. This creates a strong bias for atoms to be correct relative
+to the local frame of each residue and hence correct with respect to its
+side-chain interactions, as well as providing the main source of chirality
+for AlphaFold (Supplementary Methods 1.9.3 and Supplementary Fig. 9).
+
+The AlphaFold architecture is able to train to high accuracy using only
+supervised learning on PDB data, but we are able to enhance accuracy
+(Fig. 4a) using an approach similar to noisy student self-distillation35.
+In this procedure, we use a trained network to predict the structure of
+around 350,000 diverse sequences from Uniclust3036 and make a new
+dataset of predicted structures filtered to a high-confidence subset. We
+then train the same architecture again from scratch using a mixture of
+PDB data and this new dataset of predicted structures as the training
+data, in which the various training data augmentations such as crop-
+ping and MSA subsampling make it challenging for the network to
+recapitulate the previously predicted structures. This self-distillation
+procedure makes effective use of the unlabelled sequence data and
+considerably improves the accuracy of the resulting network.
+Additionally, we randomly mask out or mutate individual residues
+within the MSA and have a Bidirectional Encoder Representations from
+Transformers (BERT)-style37 objective to predict the masked elements of
+the MSA sequences. This objective encourages the network to learn to
+interpret phylogenetic and covariation relationships without hardcoding
+a particular correlation statistic into the features. The BERT objective is
+trained jointly with the normal PDB structure loss on the same training
+examples and is not pre-trained, in contrast to recent independent work38.
+
+To understand how AlphaFold predicts protein structure, we trained
+a separate structure module for each of the 48 Evoformer blocks in
+the network while keeping all parameters of the main network fro-
+zen (Supplementary Methods 1.14). Including our recycling stages,
+this provides a trajectory of 192 intermediate structures—one per full
+Evoformer block—in which each intermediate represents the belief of
+the network of the most likely structure at that block. The resulting
+trajectories are surprisingly smooth after the first few blocks, show-
+ing that AlphaFold makes constant incremental improvements to the
+structure until it can no longer improve (see Fig. 4b for a trajectory of
+accuracy). These trajectories also illustrate the role of network depth.
+For very challenging proteins such as ORF8 of SARS-CoV-2 (T1064),
+the network searches and rearranges secondary structure elements
+for many layers before settling on a good structure. For other proteins
+such as LmrP (T1024), the network finds the final structure within the
+first few layers.
+
+Although AlphaFold has a high accuracy across the vast majority of
+deposited PDB structures, we note that there are still factors that affect
+accuracy or limit the applicability of the model. The model uses MSAs
+and the accuracy decreases substantially when the median alignment
+depth is less than around 30 sequences (see Fig. 5a for details). We
+observe a threshold effect where improvements in MSA depth over
+around 100 sequences lead to small gains. We hypothesize that the MSA
+information is needed to coarsely find the correct structure within the
+early stages of the network, but refinement of that prediction into a
+high-accuracy model does not depend crucially on the MSA information.
+
+These approaches effectively leverage the rapid improvement in com-
+puter vision systems46 by treating the problem of protein structure
+prediction as converting an ‘image’ of evolutionary couplings22–24 to an
+‘image’ of the protein distance matrix and then integrating the distance
+predictions into a heuristic system that produces the final 3D coordinate
+prediction.
+
+![]()
+![]()
+![]()
+![]()
+
+
+
+
+
 
 
 
