@@ -10,5 +10,9 @@
 
 --------------------------------------------------------------------
 
+See the medium article: [Introduction to nuclear magnetic resonance (NMR)](https://medium.com/@samaniloqman91/introduction-to-nuclear-magnetic-resonance-nmr-997960e21048)
+
+
+
 
 
