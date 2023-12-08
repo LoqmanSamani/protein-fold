@@ -438,6 +438,195 @@ prediction.
 
 
 
+4. [Deep learning techniques have significantly impacted protein structure prediction and protein design]()
+
+Given the cost, both financially and
+timewise, associated with experimentally determining a
+protein’s structure and function, extensive effort has been
+made to develop computational methods capable of
+modeling the structures of natural protein sequences
+and/or designing new sequences with novel structures
+and functions beyond proteins observed in nature.
+
+The goal of protein structure prediction is to use compu-
+tational methods to determine the spatial location of
+every atom in a protein molecule starting from its amino
+acid sequence. Depending on whether a template struc-
+ture is used, protein structure prediction approaches can
+be generally categorized as either template-based model-
+ing (TBM) or template-free modeling (FM) methods.
+While TBM constructs models by copying and refining
+structural frameworks of other related proteins, called
+templates, identified from the PDB, FM aims to
+predict protein structures without using global template
+structures. FM methods have also been referred to as ab
+initio or de novo modeling approaches. A general pipeline
+that illustrates the key steps involved in traditional TBM
+and FM methods is depicted in Figure 1.
+
+There are four key steps involved in TBM methods: (1)
+identification of experimentally solved proteins (tem-
+plates) structurally related to the protein to be modeled
+(query), (2) alignment of the query and the template
+proteins, (3) construction of the initial structure frame-
+works by copying the aligned regions of the template
+structure, and (4) construction of the unaligned regions
+and refinement of the global structure.
+
+Depending on the evolutionary distance between the
+query and template, TBM has been historically divided
+into comparative modeling (CM), which is designed for
+targets with close homologous templates where the tem-
+plates can typically be identified by sequence-based
+alignment, and threading, which is designed for detecting
+more distantly homologous templates by combining
+sequence profiles and/or Hidden Markov Model
+(HMM) alignment with local structure feature prediction
+[2,3].
+
+One of the earliest
+sequence-based contact prediction methods used corre-
+lated mutations observed in multiple sequence align-
+ments (MSAs) to predict inter-residue contact maps
+[21]. The hypothesis behind the approach was that if
+mutations that occur at two positions in an MSA are
+correlated, these positions are more likely to form a
+contact in 3D space. This is because there is evolutionary
+pressure to conserve the structures of proteins and a
+mutation at one position may be rescued by a correspond-
+ing mutation at a nearby residue. The accuracy of co-
+evolution-based contact map prediction remained low for
+many years due to the inability to distinguish between
+direct and indirect interactions, where indirect interac-
+tions occur when residues appear to co-evolve but do not
+actually form contacts. For example, if Residues A and B
+are both in contact with Residue C, A and B often appear
+as if they co-evolve even when there is no physical
+contact between them. There is evidence showing that
+such co-evolution may have a functional cause [22] rather
+than a structural one, which resulted in the failure of
+structure-based contact derivation.
+
+In addition to the high accuracy of
+model training enabled by multi-layer neural networks
+[1], another important advantage of deep learning is its
+ability to predict multiple structural features, including
+contacts, distances, inter-residue torsion angles and
+hydrogen bonds. The combination of these structural
+features with the classical folding simulation methods
+has significantly improved the modeling accuracy of
+protein structure prediction, especially for FM protein
+targets which lack homologous templates.
+
+The success of this approach can be partially attributed
+to the ability of deep learning to simultaneously consider
+the global set of pair-wise interactions instead of consider-
+ing only one interaction at a time, thereby leading to more
+accurate discrimination between direct and indirect con-
+tacts .
+
+A similar residual neural network was later extended to
+predict the probability that the distance between two
+residues falls within a given distance range instead of
+predicting a binary contact map [32]. The power of
+distance map-guided folding was convincingly demon-
+strated by AlphaFold in the CASP13 experiment, in
+which the program utilized an ultra-deep neural network
+composed of 220 residual blocks to predict distance maps
+for a query sequence [19]. The distance maps were then
+used to guide their fragment assembly and gradient
+descent-based folding simulations for full-length struc-
+ture construction. AlphaFold also used a unique fragment
+generation strategy where they leveraged deep learning
+to produce short structural fragments de novo. To accom-
+plish this, they trained a generative network to create
+fragments based on prediction of the torsional angles for a
+selected region of a protein. This approach allows for the
+generation of fragments conditioned on the input features
+and eliminates the need to identify near native fragments
+from a library of existing fragment structures.
+
+The most exciting progress in the history of protein
+structure prediction was recently brought about by Alpha-
+Fold2, the second iteration of AlphaFold developed by
+the Google DeepMind team [35], which achieved an
+unprecedented modeling accuracy in the CASP14 exper-
+iment. Out of the 89 domains with experimentally
+released structures, AlphaFold2 generated first-rank
+models with TM-scores >0.5 for 88 domains, where
+59 of them had TM-scores >0.914. Here, TM-score is
+a sequence length-independent metric that measures
+protein structural similarity and takes a value in the range
+of (0, 1) [36], where PDB statistics show that a TM-score >
+0.5 indicates that two structures share approximately
+the same SCOP/CATH fold [37]. Moreover, we collected
+a set of 112 single-domain proteins whose structures were
+solved by both NMR and X-ray crystallography and had
+sequence identities >95% and alignment gaps <10 AA,
+where we found the average TM-score was 0.807 
+0.107 between the NMR and X-ray structures. Thus,
+AlphaFold2 could fold nearly all individual domains in
+CASP14, with around 2/3 (=59/89) of the cases having
+accuracy comparable to low-to-medium resolution exper-
+imental models if we use a cutoff TM-score of 0.914
+(=0.807 + 0.107).
+
+These
+data suggest that AlphaFold2 nearly solved the problem
+of single-domain protein structure prediction, at least at
+the fold level.
+
+AlphaFold2 outperformed the second-best group by
+a large margin with the average TM-score differing by
+23% (0.903 versus 0.732).
+
+Compared to the first iteration of AlphaFold in CASP13,
+which was driven by convolutional neural network-
+based distance map prediction, one of the major new
+developments of AlphaFold2 is the attention-based
+neural network architecture that attends arbitrarily over
+the full MSA, which allows the system to select relevant
+sequences from the MSAs and extract richer input
+information. Moreover, instead of using gradient
+descent optimization to construct models based on
+the predicted distance restraints, as AlphaFold did in
+CASP13, AlphaFold2 utilizes a full end-to-end training
+system from sequence to structure models using itera-
+tive structural refinement based on local structural
+error estimation. As part of this, the system replaces
+traditional folding simulations with a structure module
+composed of 3D equivariant transformer neural net-
+works, which treat each amino acid as a gas of 3D rigid
+bodies and directly builds the protein backbone and
+side-chains. All these advantages, together with the
+extensive computing resources that are beyond what
+are accessible to most of the academic research labora-
+tories, contribute to the significant improvement of the
+state-of-the-art of deep learning-based protein structure
+prediction
+
+The prediction of protein structures from amino acid
+sequences alone has remained an outstanding problem
+in structural biology since Anfisen first demonstrated that
+the information encoded in a protein sequence determines
+its structure more than 60 years ago. Now more than ever,
+there is an urgent need to develop high accuracy
+protein structure prediction methods, as advancements
+in high-throughput sequencing technology have greatly
+exacerbated the gap between the number of known
+sequences and the number of experimentally determined
+protein structures.
+
+![fold11.png]()
+
+
+
+
+
+
+
+
+
 
 
 
