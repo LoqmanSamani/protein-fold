@@ -826,7 +826,7 @@ by cross-validation on 27 CASP12 FM domains.
 ![fold16.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold16.png)
 
 
-6. [Protein structure prediction using multiple deep neural networks in the 13th Critical Assessment of Protein Structure Prediction (CASP13)]()
+6. [Protein structure prediction using multiple deep neural networks in the 13th Critical Assessment of Protein Structure Prediction (CASP13)](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Protein+structure+prediction+using+multiple+deep+neural+networks+in+the+13th+Critical+Assessment+of+Protein+Structure+Prediction+%28CASP13%29+Andrew+W.+Senior1+%7C+Richard+Evans1+%7C+John+Jumper1+%7C+James+Kirkpatrick1+%7C+Laurent+Sifre1+%7C+Tim+Green1+%7C+Chongli+Qin1+%7C+Augustin+%C5%BD%C3%ADdek1+%7C+Alexander+W.+R.+Nelson1+%7C+Alex+Bridgland1+%7C+Hugo+Penedones1+%7C+Stig+Petersen1+%7C+Karen+Simonyan1+%7C+Steve+Crossan1+%7C+Pushmeet+Kohli1+%7C+David+T.+Jones2%2C3+%7C+David+Silver1+%7C+Koray+Kavukcuoglu1+%7C+Demis+Hassabis&btnG=)
 
 
 We describe AlphaFold, the protein structure prediction system that was entered by the
@@ -863,9 +863,9 @@ alignment MSAðSÞ. These distance distributions are modeled with a softmax dist
 64 equal bins. The network is trained to predict distances between two 64-residue fragments of a chain, giving a probabilistic estimate of
 a 64 × 64 region of the distance map.
 
-![fold17.png]()
-![fold18.png]()
-![fold19.png]()
+![fold17.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold17.png)
+![fold18.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold18.png)
+![fold19.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold19.png)
 
 
 
