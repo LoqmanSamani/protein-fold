@@ -819,11 +819,11 @@ using 27 CASP11 FM domains as a validation set. Models were selected
 by cross-validation on 27 CASP12 FM domains.
 
 
-![fold12.png]()
-![fold13.png]()
-![fold14.png]()
-![fold15.png]()
-![fold16.png]()
+![fold12.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold12.png)
+![fold13.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold13.png)
+![fold14.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold14.png)
+![fold15.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold15.png)
+![fold16.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold16.png)
 
 
 
