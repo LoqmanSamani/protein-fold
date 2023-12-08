@@ -438,7 +438,7 @@ prediction.
 
 
 
-4. [Deep learning techniques have significantly impacted protein structure prediction and protein design]()
+4. [Deep learning techniques have significantly impacted protein structure prediction and protein design](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Deep+learning+techniques+have+significantly+impacted+protein+structure+prediction+and+protein+design+Robin+Pearce1+and+Yang+Zhang&btnG=)
 
 Given the cost, both financially and
 timewise, associated with experimentally determining a
@@ -617,7 +617,9 @@ exacerbated the gap between the number of known
 sequences and the number of experimentally determined
 protein structures.
 
-![fold11.png]()
+![fold11.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold11.png)
+
+
 
 
 
