@@ -932,11 +932,11 @@ duced by a simple weighted average of the input features at location n′ =
 (m)
 1 . . . N , denoted xn′ , that is:
 
-![tran6.png]()
+![tran6.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran6.png)
 
-![tran7.png]()
+![tran7.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran7.png)
 
-![tran2.png]()
+![tran2.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran2.png)
 
 Self-attention: The neat idea in the first stage of the transformer is that the attention
 matrix is generated from the input sequence itself – so-called self-attention.
@@ -945,14 +945,14 @@ measure the similarity between two locations by the dot product between the
 features at those two locations and then use a softmax function to handle the
 normalisation:
 
-![tran8.png]()
+![tran8.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran8.png)
 
 However, this naïve approach entangles information about the similarity between
 locations in the sequence with the content of the sequence itself.
 An alternative is to perform the same operation on a linear transformation of
 the sequence, U xn , so:
 
-![tran9.png]()
+![tran9.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran9.png)
 
 U will project to a lower dimensional space i.e. U is K ×D dimensional
 with K < D. In this way only some of the features in the input sequence need
@@ -965,7 +965,7 @@ with the word ‘caulking iron’ (because most of us rarely encounter it).9
 Fortunately, it is simple to generalise the attention mechanism above to be asym-
 metric by applying two different linear transformations to the original sequence,
 
-![tran10.png]()
+![tran10.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran10.png)
 
 The two quantities that are dot-producted together here qn = Uq xn and kn =
 Uk xn are typically known as the queries and the keys, respectively.
@@ -980,7 +980,7 @@ block applies H sets of self-attention in parallel12 (termed H heads) and then
 linearly projects the results down to the D × N array required for further pro-
 cessing. This slight generalisation is called multi-head self-attention.
 
-![tran11.png]()
+![tran11.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran11.png)
 
 Here the H matrices Vh which are D × D project the H self-attention stages
 down to the required output dimensionality D.13
@@ -1002,7 +1002,7 @@ refining the representation using a non-linear transform. To do this, we simply
 apply a multi-layer perceptron (MLP) to the vector of features at each location
 n in the sequence,
 
-![tran12.png]()
+![tran12.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran12.png)
 
 The transformer block: Putting it all together with residual con-
 nections and layer normalisation
@@ -1016,7 +1016,7 @@ towards simple functions, and stabilise learning [Szegedy et al., 2017]. Instead
 of directly specifying a function x(m) = fθ (x(m−1) ), the idea is to parameterise
 it in terms of an identity mapping and a residual term:
 
-![tran13.png]()
+![tran13.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran13.png)
 
 Equivalently, this can be viewed as modelling the differences between the repre-
 sentation x(m) − x(m−1) = resθ (x(m−1) ) and will work well when the function
@@ -1029,7 +1029,7 @@ Token normalisation: the standard approach
 is use LayerNorm [Ba et al., 2016] which normalises each token separately, re-
 moving the mean and dividing by the standard deviation
 
-![tran14.png]()
+![tran14.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran14.png)
 
 This transform stops feature representations blowing up in magnitude as non-
 linearities are repeatedly applied through neural networks.17 In transformers,
@@ -1055,10 +1055,10 @@ Transformers are typically trained
 using the Adam optimiser. They are often slow to train compared to other
 architectures.
 
-![tran1.png]()
-![tran1.png]()
-![tran1.png]()
-![tran1.png]()
+![tran1.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran1.png)
+![tran3.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran3.png)
+![tran4.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran4.png)
+![tran5.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/tran5.png)
 
 
 
