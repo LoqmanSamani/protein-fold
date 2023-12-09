@@ -868,7 +868,7 @@ a 64 × 64 region of the distance map.
 ![fold19.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold19.png)
 
 
-7. [An Introduction to Transformers](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+Introduction+to+Transformers++Richard+E.+Turner&btnG=). [transformer1.pdf]()
+7. [An Introduction to Transformers](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+Introduction+to+Transformers++Richard+E.+Turner&btnG=). [transformer1.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/transformer1.pdf)
 
 
 The transformer is a neural network component that can be used to learn useful represen-
