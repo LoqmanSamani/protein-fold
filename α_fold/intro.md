@@ -1,4 +1,4 @@
-1. [AlphaFold and Implications for Intrinsically Disordered Proteins](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=AlphaFold+and+Implications+for+Intrinsically+Disordered+Proteins+Kiersten+M.+Ruff+and+Rohit+V.+pappus&btnG=&oq=AlphaFold+and+Implications+for+Intrinsically+Disordered+Proteins+Kiersten+M.+Ruff+and+Rohit+V.+Pappu)
+1. [AlphaFold and Implications for Intrinsically Disordered Proteins](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=AlphaFold+and+Implications+for+Intrinsically+Disordered+Proteins+Kiersten+M.+Ruff+and+Rohit+V.+pappus&btnG=&oq=AlphaFold+and+Implications+for+Intrinsically+Disordered+Proteins+Kiersten+M.+Ruff+and+Rohit+V.+Pappu). [1.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/1.pdf)
 
 Accurate predictions of the three-dimensional structures of proteins from their amino acid sequences have
 come of age. AlphaFold, a deep learning-based approach to protein structure prediction, shows remarkable success in independent assessments of prediction accuracy. A significant epoch in structural bioinformatics was the structural annotation of over 98% of protein sequences in the human proteome.
@@ -125,7 +125,7 @@ domains.
 ![fols2.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold2.png)
 
 
-2. [Highly accurate protein structure prediction for the human proteome](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Highly+accurate+protein+structure+prediction+for+the+human+proteome+Kathryn+Tunyasuvunakool1+%E2%9C%89%2C+Jonas+Adler1%2C+Zachary+Wu1%2C+Tim+Green1%2C+Michal+Zielinski1%2C+Augustin+%C5%BD%C3%ADdek1%2C+Alex+Bridgland1%2C+Andrew+Cowie1%2C+Clemens+Meyer1%2C+Agata+Laydon1%2C+Sameer+Velankar2%2C+Gerard+J.+Kleywegt2%2C+Alex+Bateman2%2C+Richard+Evans1%2C+Alexander+Pritzel1%2C+Michael+Figurnov1%2C+Olaf+Ronneberger1%2C+Russ+Bates1%2C+Simon+A.+A.+Kohl1%2C+Anna+Potapenko1%2C+Andrew+J.+Ballard1%2C+Bernardino+Romera-Paredes1%2C+Stanislav+Nikolov1%2C+Rishub+Jain1%2C+Ellen+Clancy1%2C+David+Reiman1%2C+Stig+Petersen1%2C+Andrew+W.+Senior1%2C+Koray+Kavukcuoglu1%2C+Ewan+Birney2%2C+Pushmeet+Kohli1%2C+John+Jumper1%2C3+%E2%9C%89+%26+Demis+Hassabis1%2C3+%E2%9C%89&btnG=)
+2. [Highly accurate protein structure prediction for the human proteome](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Highly+accurate+protein+structure+prediction+for+the+human+proteome+Kathryn+Tunyasuvunakool1+%E2%9C%89%2C+Jonas+Adler1%2C+Zachary+Wu1%2C+Tim+Green1%2C+Michal+Zielinski1%2C+Augustin+%C5%BD%C3%ADdek1%2C+Alex+Bridgland1%2C+Andrew+Cowie1%2C+Clemens+Meyer1%2C+Agata+Laydon1%2C+Sameer+Velankar2%2C+Gerard+J.+Kleywegt2%2C+Alex+Bateman2%2C+Richard+Evans1%2C+Alexander+Pritzel1%2C+Michael+Figurnov1%2C+Olaf+Ronneberger1%2C+Russ+Bates1%2C+Simon+A.+A.+Kohl1%2C+Anna+Potapenko1%2C+Andrew+J.+Ballard1%2C+Bernardino+Romera-Paredes1%2C+Stanislav+Nikolov1%2C+Rishub+Jain1%2C+Ellen+Clancy1%2C+David+Reiman1%2C+Stig+Petersen1%2C+Andrew+W.+Senior1%2C+Koray+Kavukcuoglu1%2C+Ewan+Birney2%2C+Pushmeet+Kohli1%2C+John+Jumper1%2C3+%E2%9C%89+%26+Demis+Hassabis1%2C3+%E2%9C%89&btnG=) . [2.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/2.pdf)
 
 Protein structures can provide invaluable information, both for reasoning about
 biological processes and for enabling interventions such as structure-based drug
@@ -255,7 +255,7 @@ arguably falls outside the scope of single-chain structure prediction.
 ![fold6.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold6.png)
 
 
-3. [Highly accurate protein structure prediction with AlphaFold](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Jumper%2C+J.+et+al.+Highly+accurate+protein+structure+prediction+with+AlphaFold.+Nature+https%3A%2F%2Fdoi.org%2F10.1038%2Fs41586-021-03819-2+%282021%29&btnG=)
+3. [Highly accurate protein structure prediction with AlphaFold](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Jumper%2C+J.+et+al.+Highly+accurate+protein+structure+prediction+with+AlphaFold.+Nature+https%3A%2F%2Fdoi.org%2F10.1038%2Fs41586-021-03819-2+%282021%29&btnG=) . [3.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/3.pdf)
 
 Proteins are essential to life, and understanding their structure can facilitate a
 mechanistic understanding of their function. Through an enormous experimental
@@ -438,7 +438,7 @@ prediction.
 
 
 
-4. [Deep learning techniques have significantly impacted protein structure prediction and protein design](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Deep+learning+techniques+have+significantly+impacted+protein+structure+prediction+and+protein+design+Robin+Pearce1+and+Yang+Zhang&btnG=)
+4. [Deep learning techniques have significantly impacted protein structure prediction and protein design](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Deep+learning+techniques+have+significantly+impacted+protein+structure+prediction+and+protein+design+Robin+Pearce1+and+Yang+Zhang&btnG=) . [4.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/4.pdf)
 
 Given the cost, both financially and
 timewise, associated with experimentally determining a
@@ -620,7 +620,7 @@ protein structures.
 ![fold11.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold11.png)
 
 
-5. [Improved protein structure prediction using potentials from deep learning](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Improved+protein+structure+prediction+using+potentials+from+deep+learning+Andrew+W.+Senior1%2C4*%2C+Richard+Evans1%2C4%2C+John+Jumper1%2C4%2C+James+Kirkpatrick1%2C4%2C+Laurent+Sifre1%2C4%2C+Tim+Green1%2C+Chongli+Qin1%2C+Augustin+%C5%BD%C3%ADdek1%2C+Alexander+W.+R.+Nelson1%2C+Alex+Bridgland1%2C+Hugo+Penedones1%2C+Stig+Petersen1%2C+Karen+Simonyan1%2C+Steve+Crossan1%2C+Pushmeet+Kohli1%2C+David+T.+Jones2%2C3%2C+David+Silver1%2C+Koray+Kavukcuoglu1+%26+Demis+Hassabis1&btnG=)
+5. [Improved protein structure prediction using potentials from deep learning](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Improved+protein+structure+prediction+using+potentials+from+deep+learning+Andrew+W.+Senior1%2C4*%2C+Richard+Evans1%2C4%2C+John+Jumper1%2C4%2C+James+Kirkpatrick1%2C4%2C+Laurent+Sifre1%2C4%2C+Tim+Green1%2C+Chongli+Qin1%2C+Augustin+%C5%BD%C3%ADdek1%2C+Alexander+W.+R.+Nelson1%2C+Alex+Bridgland1%2C+Hugo+Penedones1%2C+Stig+Petersen1%2C+Karen+Simonyan1%2C+Steve+Crossan1%2C+Pushmeet+Kohli1%2C+David+T.+Jones2%2C3%2C+David+Silver1%2C+Koray+Kavukcuoglu1+%26+Demis+Hassabis1&btnG=) . [5.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/5.pdf)
 
 
 Protein structure prediction can be used to determine the three-dimensional shape of
@@ -826,14 +826,7 @@ by cross-validation on 27 CASP12 FM domains.
 ![fold16.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold16.png)
 
 
-6. [Protein structure prediction using multiple deep neural networks in the 13th Critical Assessment of Protein Structure Prediction (CASP13)](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Protein+structure+prediction+using+multiple+deep+neural+networks+in+the+13th+Critical+Assessment+of+Protein+Structure+Prediction+%28CASP13%29+Andrew+W.+Senior1+%7C+Richard+Evans1+%7C+John+Jumper1+%7C+James+Kirkpatrick1+%7C+Laurent+Sifre1+%7C+Tim+Green1+%7C+Chongli+Qin1+%7C+Augustin+%C5%BD%C3%ADdek1+%7C+Alexander+W.+R.+Nelson1+%7C+Alex+Bridgland1+%7C+Hugo+Penedones1+%7C+Stig+Petersen1+%7C+Karen+Simonyan1+%7C+Steve+Crossan1+%7C+Pushmeet+Kohli1+%7C+David+T.+Jones2%2C3+%7C+David+Silver1+%7C+Koray+Kavukcuoglu1+%7C+Demis+Hassabis&btnG=
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
-13. )
+6. [Protein structure prediction using multiple deep neural networks in the 13th Critical Assessment of Protein Structure Prediction (CASP13)](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=Protein+structure+prediction+using+multiple+deep+neural+networks+in+the+13th+Critical+Assessment+of+Protein+Structure+Prediction+%28CASP13%29+Andrew+W.+Senior1+%7C+Richard+Evans1+%7C+John+Jumper1+%7C+James+Kirkpatrick1+%7C+Laurent+Sifre1+%7C+Tim+Green1+%7C+Chongli+Qin1+%7C+Augustin+%C5%BD%C3%ADdek1+%7C+Alexander+W.+R.+Nelson1+%7C+Alex+Bridgland1+%7C+Hugo+Penedones1+%7C+Stig+Petersen1+%7C+Karen+Simonyan1+%7C+Steve+Crossan1+%7C+Pushmeet+Kohli1+%7C+David+T.+Jones2%2C3+%7C+David+Silver1+%7C+Koray+Kavukcuoglu1+%7C+Demis+Hassabis&btnG=) . [6.pdf](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/liter/7.pdf)
 
 
 We describe AlphaFold, the protein structure prediction system that was entered by the
@@ -873,6 +866,203 @@ a 64 × 64 region of the distance map.
 ![fold17.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold17.png)
 ![fold18.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold18.png)
 ![fold19.png](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold19.png)
+
+
+7. [An Introduction to Transformers](https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q=An+Introduction+to+Transformers++Richard+E.+Turner&btnG=). [transformer1.pdf]()
+
+
+The transformer is a neural network component that can be used to learn useful represen-
+tations of sequences or sets of data-points [Vaswani et al., 2017]. The transformer has driven recent
+advances in natural language processing [Devlin et al., 2019], computer vision [Dosovitskiy et al., 2021],
+and spatio-temporal modelling [Bi et al., 2022].
+We assume that the reader is familiar with fundamental topics in machine learning
+including multi-layer perceptrons, linear transformations, softmax functions and basic probability.
+In order to apply a transformer, data must be converted into a sequence1 of N
+(0)tokens xn of dimension D (see figure 1). The tokens can be collected into a
+matrix X (0) which is D × N .2 To give two concrete examples:
+
+1. a passage of text can be broken up into a sequence of words or sub-words,
+with each word being represented by a single unique vector,
+2. an image can be broken up into a set of patches and each patch can be
+mapped into a vector.
+
+The embeddings can be fixed or they can be learned with the rest of the parameters of the model e.g. the vectors representing words can be optimised or
+a learned linear transform can be used to embed image patches (see figure 2).
+A sequence of tokens is a generic representation to use as an input – many
+different types of data can be “tokenised” and transformers are then immediately
+applicable rather than requiring a bespoke architectures for each modality as
+was previously the case (CNNs for images, RNNs for sequences, deepsets for
+sets etc.). Moreover, this means that you don’t need bespoke handcrafted
+architectures for mixing data of different modalities — you can just throw them
+all into a big set of tokens.
+
+The transformer will ingest the input data X (0) and return a representation of
+the sequence in terms of another matrix X (M ) which is also of size D × N .
+(M )
+The slice xn = X:,n will be a vector of features representing the sequence at
+the location of token n. These representations can be used for auto-regressive
+prediction of the next (n+1)th token, global classification of the entire sequence
+(by pooling across the whole representation), sequence-to-sequence or image-
+to-image prediction problems, etc. Here M denotes the number of layers in the
+transformer.
+The representation of the input sequence will be produced by iteratively applying
+a transformer block
+
+```commandline
+    X (m) = transformer-block(X (m−1) )
+```
+The block itself comprises two stages: one operating across the sequence and one
+operating across the features. The first stage refines each feature independently
+according to relationships between tokens across the sequence e.g. how much
+a word in a sequence at position n depends on previous words at position n′ ,
+or how much two different patches from an image are related to one another.
+This stage acts horizontally across rows of X (m−1) . The second stage refines
+the features representing each token. This stage acts vertically across a column
+of X (m−1) . By repeatedly applying the transformer block the representation at
+token n and feature d can be shaped by information at token n′ and feature d.
+
+#### Stage 1: self-attention across the sequence
+
+The output of the first stage of the transformer block is another D × N array,
+Y (m) . The output is produced by aggregating information across the sequence
+independently for each feature using an operation called attention.
+(m)
+Attention. Specifically, the output vector at location n, denoted yn , is pro-
+duced by a simple weighted average of the input features at location n′ =
+(m)
+1 . . . N , denoted xn′ , that is:
+
+![tran6.png]()
+
+![tran7.png]()
+
+![tran2.png]()
+
+Self-attention: The neat idea in the first stage of the transformer is that the attention
+matrix is generated from the input sequence itself – so-called self-attention.
+A simple way of generating the attention matrix from the input would be to
+measure the similarity between two locations by the dot product between the
+features at those two locations and then use a softmax function to handle the
+normalisation:
+
+![tran8.png]()
+
+However, this naïve approach entangles information about the similarity between
+locations in the sequence with the content of the sequence itself.
+An alternative is to perform the same operation on a linear transformation of
+the sequence, U xn , so:
+
+![tran9.png]()
+
+U will project to a lower dimensional space i.e. U is K ×D dimensional
+with K < D. In this way only some of the features in the input sequence need
+be used to compute the similarity, the others being projected out, thereby de-
+coupling the attention computation from the content. However, the numerator
+in this construction is symmetric. This could be a disadvantage. For example,
+we might want the word ‘caulking iron’ to be strongly associated with the word
+‘tool’ (as it is a type of tool), but have the word ‘tool’ more weakly associated
+with the word ‘caulking iron’ (because most of us rarely encounter it).9
+Fortunately, it is simple to generalise the attention mechanism above to be asym-
+metric by applying two different linear transformations to the original sequence,
+
+![tran10.png]()
+
+The two quantities that are dot-producted together here qn = Uq xn and kn =
+Uk xn are typically known as the queries and the keys, respectively.
+Together equations 2 and 3 define the self-attention mechanism.
+
+Multi-head self-attention (MHSA). In the self-attention mechanisms de-
+scribed above, there is one attention matrix which describes the similarity of
+two locations within the sequence.
+
+In order to increase capacity of the first self-attention stage, the transformer
+block applies H sets of self-attention in parallel12 (termed H heads) and then
+linearly projects the results down to the D × N array required for further pro-
+cessing. This slight generalisation is called multi-head self-attention.
+
+![tran11.png]()
+
+Here the H matrices Vh which are D × D project the H self-attention stages
+down to the required output dimensionality D.13
+The addition of the matrices Vh , and the fact that retaining just the diagonal
+elements of the attention matrix A(m) will interact the signal instantaneously
+with itself, does mean there is some cross-feature processing in multi-head self-
+attention, as opposed to it containing purely cross-sequence processing. How-
+ever, the stage has limited capacity for this type of processing and it is the job
+of the second stage to address this.
+Figure 4 shows multi-head self-attention schematically. Multi-head attention
+comprises the following parameters θ = {Uq,h , Uk,h , Vh }H
+h=1 i.e. 3H matrices
+of size K × D, K × D, and D × D respectively.
+
+#### Stage 2: multi-layer perceptron across features
+
+The second stage of processing in the transformer block operates across features,
+refining the representation using a non-linear transform. To do this, we simply
+apply a multi-layer perceptron (MLP) to the vector of features at each location
+n in the sequence,
+
+![tran12.png]()
+
+The transformer block: Putting it all together with residual con-
+nections and layer normalisation
+We can now stack MHSA and MLP layers to produce the transformer block.
+Rather than doing this directly, we make use of two ubiquitous transformations
+to produce a more stable model that trains more easily: residual connections
+and normalisation.
+Residual connections. The use of residual connections is widespread across
+machine learning as they make initialisation simple, have a sensible inductive bias
+towards simple functions, and stabilise learning [Szegedy et al., 2017]. Instead
+of directly specifying a function x(m) = fθ (x(m−1) ), the idea is to parameterise
+it in terms of an identity mapping and a residual term:
+
+![tran13.png]()
+
+Equivalently, this can be viewed as modelling the differences between the repre-
+sentation x(m) − x(m−1) = resθ (x(m−1) ) and will work well when the function
+that is being modelled is close to identity. This type of parameterisation is used
+for both the MHSA and MLP stages in the transformer, with the idea that each
+applies a mild non-linear transformation to the representation. Over many layers,
+these mild non-linear transformations compose to form large transformations.
+
+Token normalisation: the standard approach
+is use LayerNorm [Ba et al., 2016] which normalises each token separately, re-
+moving the mean and dividing by the standard deviation
+
+![tran14.png]()
+
+This transform stops feature representations blowing up in magnitude as non-
+linearities are repeatedly applied through neural networks.17 In transformers,
+LayerNorm is usually applied in the residual terms of both the MHSA and MLP
+stages.
+Putting this all together, we have the standard transformer block shown schemat-
+ically in figure 7.
+
+The transformer treats the data as a set — if you permute the columns of X (0)
+(i.e. re-order the tokens in the input sequence) you permute all the represen-
+tations throughout the network X (m) in the same way. This is key for many
+applications since there may not be a natural way to order the original data into
+a sequence of tokens. For example, there is no single ‘correct’ order to map
+image patches into a one dimensional sequence.
+
+Thankfully, there is a
+simple fix for this: the location of each token within the original dataset should
+be included in the token itself, or through the way it is processed. There are
+several options how to do this, one is to include this information directly into the
+embedding X (0) .
+
+Transformers are typically trained
+using the Adam optimiser. They are often slow to train compared to other
+architectures.
+
+![tran1.png]()
+![tran1.png]()
+![tran1.png]()
+![tran1.png]()
+
+
+
+
 
 
 
