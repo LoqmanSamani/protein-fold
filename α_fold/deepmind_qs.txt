@@ -1,0 +1,193 @@
+# What information does AlphaFold use from the Protein Data Bank?
+
+AlphaFold is trained on protein chains in the PDB released before 2018-04-30. 
+Predictions can also make use of up to 4 templates released before 2021-02-15. 
+However, templates are not a critical input for AlphaFold to make an accurate prediction; 
+the model can make a strong prediction based on a multiple sequence alignment alone. 
+
+
+
+
+
+# How does AlphaFold compare to other structure prediction tools?
+
+The CASP14 assessment compared leading structure prediction methods in detail; the results are available here. 
+AlphaFold was the top-ranked method, with a median GDT (Global Distance Test) score of 92.4 across all targets 
+and 87.0 on the challenging free-modelling category, compared to 72.8 and 61.0 for the next best methods in these categories.
+Structural biologists more often express the similarity between two protein structures by first optimally 
+superposing the structures and then calculating the root-mean-square distance (RMSD) between the Cα atoms 
+of equivalent residues. Taking the median RMSD-Cα on the best predicted 95% of residues reduces the effect 
+of flexible tails and crystal-packing artefacts. 
+On this metric AlphaFold’s CASP14 predictions had a median distance of 0.96 Å to the experimental models, 
+compared to 2.83 Å for the next-best method.
+
+
+
+
+
+
+# Which proteins are included?
+
+AlphaFold DB has grown in several stages:
+
+    July 2021: included 20 model organism proteomes, with sequences taken from the “one sequence per gene” 
+    reference proteomes provided in UniProt 2021_02.
+    December 2021: added Swiss-Prot, from UniProt 2021_04.
+    January 2022: added a collection of proteomes relevant to global health, taken from priority lists compiled 
+    by the World Health Organisation. Sequences were again taken from the “one sequence per gene” 
+    reference proteomes provided in UniProt 2021_04.
+    July 2022: added most of the remaining UniProt 2021_04. As part of this release we have also included an 
+    additional tar file on the AFDB download page and FTP, containing predictions in MANE select.
+    Nov 2022: updated a set of structures affected by a temporary numerical bug (miscompilation) 
+    in the previous July release (list of affected accessions, N.B. 160 MiB). 
+    This temporary issue resulted in low accuracy predictions with correspondingly low pLDDT for ~4% of 
+    the total structure predictions available in the database. This release includes:
+    Updated coordinates for affected structures. You can still access all old coordinates as v3 files, and easily compare v3 and v4 coordinates
+    Minor metadata changes in the mmCIF files for the rest of the structures (these files are released as v4). Please refer to our changelog for more details. 
+    Note that as part of this release we’ve also removed predictions with Ca-Ca >10A.
+The wider UniProt predictions are the output of a single model, while Swiss-Prot / proteomes entries represent the most confident prediction out of 5 model runs. 
+Internal benchmarking on CASP14 shows that the model used for UniProt (“model_2_ptm”) is insignificantly less accurate (-1 GDT versus five models), 
+and that there is a slight bias toward lower confidence (-1 pLDDT) due to the effect of using one model rather than selecting from 5.
+Not all sequences are covered; the most common reasons for a missing sequence are:
+    It is outside our length range. The minimum length is 16 amino acids, while the maximum is 2,700 for proteomes / Swiss-Prot and 1,280 for the rest of UniProt. For the human proteome only, 
+    our download includes longer proteins segmented into fragments.
+    It contains non-standard amino acids (e.g. X).
+    It is not in the UniProt reference proteome “one sequence per gene” Fasta file.
+    It has been added or modified by UniProt in a more recent release.
+    It is a viral protein. These are currently excluded, pending improved support for polyproteins.
+
+We plan to continue updating the database. In the meantime, if your sequence(s) aren’t included, 
+you can generate your own AlphaFold predictions using DeepMind’s Colab notebook and open source code, 
+which also support multimer predictions. 
+
+
+
+
+
+
+# How many proteins are there in the database?
+
+There are 214,683,839 structures available on the AlphaFold DB website, including 48 complete proteomes 
+available for bulk download. An additional 3,095 structures are included in the human proteome download, 
+covering sequences longer than our usual length limit split into fragments.
+
+
+
+
+
+
+
+# What use cases does AlphaFold not support?
+
+AlphaFold DB currently focuses on the use case validated in CASP14: predicting the structure of a single protein chain with a naturally occurring sequence. 
+Many other use cases remain active areas of research, for example:
+
+- The version of AlphaFold used to construct in this database does not output multi-chain predictions (complexes). 
+  In some cases the single-chain prediction may correspond to the structure adopted in complex. 
+  In other cases (especially where the chain is structured only on binding to partner molecules) 
+  the missing context from surrounding molecules may lead to an uninformative prediction. 
+  A separate version of AlphaFold was trained for complex prediction (AlphaFold Multimer). 
+  You can find the open source code on GitHub and make multimer predictions using DeepMind’s Colab.
+- For regions that are intrinsically disordered or unstructured in isolation AlphaFold is expected to produce a 
+  low-confidence prediction (pLDDT < 50) and the predicted structure will have a ribbon-like appearance. 
+  AlphaFold may be of use in identifying such regions, but the prediction makes no statement about the relative likelihood of 
+  different conformations (it is not a sample from the Boltzmann distribution).
+- AlphaFold has not been validated for predicting the effect of mutations. In particular, AlphaFold is not expected to produce an 
+  unfolded protein structure given a sequence containing a destabilising point mutation.
+- Where a protein is known to have multiple conformations, AlphaFold usually only produces one of them. 
+  The output conformation cannot be reliably controlled.
+- AlphaFold does not predict the positions of any non-protein components found in experimental structures 
+  (such as cofactors, metals, ligands, ions, DNA/RNA, or post-translational modifications). 
+  However, AlphaFold is trained to predict the structure of proteins as they might appear in the PDB. 
+  Therefore backbone and side chain coordinates are frequently consistent with the expected structure 
+  in the presence of ions (e.g. for zinc-binding sites) or cofactors (e.g. side chain geometry consistent with heme binding). 
+
+
+
+
+
+
+
+# How can I download a structure prediction?
+
+Coordinate files can be downloaded from the menu in the top right of the structure page in mmCIF or PDB format. 
+These formats are widely accepted by 3D structure viewing software, such as PyMOL and Chimera.
+
+
+
+
+
+
+
+
+Currently, there are around 230 million proteins in UniProt, with millions more catalogued every year. 
+Each one has a unique 3D shape that determines how it works and what it does. AlphaFold DB now offers 
+a prediction of what each of the over 200 millions known proteins in UniProt might look like. 
+
+
+
+
+
+
+
+For decades, scientists have been trying to find a method to reliably predict a protein’s structure just from its sequence of amino acids.
+This grand scientific challenge is known as the protein folding problem. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
