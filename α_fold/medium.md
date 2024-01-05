@@ -14,8 +14,11 @@ and the remaining sequences then stacked together to form a matrix of sequences.
 individual residues of the input sequence while each row represent the sequences in which those residues appear.
 in the next case, the information obtained from the last step (MSAs) are used (with an approach called HHSearch) to search in Protein Data Bank (PDB), template search,  to obtain the protein structures, which 
 have a similar structure as the input MSA (in many cases the 3D structure and also the functionality of two protein in different organisms are similar but the primary structures may be different, so in this step the proteins with the same structure are selected). 
-These structural information are used as pair representation (an initial representation of the 3D structure of the target protein), which contains the structural information in form a 3D matrix with the initial spatial information of the sequences.
-The collected structural information (pair representations) are limited to 4 sequences (inference phase) or 20 sequences (training phase).
+
+After collecting the data, Input primary sequence and MSA features are embedded to MSA representation (The size of this list is hyperparameter we can set, basically it would be the length of the longest sentence in our training dataset) which is a matrix with the shape of 
+(number of sequences * length of the sequence). The structural information are also embedded to form pair representation, a matrix with the shape of (length of the sequence * length of the sequence).
+
+why embedding: embedding means to convert the alphabetic information (A, C, G, T) stores in MSA and also in pair representation to numbers (probabilities)(turning each input word into a vector), which are the input of the neural networks in general.
 
 in training phase 75% of training data comes from genetic search (sequence information) approach and the rest 25% comes from template search (pair representations).
 
@@ -25,7 +28,7 @@ the second amino acid will be under evolutionary pressure to mutate into a negat
 
 
 
-![evoformer]()
+![evoformer](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer.png)
 
 ## 3 . Evoformer (evolutionary transformer?) module
 
@@ -35,8 +38,56 @@ graph are defined by residues in proximity, it means each node in the graph corr
 The objective of this part is to refine the representations for both the MSA and the pair interactions, but also to iteratively exchange information between them.
 The Evoformer network consists of 48 (by default) blocks (iterations), each block has an MSA representation and a pair representation as its input and output and processes them within several layers.
 
-First step in this network is embedding step (In AlphaFold 2, the embeddings are vanilla dense neural networks.), which means to convert the alphabetic information (A, C, G, T) stores in MSA and also in pair representation to numbers (probabilities), which are the input of the neural networks in general.
-Input primary sequence and MSA features are embedded to MSA representation which is a matrix with the shape of (number of sequences * length of the sequence). The structural information are also embedded to form pair representation, a matrix with the shape of (length of the sequence * length of the sequence).
+Basically we can devide the evoformer (transformer) into two parts Encoder and Decoder. in general the encoder part used as a block in which the input parameters (in alphafold case inputs are MSA representations)
+are processed and the decoder part is a block in which the output parameters are processed(in this case pair representation information are the output).
+each encoder or decoder contains two main parts a) self-attention b) feed forward neural network (FFN(x) = max(0, X*W1 + b1 )W2 + b2).
+in alphafold in each block there are an encoder and a decoder which share information. The weights in each block of evoformer (neural network parameters are not shared with other blocks it means each block saves the weights for its self just like general transformers.)
+
+a) self-attention 
+
+- axial self-attention in the MSA stack (encoder): this part of evoformer network processes MSA representations in two subparts: 
+
+The first step in calculating self-attention (in both cases row attention with pair bias and column attention) is to create three vectors from each of the encoder’s input vectors (in this case the input are MSA representations)
+for each MSA, it creates a Query matrix(q), a Key matrix(k), and a Value matrix(v) and then they will be multiplied by weights matrices in each case (this process called positional encoding which means add a matrix of weights to each input embedding. These matrix follow a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
+The intuition here is that adding these values to the embeddings give the embedded words in the sequences a positional weight, which gives the words in sequences a positional matter.).
+The second step in calculating self-attention is to calculate the attention score (The score determines how much focus to place on other parts of the input sentence as we encode a word at a certain position)
+This score is calculated by matrix multiplication of the query matrix with the key matrix.
+next the calculated score will divided by the radical 32 (this is a hyperparameter and can be changed, the intuition behind this devision is to lead to having more stable gradients) then the results (scores) will be passed through a softmax operation. Softmax normalizes the scores so they’re all positive and add up to 1.
+next each value matrix will be multiplied by the softmax scores to keep intact the values of each residue in the MSA representation.
+
+       a linear transformation to the input column (columns in the MSA representation). This involves a linear layer followed by layer normalization. 
+       It produces three sets of projections (q, k, and v), which are associated with query, key and value in attention mechanism.
+
+       Wq * X = Q,  Wk * X = K,  Wv * X = V  , here X is the MSA matrix
+
+       g = sigmoid(Linear(MSA)): Applies a linear transformation to msa followed by the sigmoid activation function. 
+       This produces the gating factor g which is used to modulate the attention scores.
+
+       self-attention = softmax((Q * K.T)/ sqrt(32)) * V  
+       Computes attention scores using the scaled dot-product attention mechanism. 
+       It involves taking the dot product of the query q and key k, scaling it by the square root of the dimensionality 
+
+       Output=g⋅∑(self.attention)
+
+
+       ColumnAttention = g . sum(self-attention)
+  
+       g = sigmoid(LinearNoBias(LinearNorm(z))) applies a linear transformation to the input z(pair representation) with no bias term. This is used for incorporating pair biases in the attention mechanism.
+       self-attention = softmax((Q * K.T)/ sqrt(32) + b) * V
+
+       RowAttentionWithPairWise = g . sum(self-attention)
+
+
+
+
+
+
+
+
+
+
+
+
 
 - axial self-attention in the MSA stack
 - triangular multiplicative updates and triangular self-attention in the pair stack
@@ -50,6 +101,8 @@ Input primary sequence and MSA features are embedded to MSA representation which
 
 The final Evoformer block provides a highly processed MSA representation {msi } and a pair representation {zij }, which contain information required for the structure module.
 
+1. The row-wise self-attension builds attention weights for residue pairs and integrates the information from the pair representation as an additional bias term. This allows
+communication from the pair stack into the MSA stack to encourage consistency between them.
 
 
 ----
