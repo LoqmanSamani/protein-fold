@@ -24,6 +24,9 @@ This Coulombic interaction stabilises the structure of the protein. Imagine now 
 the second amino acid will be under evolutionary pressure to mutate into a negatively charged amino acid, otherwise the resulting protein may not be able to fold.
 
 
+
+
+
 ## 3 . Evoformer (evolutionary transformer?) module
 
 Evoformer is the main step in the alphafold algorithm, it is actually a transformer neural network which takes the MSAs and structural information from the last steps
@@ -34,6 +37,19 @@ The Evoformer network consists of 48 (by default) blocks (iterations), each bloc
 
 First step in this network is embedding step (In AlphaFold 2, the embeddings are vanilla dense neural networks.), which means to convert the alphabetic information (A, C, G, T) stores in MSA and also in pair representation to numbers (probabilities), which are the input of the neural networks in general.
 Input primary sequence and MSA features are embedded to MSA representation which is a matrix with the shape of (number of sequences * length of the sequence). The structural information are also embedded to form pair representation, a matrix with the shape of (length of the sequence * length of the sequence).
+
+- axial self-attention in the MSA stack
+- triangular multiplicative updates and triangular self-attention in the pair stack
+- outer product mean and attention biasing to allow communication between the stacks
+- Each layer output is added via a residual connection to the current representations.
+- Some layer outputs are passed through Dropout before they are added.(overfitting is a serious problem in such networks. Large networks are also slow to use, making it difficult to deal with overfitting by combining the predictions of many different large neural nets at test time. Dropout is a technique for addressing this problem. The key idea is to randomly drop units (along with their connections) from the neural network during training. This prevents units from co-adapting too much)
+
+- input of Evoformer:  MSA representation {Msi}
+- output: pair representation {Zij}
+
+
+The final Evoformer block provides a highly processed MSA representation {msi } and a pair representation {zij }, which contain information required for the structure module.
+
 
 
 ----
