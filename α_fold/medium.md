@@ -1,6 +1,6 @@
 ## Highly accurate protein structure prediction with AlphaFold
 
-![fold20](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/images/fold20.png)
+![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/alphafold.png)
 
 
 ## 1 & 2 . Genetic and Structure Database Searches
@@ -25,7 +25,7 @@ the second amino acid will be under evolutionary pressure to mutate into a negat
 
 
 
-
+![evoformer]()
 
 ## 3 . Evoformer (evolutionary transformer?) module
 
