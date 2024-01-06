@@ -148,7 +148,7 @@ where the intermediate number of channels expands the original number of channel
 
 ## 4. The structure module
 
-![structure]()
+![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
 
 this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure.
 The end result is a long list of Cartesian coordinates representing the position of each atom of the protein, including side chains.
