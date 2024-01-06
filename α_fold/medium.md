@@ -172,19 +172,23 @@ One “layer” of the structure module is composed by the following operations:
 - The abstract single representation is updated by the Invariant Point Attention (structure 4) and a transition layer.
 - The abstract single representation is mapped to concrete update frames that are composed to the backbone frames (structure 6)
 
-The composition of two Euclidean transforms is denoted as 
+            The composition of two Euclidean transforms is denoted as 
 
             Tresult = T1 ◦ T2
 
-In the parameterization with a rotation matrix and translation vector this is:
+            In the parameterization with a rotation matrix and translation vector this is:
 
             (Rresult , ~tresult ) = (R1 , ~t1 ) ◦ (R2 , ~t2 )
                                   = (R1 R2 , R1~t2 + ~t1 )
 
-To obtain all atom coordinates, we parameterize each residue by torsion angles(table 1). I.e., the torsion angles are
-the only degrees of freedom, while all bond angles and bond lengths are fully rigid.
+           To obtain all atom coordinates, we parameterize each residue by torsion angles(table 1). I.e., the torsion angles are
+           the only degrees of freedom, while all bond angles and bond lengths are fully rigid.
 
-![table1]()
+- A shallow ResNet predicts the torsion angles αif ∈ R2 . 
+- 
+![table1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/table.png)
+
+
 
 
 
