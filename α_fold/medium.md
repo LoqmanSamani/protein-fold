@@ -47,7 +47,7 @@ a) self-attention
 
 - axial self-attention in the MSA stack (encoder): this part of evoformer network processes MSA representations in two subparts: 
 
-The first step in calculating self-attention (in both cases row attention with pair bias and column attention) is to create three vectors from each of the encoder’s input vectors (in this case the input are MSA representations)
+The first step in calculating self-attention (in both cases row (horizontal) attention with pair bias and column attention) is to create three vectors from each of the encoder’s input vectors (in this case the input are MSA representations)
 for each MSA, it creates a Query matrix(q), a Key matrix(k), and a Value matrix(v) and then they will be multiplied by weights matrices in each case (this process called positional encoding which means add a matrix of weights to each input embedding. These matrix follow a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
 The intuition here is that adding these values to the embeddings give the embedded words in the sequences a positional weight, which gives the words in sequences a positional matter.).
 The second step in calculating self-attention is to calculate the attention score (The score determines how much focus to place on other parts of the input sentence as we encode a word at a certain position)
@@ -77,6 +77,7 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
        self-attention = softmax((Q * K.T)/ sqrt(32) + b) * V
 
        RowAttentionWithPairWise = g . sum(self-attention)
+       (The most important feature of AlphaFold 2’s MSA transformer is that the row-wise (horizontal) attention mechanism incorporates information from the “pair representation”. When computing attention, the network adds a bias term that is calculated directly from the current pair representation. This trick augments the attention mechanism and allows it to pinpoint interacting pairs of residues.)
 
 ![evoformer1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer1.png)
 
@@ -97,7 +98,9 @@ Here, Pij is a linear transform, and mean calculates the mean over the sequences
 
 ![evofomer4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer4.png)
 
-next step in evoformer block is The triangular multiplicative update updates the pair representation in the Evoformer block by
+next step in evoformer block is The triangular multiplicative update (The key feature of this network is that attention is arranged in terms of triangles of residues. 
+The intuition here is to enforce the triangle inequality, one of the axioms of metric spaces. This is quite a clever idea since one of the classical problems of deep learning-based 
+structure prediction was that distance distributions could not be embedded in three-dimensional space) updates the pair representation in the Evoformer block by
 combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
 from the other two edges of all triangles, where it is involved. this step sontains two sub steps, one for the
 “outgoing” edges and one for the “incoming” edges.
@@ -119,62 +122,54 @@ from the other two edges of all triangles, where it is involved. this step sonta
 ![evoformer5&6](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer5%266.png)
 
 
+next step in evoformer block is Triangular self-attention: this process takes place in two sub steps:
+first the “starting node” version updates the edge ij with values from all edges that share the same starting node i, (i.e. all edges ik). The decision whether edge ij will receive an update from edge ik is
+not only determined by their query-key similarity, but also modulated by the
+information bjk derived from the third edge jk of this triangle. the second sub step updates with an
+additional gating gij derived from edge ij. The symmetric pair of this module operates on the edges around
+the ending node.
+here the same steps occur as in the self-attention in MSA representations.
+
+![evoformer7]()
+
+
+next step is The transition layer. this step in the pair stack is equivalent to that in the MSA stack: a 2-layer MLP
+where the intermediate number of channels expands the original number of channels by a factor of 4.
+
+
+#### importaint information about evoformer:
+
+- The objective of attention is to identify which parts of the input are more important for the objective of the neural network. In other words, to identify which parts of the input it should pay attention to.
+- The final Evoformer block provides a highly processed MSA representation {msi } and a pair representation {zij }, which contain information required for the structure module.
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- axial self-attention in the MSA stack
-- triangular multiplicative updates and triangular self-attention in the pair stack
-- outer product mean and attention biasing to allow communication between the stacks
-- Each layer output is added via a residual connection to the current representations.
-- Some layer outputs are passed through Dropout before they are added.(overfitting is a serious problem in such networks. Large networks are also slow to use, making it difficult to deal with overfitting by combining the predictions of many different large neural nets at test time. Dropout is a technique for addressing this problem. The key idea is to randomly drop units (along with their connections) from the neural network during training. This prevents units from co-adapting too much)
-
-- input of Evoformer:  MSA representation {Msi}
-- output: pair representation {Zij}
-
-
-The final Evoformer block provides a highly processed MSA representation {msi } and a pair representation {zij }, which contain information required for the structure module.
-
-1. The row-wise self-attension builds attention weights for residue pairs and integrates the information from the pair representation as an additional bias term. This allows
-communication from the pair stack into the MSA stack to encourage consistency between them.
-
-
-----
-The objective of attention is to identify which parts of the input are more important for the objective of the neural network. In other words, to identify which parts of the input it should pay attention to.
-
-GPT: Generative Pre-trained Transformer
-
-There is a reason why transformers have not been widely implemented in many fields. The construction of the attention matrix leads to a quadratic memory cost. 
-The Evoformer architecture uses not one, but two transformers (a “two-tower architecture”), with one clear communication channel between the two. Each head is specialised for the particular type of data it is looking at, either a multiple sequence alignment, or a representation of pairwise interactions between amino acids. They also incorporate the information of the contiguous representation, allowing for regular exchange of information and iterative refinement.
-
-The MSA transformer computes attention over a very large matrix of protein symbols. To reduce what would otherwise be an impossible computational cost, the attention is “factorised” in “row-wise” and “column-wise” components. Namely, the network first computes attention in the horizontal direction, allowing the network to identify which pairs of amino acids are more related; and then in the vertical direction, determining which sequences are more informative.
-
-The most important feature of AlphaFold 2’s MSA transformer is that the row-wise (horizontal) attention mechanism incorporates information from the “pair representation”. When computing attention, the network adds a bias term that is calculated directly from the current pair representation. This trick augments the attention mechanism and allows it to pinpoint interacting pairs of residues.
-
-The other transformer head, the one that acts on the pair representation, works in a similar manner, although a lot of details differ, of course. The key feature of this network is that attention is arranged in terms of triangles of residues. The intuition here is to enforce the triangle inequality, one of the axioms of metric spaces. This is quite a clever idea since one of the classical problems of deep learning-based structure prediction was that distance distributions could not be embedded in three-dimensional space. It seems this trick fixes that and then some more.
-
-
-----
 
 ## 4. The structure module
 
+![structure]()
+
 this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure.
 The end result is a long list of Cartesian coordinates representing the position of each atom of the protein, including side chains.
+
+the evoformer single representation (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
+is used as the initial single representation and Evoformer’s pair representation ({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
+The module has 8 layers with shared weights. Each layer updates the abstract single representation {si } as
+well the concrete 3D representation (the “residue gas”) which is encoded as one backbone frame per residue
+{Ti=(Ri, ti)}.
+The Ti represents an Euclidean transform from the local frame to a global reference frame. I.e. it transforms a position in local coordinates ~X_local ∈ R3 to a position in global coordinates ~X_global ∈ R3
+      
+     ~X_global = Ti ◦ ~X_local
+              = Ri~X_local + ~ti
+
+The backbone frames are initialized to an identity transform. We call this approach
+the ‘black hole initialization’. This initialization means that at the start of the Structure module all residues
+are located at the same point (the origin of the global frame) with the same orientation.
+
+One “layer” of the structure module is composed by the following operations:
+
+
 
 
 ----
