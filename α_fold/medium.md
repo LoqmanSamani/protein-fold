@@ -67,15 +67,48 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
        Computes attention scores using the scaled dot-product attention mechanism. 
        It involves taking the dot product of the query q and key k, scaling it by the square root of the dimensionality 
 
-       Output=g⋅∑(self.attention)
-
 
        ColumnAttention = g . sum(self-attention)
   
-       g = sigmoid(LinearNoBias(LinearNorm(z))) applies a linear transformation to the input z(pair representation) with no bias term. This is used for incorporating pair biases in the attention mechanism.
+       g = sigmoid(LinearNoBias(LinearNorm(z))) applies a linear transformation to the input z(pair representation) with no bias term. This is used for incorporating pair biases in the attention mechanism.(During the per-sequence attention in the MSA, we project additional
+       logits from the pair stack to bias the MSA attention. This closes the loop by providing information flow from the pair representation back into the MSA representation, ensuring that the overall Evoformer block is
+       able to fully mix information between the pair and MSA representations and prepare for structure generation within the structure module.)
+
        self-attention = softmax((Q * K.T)/ sqrt(32) + b) * V
 
        RowAttentionWithPairWise = g . sum(self-attention)
+
+![evoformer1]()
+
+![evoformer2]()
+
+
+After row-wise and column-wise attention the MSA stack contains a 2-layer MLP(multi-layer perceptron) as the transition layer.This stage of processing in the evoformer block operates across features,
+refining the representation using a non-linear transform.
+
+![evoformer3]()
+
+The “Outer product mean” block transforms the MSA representation into an update for the pair representation . All MSA entries are linearly projected to a smaller dimension c = 32 with
+two independent Linear transforms. The outer products of these vectors (If vi and vj are the vectors obtained from the linear projections for columns i and j, then the outer product is vi⊗vj)from two columns i and j are averaged over the sequences (This involves taking the mean over the corresponding elements of the outer products across the sequences.) and projected to dimension cz to obtain an update for entry ij in the pair representation.
+Mathematically, if viand vj are column vectors obtained from linear projections, and ⊗ denotes the outer product, the update for entry ij (Uij) can be expressed as:
+
+      Uij = Pij(mean(vi⊗vj))
+Here, Pij is a linear transform, and mean calculates the mean over the sequences.
+
+![evofomer4]()
+
+next step in evoformer block is The triangular multiplicative update updates the pair representation in the Evoformer block by
+combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
+from the other two edges of all triangles, where it is involved. this step sontains two sub steps, one for the
+“outgoing” edges and one for the “incoming” edges.
+
+![evoformer5&6]()
+
+
+
+
+
+
 
 
 
