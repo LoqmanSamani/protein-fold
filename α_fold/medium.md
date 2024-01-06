@@ -153,10 +153,10 @@ where the intermediate number of channels expands the original number of channel
 this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure.
 The end result is a long list of Cartesian coordinates representing the position of each atom of the protein, including side chains.
 
-the evoformer single representation (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
-is used as the initial single representation and Evoformer’s pair representation ({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
+the evoformer single representation(structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
+is used as the initial single representation and Evoformer’s pair representation (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
 The module has 8 layers with shared weights. Each layer updates the abstract single representation {si } as
-well the concrete 3D representation (the “residue gas”) which is encoded as one backbone frame per residue
+well the concrete 3D representation ()(residue gas: a representation of each residue as one free-floating rigid body for the backbone) which is encoded as one backbone frame per residue
 {Ti=(Ri, ti)}.
 The Ti represents an Euclidean transform from the local frame to a global reference frame. I.e. it transforms a position in local coordinates ~X_local ∈ R3 to a position in global coordinates ~X_global ∈ R3
       
