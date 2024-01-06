@@ -78,15 +78,15 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
 
        RowAttentionWithPairWise = g . sum(self-attention)
 
-![evoformer1]()
+![evoformer1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer1.png)
 
-![evoformer2]()
+![evoformer2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer2.png)
 
 
 After row-wise and column-wise attention the MSA stack contains a 2-layer MLP(multi-layer perceptron) as the transition layer.This stage of processing in the evoformer block operates across features,
 refining the representation using a non-linear transform.
 
-![evoformer3]()
+![evoformer3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer3.png)
 
 The “Outer product mean” block transforms the MSA representation into an update for the pair representation . All MSA entries are linearly projected to a smaller dimension c = 32 with
 two independent Linear transforms. The outer products of these vectors (If vi and vj are the vectors obtained from the linear projections for columns i and j, then the outer product is vi⊗vj)from two columns i and j are averaged over the sequences (This involves taking the mean over the corresponding elements of the outer products across the sequences.) and projected to dimension cz to obtain an update for entry ij in the pair representation.
@@ -95,14 +95,30 @@ Mathematically, if viand vj are column vectors obtained from linear projections,
       Uij = Pij(mean(vi⊗vj))
 Here, Pij is a linear transform, and mean calculates the mean over the sequences.
 
-![evofomer4]()
+![evofomer4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer4.png)
 
 next step in evoformer block is The triangular multiplicative update updates the pair representation in the Evoformer block by
 combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
 from the other two edges of all triangles, where it is involved. this step sontains two sub steps, one for the
 “outgoing” edges and one for the “incoming” edges.
+- The input pair representation Zij is first normalized
+- Two linear projections are applied to Zij to obtain Aij and Bij
 
-![evoformer5&6]()
+     Aij,Bij = sigmoid(Linear(Zij))⋅Linear(Zij)
+     Linear denotes the linear transformation, and sigmoid is the sigmoid activation function.
+
+- Another linear transformation Gij is applied to Zij and passed through a sigmoid activation: 
+
+     Gij = sigmoid(Linear(Zij))
+
+- The multiplicative update is performed using the computed Gij and a linear transformation of the sum of element-wise products:
+
+    Z_hat ij=Gij⋅Linear(LayerNorm(∑(Aik ⋅Bjk)))
+    The result is the updated pair representation Z_hat ij
+
+![evoformer5&6](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer5%266.png)
+
+
 
 
 
