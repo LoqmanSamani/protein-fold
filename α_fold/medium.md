@@ -150,24 +150,41 @@ where the intermediate number of channels expands the original number of channel
 
 ![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
 
-this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure.
+this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure(structure 6).
 The end result is a long list of Cartesian coordinates representing the position of each atom of the protein, including side chains.
 
 the evoformer single representation(structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
 is used as the initial single representation and Evoformer’s pair representation (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
 The module has 8 layers with shared weights. Each layer updates the abstract single representation {si } as
-well the concrete 3D representation ()(residue gas: a representation of each residue as one free-floating rigid body for the backbone) which is encoded as one backbone frame per residue
+well the concrete 3D representation (structure 7)(residue gas: a representation of each residue as one free-floating rigid body for the backbone) which is encoded as one backbone frame per residue
 {Ti=(Ri, ti)}.
 The Ti represents an Euclidean transform from the local frame to a global reference frame. I.e. it transforms a position in local coordinates ~X_local ∈ R3 to a position in global coordinates ~X_global ∈ R3
       
      ~X_global = Ti ◦ ~X_local
               = Ri~X_local + ~ti
 
-The backbone frames are initialized to an identity transform. We call this approach
+The backbone frames (structure 3) are initialized to an identity transform. We call this approach
 the ‘black hole initialization’. This initialization means that at the start of the Structure module all residues
 are located at the same point (the origin of the global frame) with the same orientation.
 
 One “layer” of the structure module is composed by the following operations:
+
+- The abstract single representation is updated by the Invariant Point Attention (structure 4) and a transition layer.
+- The abstract single representation is mapped to concrete update frames that are composed to the backbone frames (structure 6)
+
+The composition of two Euclidean transforms is denoted as 
+
+            Tresult = T1 ◦ T2
+
+In the parameterization with a rotation matrix and translation vector this is:
+
+            (Rresult , ~tresult ) = (R1 , ~t1 ) ◦ (R2 , ~t2 )
+                                  = (R1 R2 , R1~t2 + ~t1 )
+
+To obtain all atom coordinates, we parameterize each residue by torsion angles(table 1). I.e., the torsion angles are
+the only degrees of freedom, while all bond angles and bond lengths are fully rigid.
+
+![table1]()
 
 
 
