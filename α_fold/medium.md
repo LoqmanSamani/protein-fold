@@ -152,45 +152,51 @@ where the intermediate number of channels expands the original number of channel
 
 this part of the alphafold algorithm takes the refined MSA representation (only a copy of the first row of MSA representation and the first row represents the original sequence) and pair representation, which were refined with Evoformer blocks, and leverages them to construct a three-dimensional model of the structure(structure 6).
 The end result is a long list of Cartesian coordinates (pdb_format) representing the position of each atom of the protein, including side chains.
-![pdb_format]()
 
-the evoformer single representation(structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
-is used as the initial single representation and Evoformer’s pair representation (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
-The module has 8 layers with shared weights. Each layer updates the abstract single representation {si } as
-well the concrete 3D representation (structure 7)(residue gas: a representation of each residue as one free-floating rigid body for the backbone) which is encoded as one backbone frame per residue
-{Ti=(Ri, ti)}.
-The Ti represents an Euclidean transform from the local frame to a global reference frame. I.e. it transforms a position in local coordinates ~X_local ∈ R3 to a position in global coordinates ~X_global ∈ R3
-      
-     ~X_global = Ti ◦ ~X_local
-              = Ri~X_local + ~ti
+![pdb_format](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/pdb_format.png)
 
-The backbone frames (structure 3) are initialized to an identity transform. We call this approach
-the ‘black hole initialization’. This initialization means that at the start of the Structure module all residues
-are located at the same point (the origin of the global frame) with the same orientation.
+the single representation (structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.this is the first row of MSA representation which is the initial sequence)
+pair representation(The pair representation encodes information about the distance between pairs but not spatial positioning as such it is invariant to global transforms) (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) and backbone frames(the geometric representation, these are 4x4 matrices that encode a rotation and a translation for each residue.) (the initialized coordinates of all residues in the sequence which means they are located at the same point (the origin of the global frame) with the same orientation.)
+are used as input of the structure module and the outputs are the concrete 3D representation as well as different accuracy numbers such as pLDDT and LDDT. this step is the final step in alphafold (if we ignore the recycling step which iterate by default 3 times over evoformer and structure module) algorithm which works with the gradient descent base algorithm to optimize the predicted 3d structure.
+The number of iteration (layers) in this module is 8, in which the weights will be shared among the layer(in contrast to evoformer mudule, in which each block has the specific weights) and in each iteration the following steps are occurred:
+1) the first sub step is invariant point attention(IPA), which is a specific type of attention for dealing with 3d structures (in general the attention mechanism which are explained in detail in evoformer module is used in this section).
+   the pair representation, the single representation and the geometric representation are used in this sub step to update the single representation.
+   first for each token(residue) in single representation the query, key, and value vectors will be created (the same as the general attention mechanism)
+   to contain information from the 3d representation and have a mechanism by which the single representation will be affected by spatial information the IPA used the following equation:
+![ipa1]()   
+   the weight is proportional to the dot product of a query vector q and a key vector k. Information from the pair representation has an effect on the wight via the addition of b, a scalar computed from the pairwise representation of residues i,j
+   The objective is such that the attention weights should remain unchanged if all matrices T are subject to the same rigid transformation. The way this is achieved can be seen in the right portion of the equation above:
+![ipa2]()
+   We generate additional query and key vectors for each residue which are multiplied by their respective T matrices. Taking the euclidean distance of these two transformed vectors ensures that the value is invariant to global rigid transformations and this is shown in the proof below:
+![ipa3]()
+   So far we have established that the attention weights are invariant. It remains to be shown that the final representation is also invariant:
+   In line 10 of the algorithm, we see that the final representation has a component that is dependent on the euclidean transforms Tᵢ
+![ipa4]()
+   the output of the IPA sub step is the refined single representation (it is refined using spatial information and pair representaion).
+2) The Structure Module predicts backbone frames Ti and torsion angles if . The atom coordinates are then constructed by applying the torsion angles to the corresponding amino acid structure with idealized bond angles and bond lengths.
+in each iteration of structure module In order to resolve any remaining structural violations and clashes, we relax our model predictions by
+an iterative restrained energy minimization procedure. At each round, we perform minimization of the AMBER99SB[100] force field with additional harmonic restraints that keep the system near its input structure.
 
-One “layer” of the structure module is composed by the following operations:
+at the end of the structural module this accuracy numbers will be calculated:
+1) Frame aligned point error (FAPE): scores a set of predicted atom coordinates under a set of predicted local frames against the corresponding ground truth atom coordinates and ground truth local frames.
+   The final FAPE loss scores all atoms in all backbone and side chain frames.
+2) Model confidence prediction (pLDDT): compute the expected value of the per-residue pLDDT distribution
+3) TM-score prediction: The pLDDT head above predicts the value of lDDT-Cα, which is a local error metric that operates pairwise
+   but by design is not sensitive to what fraction of the residues can be aligned using a single global rotation
+   and translation. This can be disadvantageous for assessing whether the model is confident in its overall
+   domain packing for large chains. In this section we develop a predictor of the global superposition metric
+   TM-score.
 
-- The abstract single representation is updated by the Invariant Point Attention (structure 4) and a transition layer.
-- The abstract single representation is mapped to concrete update frames that are composed to the backbone frames (structure 6)
-
-            The composition of two Euclidean transforms is denoted as 
-
-            Tresult = T1 ◦ T2
-
-            In the parameterization with a rotation matrix and translation vector this is:
-
-            (Rresult , ~tresult ) = (R1 , ~t1 ) ◦ (R2 , ~t2 )
-                                  = (R1 R2 , R1~t2 + ~t1 )
-
-           To obtain all atom coordinates, we parameterize each residue by torsion angles(table 1). I.e., the torsion angles are
-           the only degrees of freedom, while all bond angles and bond lengths are fully rigid.
-
-- A shallow ResNet predicts the torsion angles αif ∈ R2 . 
-- 
+   
 ![table1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/table.png)
 
+## 5. Recycling
+
+The last step of the alphafold algorithm is the Recycling step. After generating the final structure, output of th structure module, all the generated and refined information (i.e. MSA representation, pair representation and predicted structure) will be used as input for Evoformer blocks, This allows the model to refine its predictions.
+This process is repeated 3 times (by default) and in each iteration the output is embedded to use as additional input of the model, so the prediction will be more precise and accurate.
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -206,12 +212,21 @@ One of said details is the loss function used by AlphaFold 2. The DeepMind team 
 It seems this function was not enough. The final AlphaFold 2 loss function is in fact a weighted sum of multiple “auxiliary losses”, which do not necessarily relate to the performance of the model, but that provide additional information. For example, the DeepMind team computed the loss not only of the final output, but also of each of the three iterations of the structure module. It also includes a “distogram loss”, where the predicted structure is used to generate a 2D matrix of distances that is also compared to the ground truth.
 That is not the only sleight-of-hand. One of the cleverer tricks the team pulled off is self-distillation. In this approach, they took a model trained exclusively on the PDB, and predicted the structures of ~300k diverse protein sequences obtained from Uniclust. They then retrained the full model, incorporating a small random sample of these structures at every training cycle. They claim this allows the model to leverage the large amount of unlabelled data available in protein sequence repositories. 
 
+Exact enforcement of peptide bond geometry is only achieved in the post-prediction relaxation of the structure by gradient descent in the Amber32 force field.
+
+The residue gas representation is updated iteratively in two stages. 1) a geometry-aware attention operation that we term ‘invariant point attention’ (IPA) is used to update an Nres set of neural
+activations (single representation) without changing the 3D positions, 2) an equivariant update operation is performed on the residue gas using the updated activations.
+
+The IPA augments each of the usual attention queries, keys and values with 3D points that are produced in the local frame of each residue such that the final value is invariant to global rotations and translations
+
+The IPA module combines the pair representation, the single representation and the geometric representation to update the single representation
+The IPA operates in 3D space. Each residue produces query points, key points and value points in its local frame. These points are projected into the global frame using the backbone frame of the residue in which they interact with each
+other. The resulting points are then projected back into the local frame. The affinity computation in the 3D space uses squared distances and the coordinate transformations ensure the invariance of this module
+with respect to the global frame.
+
+
 ----
 
-## 5. Recycling
-
-The last step of the alphafold algorithm is the Recycling step. After generating the final structure, output of th structure module, all the generated and refined information (i.e. MSA representation, pair representation and predicted structure) will be used as input for Evoformer blocks, This allows the model to refine its predictions.
-This process is repeated 3 times (by default) and in each iteration the output is used as input of the model, so the prediction will be more precise and accurate.
 
 
 1. MSA stack: 
