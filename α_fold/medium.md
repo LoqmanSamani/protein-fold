@@ -161,17 +161,18 @@ are used as input of the structure module and the outputs are the concrete 3D re
 The number of iteration (layers) in this module is 8, in which the weights will be shared among the layer(in contrast to evoformer mudule, in which each block has the specific weights) and in each iteration the following steps are occurred:
 1) the first sub step is invariant point attention(IPA), which is a specific type of attention for dealing with 3d structures (in general the attention mechanism which are explained in detail in evoformer module is used in this section).
    the pair representation, the single representation and the geometric representation are used in this sub step to update the single representation.
+![ipa](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa.png)
    first for each token(residue) in single representation the query, key, and value vectors will be created (the same as the general attention mechanism)
    to contain information from the 3d representation and have a mechanism by which the single representation will be affected by spatial information the IPA used the following equation:
-![ipa1]()   
+![ipa1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa1.png)   
    the weight is proportional to the dot product of a query vector q and a key vector k. Information from the pair representation has an effect on the wight via the addition of b, a scalar computed from the pairwise representation of residues i,j
    The objective is such that the attention weights should remain unchanged if all matrices T are subject to the same rigid transformation. The way this is achieved can be seen in the right portion of the equation above:
-![ipa2]()
+![ipa2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa2.png)
    We generate additional query and key vectors for each residue which are multiplied by their respective T matrices. Taking the euclidean distance of these two transformed vectors ensures that the value is invariant to global rigid transformations and this is shown in the proof below:
-![ipa3]()
+![ipa3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa3.png)
    So far we have established that the attention weights are invariant. It remains to be shown that the final representation is also invariant:
    In line 10 of the algorithm, we see that the final representation has a component that is dependent on the euclidean transforms Tᵢ
-![ipa4]()
+![ipa4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa4.png)
    the output of the IPA sub step is the refined single representation (it is refined using spatial information and pair representaion).
 2) The Structure Module predicts backbone frames Ti and torsion angles if . The atom coordinates are then constructed by applying the torsion angles to the corresponding amino acid structure with idealized bond angles and bond lengths.
 in each iteration of structure module In order to resolve any remaining structural violations and clashes, we relax our model predictions by
