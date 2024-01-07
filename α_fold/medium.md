@@ -150,8 +150,9 @@ where the intermediate number of channels expands the original number of channel
 
 ![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
 
-this part of the alphafold algorithm takes the refined MSA representation and pair representation, which were manipulated with Evoformer, and leverages them to construct a three-dimensional model of the structure(structure 6).
-The end result is a long list of Cartesian coordinates representing the position of each atom of the protein, including side chains.
+this part of the alphafold algorithm takes the refined MSA representation (only a copy of the first row of MSA representation and the first row represents the original sequence) and pair representation, which were refined with Evoformer blocks, and leverages them to construct a three-dimensional model of the structure(structure 6).
+The end result is a long list of Cartesian coordinates (pdb_format) representing the position of each atom of the protein, including side chains.
+![pdb_format]()
 
 the evoformer single representation(structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.)
 is used as the initial single representation and Evoformer’s pair representation (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) biases the affinity maps in the attention operations.
