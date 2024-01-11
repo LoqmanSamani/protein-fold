@@ -57,12 +57,29 @@ During this process additional information from pair representation  will be com
 
 #### Feed Forward Neural Network
 
-After row-wise and column-wise attention the MSA stack contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN,  as the transition layer.This stage of processing in the Evoformer block operates across features,
+After row-wise and column-wise attention next layer of the MSA transformer contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN (figure 2, c),  as the transition layer.This stage of processing in the Evoformer block operates across features,
 refining the representation using a non-linear transform. The main idea behind a feed-forward neural network is to process input data through a series of layers, where each layer consists of nodes (neurons) connected to nodes in the subsequent layer. 
 During the training process of a Feedforward Neural Network (FFNN), each weight matrix associated with the layers of the network is optimized using an optimization algorithm to improve the accuracy of predicted structures. Notably, in a conventional neural network architecture, weights are typically shared across different layers. 
 However, in the case of the Evoformer, each block operates with its own set of weights, and these weights are not shared with other blocks. This contrasts with the usual neural network setup, where weights are often shared across layers. The unique characteristic of Evoformer lies in the independence of weights for each block, allowing for more localized and specific adaptations during the training process.
 
     FFN(X) = max(0, X * W1 + b1 ) * W2 + b2
+
+
+#### Outer Product Mean
+
+This block transforms the MSA representation into an update for the pair representation. The outer products of these vectors (If vi and vj are the vectors obtained from the linear projections for columns i and j, then the outer product is vi⊗vj)from two columns i and j are averaged over the sequences (This involves taking the mean over the corresponding elements of the outer products across the sequences.) and projected to dimension cz to obtain an update for entry ij in the pair representation.
+Mathematically, if viand vj are column vectors obtained from linear projections, and ⊗ denotes the outer product, the update for entry ij (Uij) can be expressed as:
+
+      Uij = Pij(mean(vi⊗vj))
+Here, Pij is a linear transform, and mean calculates the mean over the sequences.
+
+
+
+
+
+
+
+
 
 
 
@@ -120,12 +137,6 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
 
 ![evoformer3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer3.png)
 
-The “Outer product mean” block transforms the MSA representation into an update for the pair representation . All MSA entries are linearly projected to a smaller dimension c = 32 with
-two independent Linear transforms. The outer products of these vectors (If vi and vj are the vectors obtained from the linear projections for columns i and j, then the outer product is vi⊗vj)from two columns i and j are averaged over the sequences (This involves taking the mean over the corresponding elements of the outer products across the sequences.) and projected to dimension cz to obtain an update for entry ij in the pair representation.
-Mathematically, if viand vj are column vectors obtained from linear projections, and ⊗ denotes the outer product, the update for entry ij (Uij) can be expressed as:
-
-      Uij = Pij(mean(vi⊗vj))
-Here, Pij is a linear transform, and mean calculates the mean over the sequences.
 
 ![evofomer4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer4.png)
 
