@@ -32,9 +32,47 @@ The objective of this part is to refine the representations for both MSA-represe
 <figcaption style="font-size: smaller; text-align: center;">Figure 2: The Evoformer network. it consists of 48 (by default) blocks, each block has an MSA representation and a pair representation as its input and output and processes them within several layers.</figcaption>
 
 
-Basically we can devide the evoformer (transformer) into two parts Encoder and Decoder. in general the encoder part used as a block in which the input parameters (in alphafold case inputs are MSA representations)
-are processed and the decoder part is a block in which the output parameters are processed(in this case pair representation information are the output).
-each encoder or decoder contains two main parts a) self-attention b) feed forward neural network (FFN(x) = max(0, X*W1 + b1 )W2 + b2).
+Each block of Evoformer (figure 2) contains two transformer models, each processes one of the main input information (MSA-representation and pair representation), which share information in two different layers of the block, namely there is a flow of information in the first layer of the block from pair representation to MSA-representation and the second one occurs in the forth layer (outer product mean) of the block from the MSA-representation transformer to the pair representation transformer.
+Each of this two transformers contains two main parts, the first part in each case called **self-attention** and the second one named as **Feed Forward Neural Network (FFNN)**.
+
+#### Self Attention
+
+The main idea behind self-attention in a Transformer is to enable the model to weigh the importance of different words in a sequence when processing each word. It allows the model to consider the relationships and dependencies between words in a flexible and adaptive way, capturing long-range dependencies and improving its ability to understand the context of each word.
+In the context of protein structure, a diverse set of 20 unique amino acids (analogous to words) in each sequence plays a pivotal role in determining distinct folding patterns. It is essential to gather detailed information about each residue and understand how they interact with neighboring residues. This comprehensive knowledge is crucial for inferring higher-order structures such as secondary, tertiary, and quaternary structures in proteins.
+To gain this necessary information alphafold defines **axial self-attention** in the MSA representation, **triangular self-attention** in the pair representation.
+
+##### axial self-attention in the MSA stack
+
+The first step in this process is to create three vectors from each row (row-attention) or column (column-attention) embedded MSA-representation, namely query(q), key(k) and value(v) vectors, each vector will be multiplied by a weight matrix to create Wq, Wk and Wv matrices and then each of them 
+is multiplied by embedded MSA (X), to create Q, K and V matrices, this process called positional encoding which means add a matrix of weights to each input embedding. These matrix follow a specific pattern that the model learns, which helps it determine the position of each word, or the distance between different words in the sequence.
+Next the calculated matrix will be normalized using softmax function. (Softmax normalizes the scores, so they’re all positive and add up to 1). As it is illustrated in the figure 2-a, there is a connection between MSA and pair-transformers, which demonstrated the flow of information from pair representation to the MSA-representation.
+During this process additional information from pair representation  will be combined to bias terms bias of the MSA attention. This closes the loop by providing information flow from the pair representation back into the MSA representation, ensuring that the overall Evoformer block is able to fully mix information between the pair and MSA representations and prepare for structure generation within **the structure module**.
+    
+    Wq * X = Q
+    Wk * X = K
+    Wv * X = V
+
+    column-attention: Z = softmax((Q . K.T)/sqrt(d)) * V     # d = dimension of the keys, queries, and values matrices
+    row-attention: Z = softmax((Q . K.T)/sqrt(d) + b) * V    # b = pair representation information
+
+#### Feed Forward Neural Network
+
+After row-wise and column-wise attention the MSA stack contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN,  as the transition layer.This stage of processing in the Evoformer block operates across features,
+refining the representation using a non-linear transform. The main idea behind a feed-forward neural network is to process input data through a series of layers, where each layer consists of nodes (neurons) connected to nodes in the subsequent layer. 
+During the training process of a Feedforward Neural Network (FFNN), each weight matrix associated with the layers of the network is optimized using an optimization algorithm to improve the accuracy of predicted structures. Notably, in a conventional neural network architecture, weights are typically shared across different layers. 
+However, in the case of the Evoformer, each block operates with its own set of weights, and these weights are not shared with other blocks. This contrasts with the usual neural network setup, where weights are often shared across layers. The unique characteristic of Evoformer lies in the independence of weights for each block, allowing for more localized and specific adaptations during the training process.
+
+    FFN(X) = max(0, X * W1 + b1 ) * W2 + b2
+
+
+
+
+
+The result of self-attention step (matrix Z) captures attention information which will be sent to the feed forward neural network to
+
+in both cases row-attention (figure 2, a) and column-attention (figure 2, b)
+
+each encoder or decoder contains two main parts a) self-attention b) feed forward neural network (FFN(x) = max(0, X*W1 + b1 )W2 + b2
 in alphafold in each block there are an encoder and a decoder which share information. The weights in each block of evoformer (neural network parameters are not shared with other blocks it means each block saves the weights for its self just like general transformers.)
 
 a) self-attention 
@@ -68,7 +106,7 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
        logits from the pair stack to bias the MSA attention. This closes the loop by providing information flow from the pair representation back into the MSA representation, ensuring that the overall Evoformer block is
        able to fully mix information between the pair and MSA representations and prepare for structure generation within the structure module.)
 
-       self-attention = softmax((Q * K.T)/ sqrt(32) + b) * V
+       self-attention = softmax((Q * K.T)/ sqrt(d) + b) * V   # d = dimension of the keys, queries, and values matrices
 
        RowAttentionWithPairWise = g . sum(self-attention)
        (The most important feature of AlphaFold 2’s MSA transformer is that the row-wise (horizontal) attention mechanism incorporates information from the “pair representation”. When computing attention, the network adds a bias term that is calculated directly from the current pair representation. This trick augments the attention mechanism and allows it to pinpoint interacting pairs of residues.)
@@ -78,8 +116,7 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
 ![evoformer2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer2.png)
 
 
-After row-wise and column-wise attention the MSA stack contains a 2-layer MLP(multi-layer perceptron) as the transition layer.This stage of processing in the evoformer block operates across features,
-refining the representation using a non-linear transform.
+
 
 ![evoformer3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer3.png)
 
