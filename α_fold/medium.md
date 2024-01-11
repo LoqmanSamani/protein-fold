@@ -3,40 +3,34 @@
 ![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/alphafold.png)
 
 
-## 1 & 2 . Genetic and Structure Database Searches
+### Genetic and Structure Database Searches
 
-The first step in the alphafold algorithm is **Data Pipeline**, which is the process of collecting input information for the rest of the alphafold process.
-The initial input in this stage is an mmCIF (in training phase) or a fasta (in prediction phase) file which produces input features for the model.
-Next the input file is parsed and relevant parameters is extracted (mmCIF: the sequence, atom coordinates, release date, name, and resolution. fasta: the sequence and its name).
-with the information in hand two different database searches is conducted, in one case, genetic search, the database Big Fantastic Database (BFD), created using Uniprot/TrEMBL+Swissprot database,
-is searched for similar sequences (in this case specific applications like JackHMMER and HHBlits are used) and the results, called multiple sequence alignments (MSAs), then are cleaned from duplicated sequences 
-and the remaining sequences then stacked together to form a matrix of sequences. Each column of the MSA representation encodes an
-individual residues of the input sequence while each row represent the sequences in which those residues appear.
-in the next case, the information obtained from the last step (MSAs) are used (with an approach called HHSearch) to search in Protein Data Bank (PDB), template search,  to obtain the protein structures, which 
-have a similar structure as the input MSA (in many cases the 3D structure and also the functionality of two protein in different organisms are similar but the primary structures may be different, so in this step the proteins with the same structure are selected). 
+The first step in the alphafold algorithm is **Data Pipeline**, which is the process of collecting structural relevant information that can make the model-training possible and make the inference process more accurate.
+Beside amino acid sequence files in format fasta, there is another important resource of protein information  in the training phase of the alphafold system, which called as **Macromolecular Crystallographic Information Files** (mmCIF). this format as one can understand from its name contains a diversity of sequential and structural protein information belonging to proteins which were collected form experimental methods like **X-ray crystallography**. in the inference phase one should give the system just the sequence identifier which will be used to retrieve the amino acid sequence of the protein in format fasta.
 
-After collecting the data, Input primary sequence and MSA features are embedded to MSA representation (The size of this list is hyperparameter we can set, basically it would be the length of the longest sentence in our training dataset) which is a matrix with the shape of 
-(number of sequences * length of the sequence). The structural information are also embedded to form pair representation, a matrix with the shape of (length of the sequence * length of the sequence).
+The system parses the input files (mmCIF and fasta) and extracts relevant information, in case of the mmCIF this information are the amino acid sequence, atom coordinates, release date, name of the sequence and resolution. in other case (fasta) the amino acid sequence and its name are the only needed information.
+With the retrieved information from the files two different database searches are conducted, in one case, **genetic database search**, (figure 1, a), the system searches **the Big Fantastic Database (BFD)** for similar sequences (in this case the system used specific applications like **JackHMMER** and **HHBlits**) and the result called **multiple sequence alignment(MSA)**, then the result will be modified by removing duplicated sequences and those who are not enough long to use in the process. 
+The remaining sequences then stacked together to form a matrix of sequences called *MSA representation*. Each column of this matrix encodes an individual residues of the input sequence in different organism while each row represents the entire sequence in a specific organism.
+In other case, the system uses an approach called **HHSearch** to search in **Protein Data Bank (PDB)**, **Structure Database Search**, (figure 1, b) to obtain the protein 3d-structures, which have a similar primary structure as the initial input. 
 
-why embedding: embedding means to convert the alphabetic information (A, C, G, T) stores in MSA and also in pair representation to numbers (probabilities)(turning each input word into a vector), which are the input of the neural networks in general.
+### Embedding process
 
-in training phase 75% of training data comes from genetic search (sequence information) approach and the rest 25% comes from template search (pair representations).
-
-co-evolution: Suppose we have a protein where an amino acid with negative charge (say, glutamate) is near to an amino acid with positive charge (say, lysine), although they are both far away in the amino acid sequence. 
-This Coulombic interaction stabilises the structure of the protein. Imagine now that the first amino acid mutates into a positively charged amino acid — in order to preserve this contact, 
-the second amino acid will be under evolutionary pressure to mutate into a negatively charged amino acid, otherwise the resulting protein may not be able to fold.
+Before using the collected sequential (MSA features) and structural information in the alphafold system they need to be embedded.
+which refers to the process of converting categorical information, such as the alphabet representations (G, V, A, ...) found in Multiple Sequence Alignments (MSA), as well as the structural features, into numerical vectors or probabilities. This involves transforming each input symbol or word into a vectorized representation. These numerical vectors serve as the input for neural networks, allowing them to effectively process and learn patterns from the sequential data. 
+In the case of MSA features, the embedded result is called as **MSA representation** (figure 1, c), which is a matrix of shape (number of sequences * length of the longest sequence). In other case the embedded result called **pair representation**, (figure 1, d), which is a matrix with the shape of (length of the sequence * length of the sequence).
+This two different but relevant matrices are the main input parameters In both training and inference phases. In training phase 75% of training data comes from MSA representations and the rest 25% comes from pair representations.
 
 
+
+### Evoformer module
+
+Evoformer is one of the most important and powerful module in alphafold system. It is basically a type of neural network, which takes MSA-representation and also pair representation as input and using this information
+makes an output which is a prediction of the protein structure as a graph inference problem in 3D space in which the edges of the graph are defined by amino acid residues in proximity, and the edges between nodes represent the spacial relationships between those residues.
+The objective of this part is to refine the representations for both MSA-representation and pair representation, but also to iteratively exchange information between them. This network contains several layers of processing (figure 2), which process the input information in a specific order to produce the comprehensive output.
 
 ![evoformer](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer.png)
+<figcaption style="font-size: smaller; text-align: center;">Figure 2: The Evoformer network. it consists of 48 (by default) blocks, each block has an MSA representation and a pair representation as its input and output and processes them within several layers.</figcaption>
 
-## 3 . Evoformer (evolutionary transformer?) module
-
-Evoformer is the main step in the alphafold algorithm, it is actually a transformer neural network which takes the MSAs and structural information from the last steps
-as input and the output of this network is the prediction of protein structures as a graph inference problem in 3D space in which the edges of the
-graph are defined by residues in proximity, it means each node in the graph corresponds to a residue (amino acid), and the edges between nodes represent the spatial relationships between those residues.
-The objective of this part is to refine the representations for both the MSA and the pair interactions, but also to iteratively exchange information between them.
-The Evoformer network consists of 48 (by default) blocks (iterations), each block has an MSA representation and a pair representation as its input and output and processes them within several layers.
 
 Basically we can devide the evoformer (transformer) into two parts Encoder and Decoder. in general the encoder part used as a block in which the input parameters (in alphafold case inputs are MSA representations)
 are processed and the decoder part is a block in which the output parameters are processed(in this case pair representation information are the output).
@@ -375,4 +369,8 @@ To determine the origin, you would need to refer to the experimental details in 
 
 Keep in mind that the coordinates in these files are given in angstroms or nanometers, depending on the convention used, and they represent the spatial positions of atoms within the crystal structure.
 
+
+co-evolution: Suppose we have a protein where an amino acid with negative charge (say, glutamate) is near to an amino acid with positive charge (say, lysine), although they are both far away in the amino acid sequence. 
+This Coulombic interaction stabilises the structure of the protein. Imagine now that the first amino acid mutates into a positively charged amino acid — in order to preserve this contact, 
+the second amino acid will be under evolutionary pressure to mutate into a negatively charged amino acid, otherwise the resulting protein may not be able to fold.
 
