@@ -55,29 +55,152 @@ During this process additional information from pair representation  will be com
     column-attention: Z = softmax((Q . K.T)/sqrt(d)) * V     # d = dimension of the keys, queries, and values matrices
     row-attention: Z = softmax((Q . K.T)/sqrt(d) + b) * V    # b = pair representation information
 
-#### Feed Forward Neural Network
+#### Feed Forward Neural Networks
 
 After row-wise and column-wise attention next layer of the MSA transformer contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN (figure 2, c),  as the transition layer.This stage of processing in the Evoformer block operates across features,
 refining the representation using a non-linear transform. The main idea behind a feed-forward neural network is to process input data through a series of layers, where each layer consists of nodes (neurons) connected to nodes in the subsequent layer. 
 During the training process of a Feedforward Neural Network (FFNN), each weight matrix associated with the layers of the network is optimized using an optimization algorithm to improve the accuracy of predicted structures. Notably, in a conventional neural network architecture, weights are typically shared across different layers. 
 However, in the case of the Evoformer, each block operates with its own set of weights, and these weights are not shared with other blocks. This contrasts with the usual neural network setup, where weights are often shared across layers. The unique characteristic of Evoformer lies in the independence of weights for each block, allowing for more localized and specific adaptations during the training process.
 
+
     FFN(X) = max(0, X * W1 + b1 ) * W2 + b2
 
 
 #### Outer Product Mean
 
-This block transforms the MSA representation into an update for the pair representation. The outer products of these vectors (If vi and vj are the vectors obtained from the linear projections for columns i and j, then the outer product is vi⊗vj)from two columns i and j are averaged over the sequences (This involves taking the mean over the corresponding elements of the outer products across the sequences.) and projected to dimension cz to obtain an update for entry ij in the pair representation.
-Mathematically, if viand vj are column vectors obtained from linear projections, and ⊗ denotes the outer product, the update for entry ij (Uij) can be expressed as:
+This layer of the Evoformer (Figure 2, d) serves the purpose of transforming the MSA-representation into an update for the pair representation. The transformation involves computing the mean of the outer product of each two columns (for instance, Ci and Cj), and this result is utilized as an update for the element (Cij) in the pair representation. This mechanism ensures the integration of information from the MSA into the Pair representation module.
 
-      Uij = Pij(mean(vi⊗vj))
-Here, Pij is a linear transform, and mean calculates the mean over the sequences.
+Mathematically, this process can be represented as:
 
-
-
+     C¹m*n * C²m*n.T = C¹²m*n  # the outer product matrix
+     C³ = mean(C¹²m*n)
 
 
+#### Triangle multiplicative update and triangle self-attention
 
+In the Evoformer block, the process of updating the pair representation is designed to implement an attention mechanism akin to the one applied in the Multiple 
+Sequence Alignment (MSA) representation. The objective is to capture intricate relationships between residues in a three-dimensional protein structure, enabling 
+a nuanced understanding of how each residue influences the spatial representation of others in the molecular space.
+
+As illustrated in Figure 3a, a graph representation is constructed from the pair representation matrix. In this graph, each node represents an amino acid, 
+and the edges correspond to entries in the matrix. The circles within the graph symbolize individual residues. To simplify the explanation, we focus on 
+updating a single edge, ij, leveraging information from other edges.
+
+During the Triangular Multiplicative Update step, the edge ij undergoes an update by assimilating information from the other edges. 
+It is noteworthy that there exist two symmetric versions of this update, differentiating between "outgoing" and "incoming" edges. 
+This ensures a comprehensive consideration of information flow within the graph structure.
+
+Following the Triangular Multiplicative Update, the process continues with the Triangular Self-Attention step. 
+In this step, the edge ij is further updated by incorporating values from all edges that share the same starting node. 
+This comprehensive attention mechanism facilitates the integration of information from neighboring residues, 
+contributing to a refined and context-aware representation of the 3D spatial relationships between amino acids in the protein structure.
+
+After the attention mechanism processes the pair representation in the Evoformer block, the subsequent step involves a transition layer (feedforward neural network). 
+This transition layer is analogous to the one found in the MSA representation transformer. In this layer, the pair representation is further refined and transformed 
+through the application of a feedforward neural network.
+
+     (graph fegure,a, b)
+
+
+
+## 4. The structure module
+
+![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
+
+In the final step of AlphaFold system, the algorithm extracts the first row of the highly processed MSA representation, which corresponds to the original sequence, and utilizes the pair representation. 
+These two representations serve as the foundation for the construction of a three-dimensional model of the protein structure (structure 6)
+The outcome of this process is a comprehensive list of Cartesian coordinates presented in the Protein Data Bank (PDB) format. These coordinates delineate the precise positions of 
+each atom within the protein structure, encompassing not only the backbone but also the intricate details of side chains. 
+
+
+![pdb_format](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/pdb_format.png)
+
+the single representation (structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.this is the first row of MSA representation which is the initial sequence)
+pair representation(The pair representation encodes information about the distance between pairs but not spatial positioning as such it is invariant to global transforms) (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) and backbone frames(the geometric representation, these are 4x4 matrices that encode a rotation and a translation for each residue.) (the initialized coordinates of all residues in the sequence which means they are located at the same point (the origin of the global frame) with the same orientation.)
+are used as input of the structure module and the outputs are the concrete 3D representation as well as different accuracy numbers such as pLDDT and LDDT. this step is the final step in alphafold (if we ignore the recycling step which iterate by default 3 times over evoformer and structure module) algorithm which works with the gradient descent base algorithm to optimize the predicted 3d structure.
+The number of iteration (layers) in this module is 8, in which the weights will be shared among the layer(in contrast to evoformer mudule, in which each block has the specific weights) and in each iteration the following steps are occurred:
+1) the first sub step is invariant point attention(IPA), which is a specific type of attention for dealing with 3d structures (in general the attention mechanism which are explained in detail in evoformer module is used in this section).
+   the pair representation, the single representation and the geometric representation are used in this sub step to update the single representation.
+![ipa](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa.png)
+   first for each token(residue) in single representation the query, key, and value vectors will be created (the same as the general attention mechanism)
+   to contain information from the 3d representation and have a mechanism by which the single representation will be affected by spatial information the IPA used the following equation:
+![ipa1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa1.png)   
+   the weight is proportional to the dot product of a query vector q and a key vector k. Information from the pair representation has an effect on the wight via the addition of b, a scalar computed from the pairwise representation of residues i,j
+   The objective is such that the attention weights should remain unchanged if all matrices T are subject to the same rigid transformation. The way this is achieved can be seen in the right portion of the equation above:
+![ipa2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa2.png)
+   We generate additional query and key vectors for each residue which are multiplied by their respective T matrices. Taking the euclidean distance of these two transformed vectors ensures that the value is invariant to global rigid transformations and this is shown in the proof below:
+![ipa3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa3.png)
+   So far we have established that the attention weights are invariant. It remains to be shown that the final representation is also invariant:
+   In line 10 of the algorithm, we see that the final representation has a component that is dependent on the euclidean transforms Tᵢ
+![ipa4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa4.png)
+   the output of the IPA sub step is the refined single representation (it is refined using spatial information and pair representaion).
+2) The Structure Module predicts backbone frames Ti and torsion angles if . The atom coordinates are then constructed by applying the torsion angles to the corresponding amino acid structure with idealized bond angles and bond lengths.
+in each iteration of structure module In order to resolve any remaining structural violations and clashes, we relax our model predictions by
+an iterative restrained energy minimization procedure. At each round, we perform minimization of the AMBER99SB[100] force field with additional harmonic restraints that keep the system near its input structure.
+
+at the end of the structural module this accuracy numbers will be calculated:
+1) Frame aligned point error (FAPE): scores a set of predicted atom coordinates under a set of predicted local frames against the corresponding ground truth atom coordinates and ground truth local frames.
+   The final FAPE loss scores all atoms in all backbone and side chain frames.
+2) Model confidence prediction (pLDDT): compute the expected value of the per-residue pLDDT distribution
+3) TM-score prediction: The pLDDT head above predicts the value of lDDT-Cα, which is a local error metric that operates pairwise
+   but by design is not sensitive to what fraction of the residues can be aligned using a single global rotation
+   and translation. This can be disadvantageous for assessing whether the model is confident in its overall
+   domain packing for large chains. In this section we develop a predictor of the global superposition metric
+   TM-score.
+
+   
+![table1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/table.png)
+
+
+
+
+
+
+
+
+After updating pair representation by MSA representation in the next three steps pair representation will be processed.
+The triangular multiplicative update updates the pair representation in the Evoformer block by
+combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
+from the other two edges of all triangles, where it is involved. There are two symmetric versions, one for the
+“outgoing” edges and one for the “incoming” edges.
+
+next step in evoformer block is Triangular self-attention: this process takes place in two sub steps:
+first the “starting node” version updates the edge ij with values from all edges that share the same starting node i, (i.e. all edges ik). 
+ the second sub step updates with an
+additional gating gij derived from edge ij. The symmetric pair of this module operates on the edges around
+the ending node.
+here the same steps occur as in the self-attention in MSA representations.
+
+
+
+
+
+
+next step in evoformer block is The triangular multiplicative update (The key feature of this network is that attention is arranged in terms of triangles of residues. 
+The intuition here is to enforce the triangle inequality, one of the axioms of metric spaces. This is quite a clever idea since one of the classical problems of deep learning-based 
+structure prediction was that distance distributions could not be embedded in three-dimensional space) updates the pair representation in the Evoformer block by
+combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
+from the other two edges of all triangles, where it is involved. this step sontains two sub steps, one for the
+“outgoing” edges and one for the “incoming” edges.
+- The input pair representation Zij is first normalized
+- Two linear projections are applied to Zij to obtain Aij and Bij
+
+     Aij,Bij = sigmoid(Linear(Zij))⋅Linear(Zij)
+     Linear denotes the linear transformation, and sigmoid is the sigmoid activation function.
+
+- Another linear transformation Gij is applied to Zij and passed through a sigmoid activation: 
+
+     Gij = sigmoid(Linear(Zij))
+
+- The multiplicative update is performed using the computed Gij and a linear transformation of the sum of element-wise products:
+
+    Z_hat ij=Gij⋅Linear(LayerNorm(∑(Aik ⋅Bjk)))
+    The result is the updated pair representation Z_hat ij
+
+
+
+
+     
 
 
 
@@ -140,26 +263,6 @@ next each value matrix will be multiplied by the softmax scores to keep intact t
 
 ![evofomer4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer4.png)
 
-next step in evoformer block is The triangular multiplicative update (The key feature of this network is that attention is arranged in terms of triangles of residues. 
-The intuition here is to enforce the triangle inequality, one of the axioms of metric spaces. This is quite a clever idea since one of the classical problems of deep learning-based 
-structure prediction was that distance distributions could not be embedded in three-dimensional space) updates the pair representation in the Evoformer block by
-combining information within each triangle of graph edges ij, ik, and jk. Each edge ij receives an update
-from the other two edges of all triangles, where it is involved. this step sontains two sub steps, one for the
-“outgoing” edges and one for the “incoming” edges.
-- The input pair representation Zij is first normalized
-- Two linear projections are applied to Zij to obtain Aij and Bij
-
-     Aij,Bij = sigmoid(Linear(Zij))⋅Linear(Zij)
-     Linear denotes the linear transformation, and sigmoid is the sigmoid activation function.
-
-- Another linear transformation Gij is applied to Zij and passed through a sigmoid activation: 
-
-     Gij = sigmoid(Linear(Zij))
-
-- The multiplicative update is performed using the computed Gij and a linear transformation of the sum of element-wise products:
-
-    Z_hat ij=Gij⋅Linear(LayerNorm(∑(Aik ⋅Bjk)))
-    The result is the updated pair representation Z_hat ij
 
 ![evoformer5&6](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer5%266.png)
 
@@ -188,50 +291,7 @@ where the intermediate number of channels expands the original number of channel
 
 
 
-## 4. The structure module
 
-![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
-
-this part of the alphafold algorithm takes the refined MSA representation (only a copy of the first row of MSA representation and the first row represents the original sequence) and pair representation, which were refined with Evoformer blocks, and leverages them to construct a three-dimensional model of the structure(structure 6).
-The end result is a long list of Cartesian coordinates (pdb_format) representing the position of each atom of the protein, including side chains.
-
-![pdb_format](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/pdb_format.png)
-
-the single representation (structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.this is the first row of MSA representation which is the initial sequence)
-pair representation(The pair representation encodes information about the distance between pairs but not spatial positioning as such it is invariant to global transforms) (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) and backbone frames(the geometric representation, these are 4x4 matrices that encode a rotation and a translation for each residue.) (the initialized coordinates of all residues in the sequence which means they are located at the same point (the origin of the global frame) with the same orientation.)
-are used as input of the structure module and the outputs are the concrete 3D representation as well as different accuracy numbers such as pLDDT and LDDT. this step is the final step in alphafold (if we ignore the recycling step which iterate by default 3 times over evoformer and structure module) algorithm which works with the gradient descent base algorithm to optimize the predicted 3d structure.
-The number of iteration (layers) in this module is 8, in which the weights will be shared among the layer(in contrast to evoformer mudule, in which each block has the specific weights) and in each iteration the following steps are occurred:
-1) the first sub step is invariant point attention(IPA), which is a specific type of attention for dealing with 3d structures (in general the attention mechanism which are explained in detail in evoformer module is used in this section).
-   the pair representation, the single representation and the geometric representation are used in this sub step to update the single representation.
-![ipa](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa.png)
-   first for each token(residue) in single representation the query, key, and value vectors will be created (the same as the general attention mechanism)
-   to contain information from the 3d representation and have a mechanism by which the single representation will be affected by spatial information the IPA used the following equation:
-![ipa1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa1.png)   
-   the weight is proportional to the dot product of a query vector q and a key vector k. Information from the pair representation has an effect on the wight via the addition of b, a scalar computed from the pairwise representation of residues i,j
-   The objective is such that the attention weights should remain unchanged if all matrices T are subject to the same rigid transformation. The way this is achieved can be seen in the right portion of the equation above:
-![ipa2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa2.png)
-   We generate additional query and key vectors for each residue which are multiplied by their respective T matrices. Taking the euclidean distance of these two transformed vectors ensures that the value is invariant to global rigid transformations and this is shown in the proof below:
-![ipa3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa3.png)
-   So far we have established that the attention weights are invariant. It remains to be shown that the final representation is also invariant:
-   In line 10 of the algorithm, we see that the final representation has a component that is dependent on the euclidean transforms Tᵢ
-![ipa4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa4.png)
-   the output of the IPA sub step is the refined single representation (it is refined using spatial information and pair representaion).
-2) The Structure Module predicts backbone frames Ti and torsion angles if . The atom coordinates are then constructed by applying the torsion angles to the corresponding amino acid structure with idealized bond angles and bond lengths.
-in each iteration of structure module In order to resolve any remaining structural violations and clashes, we relax our model predictions by
-an iterative restrained energy minimization procedure. At each round, we perform minimization of the AMBER99SB[100] force field with additional harmonic restraints that keep the system near its input structure.
-
-at the end of the structural module this accuracy numbers will be calculated:
-1) Frame aligned point error (FAPE): scores a set of predicted atom coordinates under a set of predicted local frames against the corresponding ground truth atom coordinates and ground truth local frames.
-   The final FAPE loss scores all atoms in all backbone and side chain frames.
-2) Model confidence prediction (pLDDT): compute the expected value of the per-residue pLDDT distribution
-3) TM-score prediction: The pLDDT head above predicts the value of lDDT-Cα, which is a local error metric that operates pairwise
-   but by design is not sensitive to what fraction of the residues can be aligned using a single global rotation
-   and translation. This can be disadvantageous for assessing whether the model is confident in its overall
-   domain packing for large chains. In this section we develop a predictor of the global superposition metric
-   TM-score.
-
-   
-![table1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/table.png)
 
 ## 5. Recycling
 
