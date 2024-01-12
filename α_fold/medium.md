@@ -1,11 +1,24 @@
 ## Highly accurate protein structure prediction with AlphaFold
 
+### Introduction
+Proteins, which are fundamental to life, play a crucial role in biological processes, so understanding their structures is essential for deciphering their functions. 
+Despite experimental efforts that have led to structural insights for about 100,000 unique proteins, this is only a fraction of the millions of known protein sequences. 
+The bottleneck in structural coverage is due to the laborious and time-consuming nature of experimental determination. 
+To close this gap and enable large-scale structural bioinformatics, accurate computational approaches are essential. Predicting the three-dimensional structure of a protein 
+based solely on its amino acid sequence, a key aspect of the protein folding problem, has been a challenge for over 50 years. 
+While experimental structures cover only 17% of human protein residues, AlphaFold2 represents a breakthrough computational solution that utilizes machine learning methods 
+on an unprecedented scale to predict protein structures with atomic accuracy. 
+AlphaFold* covers a remarkable 98.5% of the human proteome and provides reliable predictions for 58% of residues, with an exceptional subset showing a very high degree of confidence.
+In this article, I would like to explain the intricate details of the AlphaFold system and break down its methodology step by step. Figure 1 shows that the system can be divided into three main components: Database Search, Evoformer Module and Structure Module. 
+Each of these segments plays a pivotal role in the system, and the flow of information retrieved from the protein database through the various parts of the system leads to an extremely accurate 3D structure of a protein.
+
+
 ![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/alphafold.png)
 
 
 ### Genetic and Structure Database Searches
 
-The first step in the alphafold algorithm is **Data Pipeline**, which is the process of collecting structural relevant information that can make the model-training possible and make the inference process more accurate.
+The first part of the alphafold system is **Data Pipeline**, which is the process of collecting structural relevant information that can make the model-training possible and make the inference process more accurate.
 Beside amino acid sequence files in format fasta, there is another important resource of protein information  in the training phase of the alphafold system, which called as **Macromolecular Crystallographic Information Files** (mmCIF). this format as one can understand from its name contains a diversity of sequential and structural protein information belonging to proteins which were collected form experimental methods like **X-ray crystallography**. in the inference phase one should give the system just the sequence identifier which will be used to retrieve the amino acid sequence of the protein in format fasta.
 
 The system parses the input files (mmCIF and fasta) and extracts relevant information, in case of the mmCIF this information are the amino acid sequence, atom coordinates, release date, name of the sequence and resolution. in other case (fasta) the amino acid sequence and its name are the only needed information.
@@ -103,7 +116,7 @@ through the application of a feedforward neural network.
 
 
 
-## 4. The structure module
+### The structure module
 
 ![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
 
@@ -115,25 +128,98 @@ each atom within the protein structure, encompassing not only the backbone but a
 
 ![pdb_format](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/pdb_format.png)
 
-the single representation (structure 1) (The prediction modules are also using a “single” sequence representation {si} with si ∈ Rcs , cs = 384 and i ∈ {1 . . . Nres }.this is the first row of MSA representation which is the initial sequence)
-pair representation(The pair representation encodes information about the distance between pairs but not spatial positioning as such it is invariant to global transforms) (structure 2)({zij } with zij ∈ Rcz and i, j ∈ {1, ..., Nres }) and backbone frames(the geometric representation, these are 4x4 matrices that encode a rotation and a translation for each residue.) (the initialized coordinates of all residues in the sequence which means they are located at the same point (the origin of the global frame) with the same orientation.)
-are used as input of the structure module and the outputs are the concrete 3D representation as well as different accuracy numbers such as pLDDT and LDDT. this step is the final step in alphafold (if we ignore the recycling step which iterate by default 3 times over evoformer and structure module) algorithm which works with the gradient descent base algorithm to optimize the predicted 3d structure.
-The number of iteration (layers) in this module is 8, in which the weights will be shared among the layer(in contrast to evoformer mudule, in which each block has the specific weights) and in each iteration the following steps are occurred:
-1) the first sub step is invariant point attention(IPA), which is a specific type of attention for dealing with 3d structures (in general the attention mechanism which are explained in detail in evoformer module is used in this section).
-   the pair representation, the single representation and the geometric representation are used in this sub step to update the single representation.
+the single representation (structure 1) and pair representation and backbone frames(spatial representations)
+are used as input of the structure module. This module works with a gradient descent base algorithm to optimize the predicted 3d structure (spatial representations).
+This module utilizes a gradient descent-based algorithm to optimize the predicted 3D structure of the protein. The structure module comprises 8 iterations by default, 
+and in each iteration, the weights are shared among the layers, differing from the Evoformer module where each block has distinct weights.
+
+During each iteration of the Structure Module, the following steps take place:
+
+### Invariant Point Attention
+In this step of the Structure Module, known as **Invariant Point Attention (IPA)**, a specialized type of attention mechanism designed for handling 3D structures is employed. The general attention mechanism, previously explained in detail in the Evoformer module, is adapted for use in this specific context.
+The Pair Representation and Single Representation (first row of the MSA representation) play important roles in this sub-step. These representations are utilized to iteratively refine the backbone frames, which collectively define the 3D structure of the protein.
+
+In each iteration of the Structure Module during the training phase, the information generated by Invariant Point Attention (IPA) (backbone frames) and the Single Representation is utilized to predict the 3D structure of the protein. 
+The predicted structure at the end of each iteration is then compared to the actual structure using two key metrics:
+
+#### Frame Aligned Point Score
+
+This metric measures the difference between all atom predicted coordinates and the actual coordinates. It provides  assessment of the alignment between the predicted and actual positions of each atom in the protein structure.
+
+#### Torsion Angle Loss:
+        
+Torsion angles represent the rotations around the chemical bonds in the protein structure, including both side chain and backbone torsion angles. The torsion angle loss quantifies the difference between the predicted torsion angles and the actual angles.
+
+The calculated values for Frame Aligned Point Score and Torsion Angle Loss are combined, to form a unified loss function. This combined loss is then employed in the gradient descent algorithm during the training process.
+The gradient descent algorithm adjusts the model's parameters to minimize this loss, facilitating the refinement of the predicted 3D protein structure. 
+By iteratively optimizing the model based on the disparity between predictions and actual observations, the algorithm converges towards a more accurate and biologically relevant protein structure.
+
+
+
+### Recycling
+
+Following the prediction of the final protein structure in the Structure Module, all the generated and refined information, including the Multiple Sequence Alignment (MSA) representation, 
+pair representation, and the predicted 3D structure, serves as input for Evoformer blocks. This recycling mechanism enables the model to iteratively refine its predictions.
+This iterative refinement process is repeated three times by default. In each iteration, the output from the previous step is embedded and utilized as additional input to the model. 
+This iterative embedding of information ensures that the model progressively refines its understanding and representation of the protein structure. 
+By incorporating the refined predictions from earlier iterations, the model can capture finer details, improve precision, 
+and enhance the overall accuracy of its final predictions. The recycling mechanism contributes to the robustness and effectiveness 
+of the AlphaFold algorithm in predicting highly accurate protein structures.
+
+
+
+
+
+
+------------------------------------------------------
+------------------------------------------------------
+------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mathematically equivalent to the cosine of the angle difference (see below).
 ![ipa](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa.png)
-   first for each token(residue) in single representation the query, key, and value vectors will be created (the same as the general attention mechanism)
+
+   first for each token(residue) in single representation  the query, key, and value vectors will be created (the same as the general attention mechanism)
    to contain information from the 3d representation and have a mechanism by which the single representation will be affected by spatial information the IPA used the following equation:
 ![ipa1](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa1.png)   
-   the weight is proportional to the dot product of a query vector q and a key vector k. Information from the pair representation has an effect on the wight via the addition of b, a scalar computed from the pairwise representation of residues i,j
-   The objective is such that the attention weights should remain unchanged if all matrices T are subject to the same rigid transformation. The way this is achieved can be seen in the right portion of the equation above:
-![ipa2](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa2.png)
-   We generate additional query and key vectors for each residue which are multiplied by their respective T matrices. Taking the euclidean distance of these two transformed vectors ensures that the value is invariant to global rigid transformations and this is shown in the proof below:
-![ipa3](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa3.png)
-   So far we have established that the attention weights are invariant. It remains to be shown that the final representation is also invariant:
-   In line 10 of the algorithm, we see that the final representation has a component that is dependent on the euclidean transforms Tᵢ
+ 
 ![ipa4](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/ipa4.png)
-   the output of the IPA sub step is the refined single representation (it is refined using spatial information and pair representaion).
+
 2) The Structure Module predicts backbone frames Ti and torsion angles if . The atom coordinates are then constructed by applying the torsion angles to the corresponding amino acid structure with idealized bond angles and bond lengths.
 in each iteration of structure module In order to resolve any remaining structural violations and clashes, we relax our model predictions by
 an iterative restrained energy minimization procedure. At each round, we perform minimization of the AMBER99SB[100] force field with additional harmonic restraints that keep the system near its input structure.
@@ -293,10 +379,6 @@ where the intermediate number of channels expands the original number of channel
 
 
 
-## 5. Recycling
-
-The last step of the alphafold algorithm is the Recycling step. After generating the final structure, output of th structure module, all the generated and refined information (i.e. MSA representation, pair representation and predicted structure) will be used as input for Evoformer blocks, This allows the model to refine its predictions.
-This process is repeated 3 times (by default) and in each iteration the output is embedded to use as additional input of the model, so the prediction will be more precise and accurate.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
