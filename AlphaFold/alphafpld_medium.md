@@ -16,7 +16,7 @@ Each of these segments plays a pivotal role in the system, and the flow of infor
 accurate 3D structure of a protein.
 
 
-![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/alphafold.png)
+![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/AlphaFold/images/alphafold.png)
 <figcaption style="font-size: smaller; text-align: center;">Figure 1: The AlphaFold system. The system consists of three main components: Database Search, Evoformer Module and Structure Module. The detailed explanations of each component and its layers (represented by numbers) are detailed in the corresponding part of the article.</figcaption>
 
 
@@ -59,7 +59,7 @@ Initially designed for language translation tasks, transformers excel with seque
 Leveraging this information, it produces an output that is a prediction of the protein structure as a graph inference problem in 3D space. In this 3D space, 
 the nodes of the graph correspond to amino acid residues in proximity, while the edges represent the spatial relationships between these residues. 
 
-![evoformer](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer.png)
+![evoformer](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/AlphaFold/images/evoformer.png)
 <figcaption style="font-size: smaller; text-align: center;">Figure 2: The Evoformer network. it consists of 48 (by default) blocks, each block has an MSA representation(1) and a pair representation(2) as its input and output and processes them within several layers. The detailed explanations of each layer, the core components of this network's functionality, are meticulously expounded in the corresponding part of the article.</figcaption>
 
 The Evoformer block (figure 2) comprising two transformer models, each dedicated to processing one of the primary input datasets, MSA representation (Figure 2, 1) and pair representation (Figure 2, 2). 
@@ -146,7 +146,7 @@ This comprehensive attention mechanism facilitates the integration of informatio
 contributing to a refined and context-aware representation of the 3D spatial relationships between amino acids in the protein structure.
 
 
-![structure_attention](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure_attention.png)
+![structure_attention](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/AlphaFold/images/structure_attention.png)
 <figcaption style="font-size: smaller; text-align: center;">Figure 3: Triangle Multiplicative Update and Triangle Self-Attention. a) The pair representation interpreted as directed edges in a graph. b) Triangle multiplicative update and triangle self-attention. The circles represent residues. Entries in the pair representation are illustrated as directed edges, and in each diagram, the edge being updated is ij.</figcaption>
 
 
@@ -162,7 +162,7 @@ These two representations serve as the foundation for the construction of a thre
 The outcome of this process is a comprehensive list of **Cartesian coordinates** presented in the Protein Data Bank (PDB) format. These coordinates delineate the precise positions of 
 each atom within the protein structure, encompassing not only the backbone but also the intricate details of side chains. 
 
-![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
+![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/AlphaFold/images/structure.png)
 <figcaption style="font-size: smaller; text-align: center;">Figure 4: The structure module. </figcaption>
 
 
