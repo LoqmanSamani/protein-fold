@@ -149,7 +149,7 @@ After the attention mechanism processes the pair representation in the Evoformer
 This transition layer is analogous to the one found in the MSA representation transformer. In this layer, the pair representation is further refined and transformed 
 through the application of a feedforward neural network.
 
-     (graph fegure,a, b)
+![structure_attention]()
 
 
 
