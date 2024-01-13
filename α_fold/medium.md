@@ -149,7 +149,9 @@ After the attention mechanism processes the pair representation in the Evoformer
 This transition layer is analogous to the one found in the MSA representation transformer. In this layer, the pair representation is further refined and transformed 
 through the application of a feedforward neural network.
 
-![structure_attention]()
+![structure_attention](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure_attention.png)
+<figcaption style="font-size: smaller; text-align: center;">Figure 3: Triangle Multiplicative Update and Triangle Self-Attention. a) The pair representation interpreted as directed edges in a graph. b) Triangle multiplicative update and triangle self-attention. The circles represent residues. Entries in the pair representation are illustrated as directed edges, and in each diagram, the edge being updated is ij.</figcaption>
+
 
 
 
@@ -163,7 +165,6 @@ The outcome of this process is a comprehensive list of **Cartesian coordinates**
 each atom within the protein structure, encompassing not only the backbone but also the intricate details of side chains. 
 
 
-![pdb_format](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/pdb_format.png)
 
 the single representation (structure 1) and pair representation and backbone frames(spatial representations)
 are used as input of the structure module. This module works with a gradient descent base algorithm to optimize the predicted 3d structure (spatial representations).
