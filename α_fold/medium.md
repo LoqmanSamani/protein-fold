@@ -167,7 +167,7 @@ each atom within the protein structure, encompassing not only the backbone but a
 
 
 
-the single representation and pair representation and backbone frames, spatial representations, (Figure 4. 3)
+The single representation and pair representation and backbone frames, spatial representations, (Figure 4. 3)
 are used as input of the structure module. This module works with a gradient descent base algorithm to optimize the predicted 3d structure (Figure 4. 6).
 This module utilizes a gradient descent-based algorithm to optimize the predicted 3D structure of the protein. The structure module comprises 8 iterations by default, 
 and in each iteration, the weights are shared among the layers, differing from the Evoformer module where each block has distinct weights.
