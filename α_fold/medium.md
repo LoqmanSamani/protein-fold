@@ -163,6 +163,8 @@ The outcome of this process is a comprehensive list of **Cartesian coordinates**
 each atom within the protein structure, encompassing not only the backbone but also the intricate details of side chains. 
 
 ![structure](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/structure.png)
+<figcaption style="font-size: smaller; text-align: center;">Figure 4: The structure module. </figcaption>
+
 
 
 the single representation and pair representation and backbone frames, spatial representations, (Figure 4. 3)
@@ -222,7 +224,6 @@ providing insight into the intricate world of molecular biology and opening new 
 
 
 
------------------------------------------------
 
 ### References
 
