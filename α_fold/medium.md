@@ -91,28 +91,7 @@ pattern learned by the model, aiding in determining the position of each residue
 Following the creation of the Q, K, and V matrices, the next step in the Evoformer's self-attention mechanism involves normalizing these matrices using the softmax function. 
 This normalization ensures that the scores are positive and sum up to 1. As depicted in Figure 2-a, there exists a connection between the MSA-transformer and pair-transformer,
 which demonstrated the flow of information from pair representation to the MSA-representation. In this process, additional information from pair representation is incorporated
-to influence the bias terms of the MSA attention. 
-
-- \( W_q \cdot X = Q \)
-- \( W_k \cdot X = K \)
-- \( W_v \cdot X = V \)
-
-**Column-Attention:**
-\[ Z = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d}}\right) \cdot V; \quad d = \text{dimension of the keys, queries, and values matrices} \]
-
-**Row-Attention:**
-\[ Z = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d}} + b\right) \cdot V; \quad b = \text{pair representation information} \]
-
-
-
-
-
-
-
-
-
-
-
+to influence the bias terms of the MSA attention.
     
     Wq * X = Q
     Wk * X = K
@@ -123,8 +102,8 @@ to influence the bias terms of the MSA attention.
 
 #### Feed Forward Neural Networks
 
-After row-wise and column-wise attention next layer of the MSA transformer contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN (figure 2, c),  as the transition layer.This stage of processing in the Evoformer block operates across features,
-refining the representation using a non-linear transform. The main idea behind a feed-forward neural network is to process input data through a series of layers, where each layer consists of nodes (neurons) connected to nodes in the subsequent layer. 
+After row-wise and column-wise attention next layer of the MSA transformer contains a 2-layer **MLP, multi-layer perceptron**, known as FFNN (Figure 2. 5),  as the transition layer.This stage of processing in the Evoformer block operates across features,
+refining the representation using a non-linear transform. The main idea behind a feed-forward neural network is to process input data through a series of layers, where each layer consists of nodes, connected to nodes in the subsequent layer. 
 During the training process of a Feedforward Neural Network (FFNN), each weight matrix associated with the layers of the network is optimized using **Adam optimization algorithm** to improve the accuracy of predicted structures. Notably, 
 in a conventional neural network architecture, weights are typically shared across different layers. 
 However, in the case of the Evoformer, each block operates with its own set of weights, and these weights are not shared with other blocks. 
@@ -137,14 +116,14 @@ allowing for more localized and specific adaptations during the training process
 
 #### Outer Product Mean
 
-This layer of the Evoformer (Figure 2, d) serves the purpose of transforming the MSA-representation into an update for the pair representation. 
+This layer of the Evoformer (Figure 2. 6) serves the purpose of transforming the MSA-representation into an update for the pair representation. 
 The transformation involves computing the mean of the outer product of each two columns (for instance, Ci and Cj), and this result is utilized as an update for the element (Cij) in the pair representation. 
 This mechanism ensures the integration of information from the MSA into the Pair representation module.
 
 Mathematically, this process can be represented as:
 
-     C¹m*n * C²m*n.T = C¹²m*n  # the outer product matrix
-     C³ = mean(C¹²m*n)
+     outer product matrix = C¹(m*n) * C²(m*n).T  
+     outer product mean = C³ = mean(outer product mean)
 
 
 #### Triangle multiplicative update and triangle self-attention
