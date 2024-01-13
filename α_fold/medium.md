@@ -8,14 +8,17 @@ To close this gap and enable large-scale structural bioinformatics, accurate com
 based solely on its amino acid sequence, a key aspect of the protein folding problem, has been a challenge for over 50 years. 
 While experimental structures cover only 17% of human protein residues, AlphaFold2 represents a breakthrough computational solution that utilizes machine learning methods 
 on an unprecedented scale to predict protein structures with atomic accuracy. 
-AlphaFold* covers a remarkable 98.5% of the human proteome and provides reliable predictions for 58% of residues, with an exceptional subset showing a very high degree of confidence.
-In this article, I would like to explain the intricate details of the AlphaFold system and break down its methodology step by step. Figure 1 shows that the system can be divided into 
-three main components: Database Search, Evoformer Module and Structure Module. 
+
+AlphaFold covers a remarkable 98.5% of the human proteome and provides reliable predictions for 58% of residues, with an exceptional subset showing a very high degree of confidence.
+In this article, I would like to explain the intricate details of the AlphaFold system (Figure 1) and break down its methodology step by step. As illustrated in Figure 1 the system can be divided into 
+three main components: **Database Search**, **Evoformer Module** and **Structure Module**. 
 Each of these segments plays a pivotal role in the system, and the flow of information retrieved from the protein database through the various parts of the system leads to an extremely 
 accurate 3D structure of a protein.
 
 
 ![alphafold](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/alphafold.png)
+<figcaption style="font-size: smaller; text-align: center;">Figure 1: The AlphaFold system. The system consists of three main components: Database Search, Evoformer Module and Structure Module. The detailed explanations of each component and its layers (represented by numbers) are detailed in the corresponding part of the article.</figcaption>
+
 
 
 ### Genetic and Structure Database Searches
@@ -27,40 +30,40 @@ As implied by its name, mmCIF contains a diversity of sequential and structural 
 During the inference phase, the system requires only the sequence identifier, which is then used to retrieve the amino acid sequence of the protein in the FASTA format. 
 The system parses the input files (mmCIF and fasta) and extracts relevant information, in the case of the mmCIF this is the **name of the sequence**, the **amino acid sequence**, 
 the **atomic coordinates**, the **release date** and the **resolution**. In the other case (fasta), the amino acid sequence and its name are the only information required.
-With the information retrieved from the files, two different database searches are performed, in one case, the **genetic database search** (Figure 1, a), the system searches
+With the information retrieved from the files, two different database searches are performed, in one case, the **genetic database search** (Figure 1. 2), the system searches
 **the Big Fantastic Database (BFD)** for similar sequences (in this case, the system used specialized applications such as **JackHMMER** and **HHBlits**) and the result is called 
 **multiple sequence alignment(MSA)**, then the result is modified by removing duplicate sequences and those that are not long enough to be included in the process.
 The remaining sequences are then assembled into a matrix of sequences called the *MSA representation*. Each column of this matrix encodes a single residue of the 
 input sequence in different organisms, while each row represents the entire sequence in a particular organism.
-In another case, the system uses an approach called **HHSearch** to search in the **Protein Data Bank (PDB)**, **Structure Database Search** (Figure 1, b), to retrieve the 3d structures of the proteins, 
-that have a similar primary structure to the original input. 
+In another case, the system uses an approach called **HHSearch** to search in the **Protein Data Bank (PDB)**, **Structure Database Search** (Figure 1. 3), to retrieve the 3d structures of the proteins, 
+that have a similar primary structure to the original input(Figure 1. 1). 
 
 ### Embedding process
 
 Before the collected sequential (MSA information) and structural information can be used in the alphafold system, it must be embedded. 
-This is the process of converting categorical information, such as the alphabetical representations (G, V, A, ..., each letter represents an amino acid) 
+This is the process of converting categorical information, such as the alphabetical representations (G, V, A, ... . Each letter represents an amino acid) 
 found in MSA, as well as the structural features, into numerical vectors or probabilities. 
 For this purpose, each input symbol or word is converted into a vectorized representation. These numerical vectors serve as input for neural networks, 
 enabling them to effectively process and learn patterns from the sequential data.
-Regarding the MSA, the resulting embedded information is denoted as the **MSA representation** (Figure 1, c). 
+Regarding the MSA, the resulting embedded information is denoted as the **MSA representation** (Figure 1. 4). 
 This representation takes the form of a matrix with dimensions (number of sequences * length of the longest sequence). 
-Conversely, in the other case, the embedded outcome is termed the **Pair Representation** (Figure 1, d), which manifests as a matrix with dimensions (length of sequence * length of sequence). 
+Conversely, in the other case, the embedded outcome is termed the **Pair Representation** (Figure 1. 5), which manifests as a matrix with dimensions (length of sequence * length of sequence). 
 These distinct yet crucial matrices serve as the primary input parameters during both the training and inference phases of the system. 
 They encapsulate essential structural and sequential information, facilitating subsequent steps in the algorithm.
 
 
 ### Evoformer module
 
-The Evoformer stands out as a pivotal and potent module within the AlphaFold system. Fundamentally, it operates as a variant of the transformer neural network, originally introduced by Google Brain in 2017. 
+The Evoformer (Figure 1. 6) stands out as a pivotal and potent module within the AlphaFold system. Fundamentally, it operates as a variant of the transformer neural network, originally introduced by Google Brain in 2017. 
 Initially designed for language translation tasks, transformers excel with sequential data. In the context of AlphaFold, the Evoformer takes both MSA-representation and pair representation as input. 
 Leveraging this information, it produces an output that is a prediction of the protein structure as a graph inference problem in 3D space. In this 3D space, 
 the nodes of the graph correspond to amino acid residues in proximity, while the edges represent the spatial relationships between these residues. 
 
 ![evoformer](https://github.com/LoqmanSamani/protein_sa/blob/systembiology/%CE%B1_fold/images/evoformer.png)
-<figcaption style="font-size: smaller; text-align: center;">Figure 2: The Evoformer network. it consists of 48 (by default) blocks, each block has an MSA representation and a pair representation as its input and output and processes them within several layers.</figcaption>
+<figcaption style="font-size: smaller; text-align: center;">Figure 2: The Evoformer network. it consists of 48 (by default) blocks, each block has an MSA representation(1) and a pair representation(2) as its input and output and processes them within several layers. The detailed explanations of each layer, the core components of this network's functionality, are meticulously expounded in the corresponding part of the article.</figcaption>
 
-The Evoformer block (figure 2) comprising two transformer models, each dedicated to processing one of the primary input datasets (MSA representation and pair representation). 
-These transformers collaboratively exchange information across two distinct layers within the block – the row-wise self-attention layer and the outer product mean layer. 
+The Evoformer block (figure 2) comprising two transformer models, each dedicated to processing one of the primary input datasets, MSA representation (Figure 2, 1) and pair representation (Figure 2, 2). 
+These transformers collaboratively exchange information across two distinct layers within the block. 
 In the initial layer of the block, information flows from pair representation to MSA representation. Meanwhile, in the fourth layer (outer product mean), information is reciprocally 
 transmitted from the MSA representation transformer to the pair representation transformer. This intricate information exchange mechanism enhances the Evoformer's ability to 
 integrate insights from both MSA and pair representations, contributing to the overall refinement and accuracy of the protein structure prediction.
@@ -76,11 +79,11 @@ its ability to understand the context of each word.
 In the context of protein structure, a diverse set of 20 unique amino acids (analogous to words) in each sequence plays a vital role in determining distinct folding patterns. 
 It is essential to gather detailed information about each residue and understand how they interact with neighboring residues. 
 This comprehensive knowledge is crucial for inferring higher-order structures such as secondary, tertiary, and quaternary structures in proteins.
-To gain this necessary information alphafold defines **axial self-attention** in the MSA representation transformer and **triangular self-attention** in the pair representation transformer.
+To gain this necessary information alphafold defines **axial self-attention** (Figure 2. 3 & 4)in the MSA representation transformer and **triangular self-attention** (Figure 2. 9 & 10) in the pair representation transformer.
 
 ##### axial self-attention in the MSA stack
 
-The initial step in the Evoformer's self-attention mechanism involves creating three vectors—query (q), key (k), and value (v)—from each row (row-attention) or column (column-attention) 
+The initial step in the Evoformer's self-attention mechanism involves creating three vectors—query (q), key (k), and value (v)—from each row (row-attention, Figure 2. 3) or column (column-attention, Figure 2. 4) 
 of the embedded MSA-representation. For each vector, a corresponding weight matrix (Wq, Wk, and Wv) is employed, and these matrices are then multiplied by the embedded MSA (X) to generate 
 the Q, K, and V matrices. This procedure is known as positional encoding, wherein a matrix of weights is added to each input embedding. The positional encoding matrix adheres to a specific 
 pattern learned by the model, aiding in determining the position of each residue or the distance between different residues in the sequence.
@@ -89,13 +92,34 @@ Following the creation of the Q, K, and V matrices, the next step in the Evoform
 This normalization ensures that the scores are positive and sum up to 1. As depicted in Figure 2-a, there exists a connection between the MSA-transformer and pair-transformer,
 which demonstrated the flow of information from pair representation to the MSA-representation. In this process, additional information from pair representation is incorporated
 to influence the bias terms of the MSA attention. 
+
+- \( W_q \cdot X = Q \)
+- \( W_k \cdot X = K \)
+- \( W_v \cdot X = V \)
+
+**Column-Attention:**
+\[ Z = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d}}\right) \cdot V; \quad d = \text{dimension of the keys, queries, and values matrices} \]
+
+**Row-Attention:**
+\[ Z = \text{softmax}\left(\frac{Q \cdot K^T}{\sqrt{d}} + b\right) \cdot V; \quad b = \text{pair representation information} \]
+
+
+
+
+
+
+
+
+
+
+
     
     Wq * X = Q
     Wk * X = K
     Wv * X = V
 
-    column-attention: Z = softmax((Q . K.T)/sqrt(d)) * V     # d = dimension of the keys, queries, and values matrices
-    row-attention: Z = softmax((Q . K.T)/sqrt(d) + b) * V    # b = pair representation information
+    column-attention: Z = softmax((Q . K.T)/sqrt(d)) * V;     d = dimension of the keys, queries, and values matrices
+    row-attention: Z = softmax((Q . K.T)/sqrt(d) + b) * V;    b = pair representation information
 
 #### Feed Forward Neural Networks
 
@@ -218,6 +242,26 @@ results in an exceptionally accurate 3D representation of proteins. The success 
 providing insight into the intricate world of molecular biology and opening new avenues for research and discovery.
 
 
+
+
+
+### References
+
+[1] Jumper, J., Evans, R., Pritzel, A. et al. [Highly accurate protein structure prediction with AlphaFold](https://www.nature.com/articles/s41586-021-03819-2#citeas). Nature 596, 583–589 (2021)
+
+[2] Tunyasuvunakool, K., Adler, J., Wu, Z. et al. [Highly accurate protein structure prediction for the human proteome](https://www.nature.com/articles/s41586-021-03828-1#citeas). Nature 596, 590–596 (2021).
+
+[3] Senior, A.W., Evans, R., Jumper, J. et al. [Improved protein structure prediction using potentials from deep learning](https://www.nature.com/articles/s41586-019-1923-7#citeas). Nature 577, 706–710 (2020)
+
+[4] Kiersten M. Ruff and Rohit V. Pappu [AlphaFold and Implications for Intrinsically Disordered Proteins](https://www.sciencedirect.com/science/article/pii/S0022283621004411). Journal of Molecular Biology, Volume 433, Issue 20, (2021).
+
+[5] Pearce R, Zhang Y. [Deep learning techniques have significantly impacted protein structure prediction and protein design](https://pubmed.ncbi.nlm.nih.gov/33639355/). Curr Opin Struct Biol. 2021 Jun;68:194-207. doi: 10.1016/j.sbi.2021.01.007. Epub 2021 Feb 24. PMID: 33639355; PMCID: PMC8222070.
+
+[6] Senior AW, Evans R, Jumper J, Kirkpatrick J, Sifre L, Green T, Qin C, Žídek A, Nelson AWR, Bridgland A, Penedones H, Petersen S, Simonyan K, Crossan S, Kohli P, Jones DT, Silver D, Kavukcuoglu K, Hassabis D. [Protein structure prediction using multiple deep neural networks in the 13th Critical Assessment of Protein Structure Prediction (CASP13)](https://pubmed.ncbi.nlm.nih.gov/31602685/). Proteins. 2019 Dec;87(12):1141-1148. doi: 10.1002/prot.25834. PMID: 31602685; PMCID: PMC7079254.
+
+[7] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+
+[8] Richard E. Turner. [An Introduction to Transformers](https://arxiv.org/abs/2304.10557)
 
 
 
